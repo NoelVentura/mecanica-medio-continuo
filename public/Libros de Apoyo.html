@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    
+    <!-- SEO Básico -->
+    <title>Libros de Apoyo | Mecánica del Medio Continuo</title>
+    <meta name="description" content="Descarga libros de apoyo gratuitos para el curso de Mecánica del Medio Continuo." />
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              primary: {
+                50: '#eff6ff',
+                100: '#dbeafe',
+                200: '#bfdbfe',
+                300: '#93c5fd',
+                400: '#60a5fa',
+                500: '#3b82f6',
+                600: '#2563eb',
+                700: '#1d4ed8',
+                800: '#1e40af',
+                900: '#1e3a8a',
+                950: '#172554',
+              },
+              accent: {
+                50: '#fdf4ff',
+                100: '#fae8ff',
+                200: '#f5d0fe',
+                300: '#f0abfc',
+                400: '#e879f9',
+                500: '#d946ef',
+                600: '#c026d3',
+                700: '#a21caf',
+                800: '#86198f',
+                900: '#701a75',
+                950: '#4a044e',
+              },
+            },
+            fontFamily: {
+              sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+            },
+          },
+        },
+      }
+    </script>
+    
+    <!-- Script para tema oscuro -->
+    <script>
+      (function() {
+        const theme = localStorage.getItem('theme') || 
+          (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        if (theme === 'dark') {
+          document.documentElement.classList.add('dark');
+        }
+      })();
+    </script>
+    
+    <style>
+      html { scroll-behavior: smooth; }
+      body {
+        font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+    </style>
+  </head>
+  
+  <body class="min-h-screen flex flex-col antialiased text-gray-900 dark:text-gray-100 transition-colors duration-300" style="background-image: url('images/mecanica.png'); background-size: cover; background-position: center; background-attachment: fixed; background-repeat: no-repeat;">
+    
+    <!-- ==================== HEADER ==================== -->
+    <header class="sticky top-0 z-50 w-full border-b border-gray-200/50 dark:border-gray-800/50 bg-white/40 dark:bg-gray-950/40 backdrop-blur-md transition-colors duration-300">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex h-16 items-center justify-between">
+          
+          <!-- Logo -->
+          <a href="Pagina de inicio.html" class="flex items-center gap-3 group" aria-label="Ir al inicio">
+            <img src="images/tecnologico.png" alt="Tecnológico" class="h-12 w-auto object-contain">
+            <div class="flex flex-col">
+              <span class="text-lg font-bold text-gray-900 dark:text-white leading-tight">Mecánica</span>
+              <span class="text-xs text-gray-500 dark:text-gray-400 leading-tight">Medio Continuo</span>
+            </div>
+          </a>
+
+          <!-- Navegación -->
+          <nav class="hidden md:flex items-center gap-1" aria-label="Navegación principal">
+            <a href="Pagina de inicio.html" class="px-4 py-2 rounded-lg text-sm font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white transition-all duration-200">Inicio</a>
+            <a href="Libros de Apoyo.html" class="px-4 py-2 rounded-lg text-sm font-medium bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300" aria-current="page">Libros de Apoyo</a>
+            <a href="Inscribir curso.html" class="px-4 py-2 rounded-lg text-sm font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white transition-all duration-200">Inscribir Curso</a>
+            <a href="Contacto.html" class="px-4 py-2 rounded-lg text-sm font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white transition-all duration-200">Contacto</a>
+          </nav>
+
+          <!-- Theme Toggle -->
+          <button id="theme-toggle" type="button" class="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-300" aria-label="Cambiar tema">
+            <svg id="sun-icon" class="w-5 h-5 text-yellow-500 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
+            </svg>
+            <svg id="moon-icon" class="w-5 h-5 text-gray-700 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+    
+    <!-- ==================== MAIN CONTENT ==================== -->
+    <main class="flex-1 py-12">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Título de la página -->
+        <div class="text-center mb-12">
+          <h1 class="text-4xl font-bold mb-4" style="color: #001f3f;">
+            Libros de Apoyo
+          </h1>
+          <p class="text-lg max-w-2xl mx-auto" style="color: #000000;">
+            Material de estudio complementario para reforzar tu aprendizaje en Mecánica del Medio Continuo
+          </p>
+        </div>
+        
+        <!-- Grid de libros -->
+        <div class="grid grid-cols-3 gap-4 max-w-4xl mx-auto">
+          
+          <!-- Libro 1 -->
+          <article class="group rounded-2xl border border-gray-800 hover:border-primary-800 transition-all duration-300 overflow-hidden bg-gray-900" style="box-shadow: 0 0 30px rgba(59, 130, 246, 0.3), 0 0 60px rgba(59, 130, 246, 0.15);">
+            <!-- Imagen de portada -->
+            <div class="h-40 bg-cover bg-center" style="background-image: url('images/1.jpg');"></div>
+            <!-- Contenido -->
+            <div class="p-5">
+              <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-red-500 to-red-600 flex items-center justify-center mb-4 shadow-lg">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                </svg>
+              </div>
+              <h3 class="text-base font-semibold text-white mb-2">Introducción a la Mecánica del Medio Continuo</h3>
+              <p class="text-gray-400 text-xs leading-relaxed mb-3">
+                Fundamentos teóricos y conceptos básicos para comenzar en el estudio de la mecánica de medios continuos.
+              </p>
+              <a 
+                href="pdf/INTRODUCCION  DE MECANICA MEDIO CONTINUO.pdf" 
+                target="_blank"
+                class="inline-flex items-center text-primary-400 font-medium text-xs"
+              >
+                Ver PDF
+                <svg class="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+              </a>
+            </div>
+          </article>
+          
+          <!-- Libro 2 -->
+          <article class="group rounded-2xl border border-gray-800 hover:border-primary-800 transition-all duration-300 overflow-hidden bg-gray-900" style="box-shadow: 0 0 30px rgba(59, 130, 246, 0.3), 0 0 60px rgba(59, 130, 246, 0.15);">
+            <!-- Imagen de portada -->
+            <div class="h-40 bg-cover bg-center" style="background-image: url('images/2.jpg');"></div>
+            <!-- Contenido -->
+            <div class="p-5">
+              <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center mb-4 shadow-lg">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                </svg>
+              </div>
+              <h3 class="text-base font-semibold text-white mb-2">Apuntes del Medio Continuo</h3>
+              <p class="text-gray-400 text-xs leading-relaxed mb-3">
+                Apuntes completos con ejemplos resueltos y ejercicios prácticos para dominar la materia.
+              </p>
+              <a 
+                href="pdf/APUNTES DEL MEDIO CONTINUO.pdf" 
+                target="_blank"
+                class="inline-flex items-center text-primary-400 font-medium text-xs"
+              >
+                Ver PDF
+                <svg class="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+              </a>
+            </div>
+          </article>
+          
+          <!-- Libro 3 -->
+          <article class="group rounded-2xl border border-gray-800 hover:border-primary-800 transition-all duration-300 overflow-hidden bg-gray-900" style="box-shadow: 0 0 30px rgba(59, 130, 246, 0.3), 0 0 60px rgba(59, 130, 246, 0.15);">
+            <!-- Imagen de portada -->
+            <div class="h-40 bg-cover bg-center" style="background-image: url('images/3.jpg');"></div>
+            <!-- Contenido -->
+            <div class="p-5">
+              <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-green-500 to-green-600 flex items-center justify-center mb-4 shadow-lg">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                </svg>
+              </div>
+              <h3 class="text-base font-semibold text-white mb-2">Libro de Mecánica del Medio Continuo</h3>
+              <p class="text-gray-400 text-xs leading-relaxed mb-3">
+                Texto completo con teoría avanzada, demostraciones matemáticas y aplicaciones en ingeniería.
+              </p>
+              <a 
+                href="pdf/LIBRO DE MECANICA MEDIO CONTINUO (2).pdf" 
+                target="_blank"
+                class="inline-flex items-center text-primary-400 font-medium text-xs"
+              >
+                Ver PDF
+                <svg class="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+              </a>
+            </div>
+          </article>
+          
+        </div>
+        
+        <!-- Enlace para volver -->
+        <div class="text-center mt-12">
+          <a href="Pagina de inicio.html" class="text-primary-600 dark:text-primary-400 hover:underline font-medium">
+            ← Volver a la página principal
+          </a>
+        </div>
+        
+      </div>
+    </main>
+    
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="bg-gray-50/50 dark:bg-gray-900/50 border-t border-gray-200/50 dark:border-gray-800/50 backdrop-blur-sm py-6">
+      <div class="container mx-auto px-4 text-center">
+        <p class="text-sm text-gray-500 dark:text-gray-400">
+          © <span id="current-year">2025</span> Mecánica del Medio Continuo. Todos los derechos reservados.
+        </p>
+      </div>
+    </footer>
+    
+    <!-- ==================== SCRIPTS ==================== -->
+    <script>
+      // Año actual
+      document.getElementById('current-year').textContent = new Date().getFullYear();
+      
+      // Theme Toggle
+      const themeToggle = document.getElementById('theme-toggle');
+      themeToggle.addEventListener('click', () => {
+        const isDark = document.documentElement.classList.contains('dark');
+        document.documentElement.classList.toggle('dark');
+        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+      });
+    </script>
+  </body>
+</html>
