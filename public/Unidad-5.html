@@ -171,6 +171,76 @@
                       Relación constitutiva lineal entre esfuerzos y deformaciones. Forma tensorial (Lamé) y propiedades de simetría del tensor elástico.
                     </p>
                     <div class="mt-4">
+                      <div class="text-sm text-gray-300 leading-relaxed space-y-4">
+                        <p>
+                          La <strong>ley de Hooke</strong> se define en la mecánica de medios continuos como la <strong>ecuación constitutiva</strong> fundamental para materiales con comportamiento elástico lineal. Este principio establece que, dentro del rango elástico, las deformaciones sufridas por un cuerpo son directamente proporcionales a las solicitaciones o esfuerzos aplicados.
+                        </p>
+
+                        <p class="text-gray-300">
+                          A continuación, se presenta una descripción técnica y profesional de sus componentes y formulación generalizada:
+                        </p>
+
+                        <div>
+                          <h4 class="text-base font-semibold text-white mb-2">1. Definición y Alcance Cinematático</h4>
+                          <p class="text-gray-300">
+                            La ley de Hooke describe la relación entre el <strong>tensor de esfuerzos de Cauchy</strong> \((\sigma_{ij})\) y el <strong>tensor de deformación infinitesimal</strong> \((\epsilon_{ij})\). En el contexto de la elasticidad lineal, se asume que los desplazamientos son infinitesimales, lo que permite que las descripciones lagrangiana y euleriana sean equivalentes.
+                          </p>
+                        </div>
+
+                        <div>
+                          <h4 class="text-base font-semibold text-white mb-2">2. Ley de Hooke Generalizada para Medios Isotrópicos</h4>
+                          <p class="text-gray-300">
+                            Para un sólido elástico, homogéneo, lineal e isótropo (SEHLI), la relación esfuerzo‑deformación se expresa matemáticamente mediante las <strong>constantes de Lamé</strong> \((\lambda\) y \(\mu)\) de la siguiente forma:
+                          </p>
+                          <div class="mt-2 p-3 rounded-lg bg-black/20 border border-gray-700 overflow-x-auto">
+                            \[
+                            \sigma_{ij} = \lambda \delta_{ij} \epsilon_{kk} + 2\mu \epsilon_{ij}
+                            \]
+                          </div>
+                          <p class="mt-2 text-gray-300">Donde:</p>
+                          <ul class="mt-2 list-disc pl-6 space-y-1 text-gray-300">
+                            <li><strong>\(\sigma_{ij}\)</strong>: es el tensor de esfuerzos.</li>
+                            <li><strong>\(\epsilon_{ij}\)</strong>: es el tensor de deformaciones infinitesimales.</li>
+                            <li><strong>\(\delta_{ij}\)</strong>: representa la <strong>delta de Kronecker</strong>, que actúa como operador identidad.</li>
+                            <li><strong>\(\epsilon_{kk}\)</strong>: corresponde a la <strong>dilatación volumétrica</strong> \((\Delta = \nabla \cdot \mathbf{u})\), que es la traza del tensor de deformación.</li>
+                          </ul>
+                        </div>
+
+                        <div>
+                          <h4 class="text-base font-semibold text-white mb-2">3. Constantes Elásticas y su Significado Físico</h4>
+                          <ul class="list-disc pl-6 space-y-2 text-gray-300">
+                            <li><strong>Módulo de Rigidez</strong> \((\mu\) o \(G)\): relaciona los esfuerzos cortantes con las deformaciones angulares.</li>
+                            <li>
+                              <strong>Módulo de Young</strong> \((E)\) y <strong>Relación de Poisson</strong> \((\nu)\): constantes comunes en ingeniería. La ley de Hooke puede reescribirse en función de ellas:
+                              <div class="mt-2 p-3 rounded-lg bg-black/20 border border-gray-700 overflow-x-auto">
+                                \[
+                                \epsilon_{ij} = \frac{1+\nu}{E} \sigma_{ij} - \frac{\nu}{E} \sigma_{kk} \delta_{ij}
+                                \]
+                              </div>
+                            </li>
+                            <li>
+                              <strong>Relación entre constantes</strong>:
+                              <div class="mt-2 p-3 rounded-lg bg-black/20 border border-gray-700 overflow-x-auto space-y-2">
+                                \[
+                                \lambda = \frac{E \nu}{(1+\nu)(1-2\nu)}
+                                \]
+                                \[
+                                \mu = G = \frac{E}{2(1+\nu)}
+                                \]
+                              </div>
+                            </li>
+                          </ul>
+                        </div>
+
+                        <div>
+                          <h4 class="text-base font-semibold text-white mb-2">4. Consideraciones Energéticas</h4>
+                          <p class="text-gray-300">
+                            En el rango elástico, la relación esfuerzo‑deformación es lineal y el trabajo realizado durante el proceso se almacena como <strong>energía de deformación elástica</strong>. Este trabajo se expresa como:
+                            <span class="whitespace-nowrap">\(W_e = \frac{1}{2} \sigma_{ij} \epsilon_{ij}\)</span>, lo que representa la densidad de energía elástica en un punto del medio continuo.
+                          </p>
+                        </div>
+                      </div>
+
                       <div class="pt-2 flex justify-end">
                         <a href="pdf/RELACION%20DE%20POISSON%20Y%20LEY%20DE%20HOOKE.pdf" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white text-sm font-medium rounded-lg transition-all duration-200 shadow-[0_0_10px_rgba(255,255,255,0.7),0_0_20px_rgba(255,255,255,0.5)] hover:shadow-[0_0_16px_rgba(255,255,255,0.9),0_0_28px_rgba(255,255,255,0.7)]">
                           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
