@@ -158,6 +158,14 @@
                     <p class="text-gray-400 text-sm">
                       Relación constitutiva lineal entre esfuerzos y deformaciones. Forma tensorial (Lamé) y propiedades de simetría del tensor elástico.
                     </p>
+                    <div class="mt-4 flex flex-col items-center text-center">
+                      <img
+                        src="images/5.1.png"
+                        alt="Figura 5.1"
+                        class="w-full max-w-2xl rounded-xl border border-gray-600 bg-black/30"
+                        loading="lazy"
+                      />
+                    </div>
                   </div>
                   
                   <!-- Tema 5.2 -->
@@ -182,6 +190,99 @@
                     <p class="text-gray-400 text-sm">
                       Ecuación del movimiento para fluidos newtonianos: conservación de cantidad de movimiento con términos viscosos y de presión.
                     </p>
+                    <div class="mt-4 text-sm text-gray-300 leading-relaxed space-y-4">
+                      <p class="text-gray-300">
+                        La <strong>ecuación de Navier-Stokes</strong> es la ecuación diferencial fundamental que rige los problemas de la <strong>mecánica de fluidos</strong>, siendo válida tanto para líquidos como para gases. Según los documentos, representa una relación diferencial entre los tensores de esfuerzo y de velocidad de deformación para fluidos viscosos.
+                      </p>
+                      <p class="text-gray-300">
+                        A continuación se detallan sus aspectos técnicos, formulación y variantes según las fuentes:
+                      </p>
+
+                      <div>
+                        <h4 class="text-base font-semibold text-white mb-2">1. Definición y Origen Físico</h4>
+                        <p class="text-gray-300">
+                          La ecuación se deduce considerando que el movimiento de los fluidos viscosos resulta de esfuerzos de tipo distorsional, los cuales se relacionan con las <strong>velocidades de deformación</strong> mediante la <strong>ley de Newton</strong>. En esencia, es una expresión del <strong>principio de conservación de la cantidad de movimiento</strong> (segunda ley de Newton) aplicada a un medio continuo fluido.
+                        </p>
+                      </div>
+
+                      <div>
+                        <h4 class="text-base font-semibold text-white mb-2">2. Formulación Matemática General</h4>
+                        <p class="text-gray-300">
+                          La ecuación fundamental en forma vectorial se expresa como:
+                        </p>
+                        <div class="mt-2 p-3 rounded-lg bg-black/20 border border-gray-700 overflow-x-auto">
+                          \[
+                          \rho \mathbf{a} = \rho \mathbf{f} - \nabla p + \mu \nabla^2 \mathbf{v} + \frac{1}{3} \mu \nabla(\nabla \cdot \mathbf{v})
+                          \]
+                        </div>
+                        <p class="mt-2 text-gray-300">Donde:</p>
+                        <ul class="mt-2 list-disc pl-6 space-y-1 text-gray-300">
+                          <li><strong>\(\rho\)</strong>: Densidad del fluido.</li>
+                          <li><strong>\(\mathbf{a}\)</strong>: Vector aceleración.</li>
+                          <li><strong>\(\mathbf{f}\)</strong> (o <strong>\(\mathbf{B}\)</strong>): Fuerzas de cuerpo por unidad de masa (como la gravedad).</li>
+                          <li><strong>\(p\)</strong>: Presión hidrostática.</li>
+                          <li><strong>\(\mu\)</strong>: Coeficiente de <strong>viscosidad dinámica</strong>.</li>
+                          <li><strong>\(\mathbf{v}\)</strong>: Vector velocidad.</li>
+                          <li><strong>\(\nabla \cdot \mathbf{v}\)</strong>: Divergencia de la velocidad, que representa la rapidez de cambio de volumen.</li>
+                        </ul>
+                      </div>
+
+                      <div>
+                        <h4 class="text-base font-semibold text-white mb-2">3. Casos Particulares y Simplificaciones</h4>
+                        <p class="text-gray-300">
+                          Debido a que la resolución matemática rigurosa de esta ecuación es extremadamente compleja, se suelen utilizar versiones simplificadas según el tipo de flujo:
+                        </p>
+                        <ul class="mt-2 list-disc pl-6 space-y-3 text-gray-300">
+                          <li>
+                            <strong>Flujos incompresibles:</strong> Es el caso más común (frecuente en el estudio del agua), donde la densidad se considera constante y, por tanto, \(\nabla \cdot \mathbf{v} = 0\). La ecuación se reduce a:
+                            <div class="mt-2 p-3 rounded-lg bg-black/20 border border-gray-700 overflow-x-auto">
+                              \[
+                              \rho \frac{D\mathbf{v}}{Dt} = \rho \mathbf{f} - \nabla p + \mu \nabla^2 \mathbf{v}
+                              \]
+                            </div>
+                          </li>
+                          <li><strong>Flujos laminares:</strong> Se presenta cuando las aceleraciones y fuerzas de inercia son despreciables frente a la viscosidad y el gradiente de presión.</li>
+                          <li><strong>Flujos no viscosos (ecuaciones de Euler):</strong> Si los efectos de la viscosidad son despreciables frente a las aceleraciones, la ecuación se simplifica eliminando el término de viscosidad (\(\mu \nabla^2 \mathbf{v}\)), resultando en las ecuaciones de Euler.</li>
+                        </ul>
+                      </div>
+
+                      <div>
+                        <h4 class="text-base font-semibold text-white mb-2">4. Analogía con la elasticidad</h4>
+                        <p class="text-gray-300">
+                          Existe una semejanza directa entre la ecuación fundamental de la <strong>elasticidad</strong> y la de Navier-Stokes. Esta última se puede obtener a partir de la elástica realizando los siguientes cambios:
+                        </p>
+                        <ol class="mt-2 list-decimal pl-6 space-y-2 text-gray-300">
+                          <li>Sustituir el módulo de rigidez (\(G\)) por la viscosidad dinámica (\(\mu\)).</li>
+                          <li>Sustituir la constante de Lamé (\(\lambda\)) por \(-\frac{2}{3} \mu\).</li>
+                          <li>Reemplazar el vector desplazamiento (\(\mathbf{s}\)) por el de velocidad (\(\mathbf{v}\)).</li>
+                          <li>Agregar el término del gradiente de presión (\(\nabla p\)).</li>
+                        </ol>
+                      </div>
+
+                      <div>
+                        <h4 class="text-base font-semibold text-white mb-2">5. Sistemas de coordenadas</h4>
+                        <p class="text-gray-300">
+                          Las fuentes proporcionan el desarrollo de estas ecuaciones en diferentes sistemas para facilitar el análisis según la geometría del problema:
+                        </p>
+                        <ul class="mt-2 list-disc pl-6 space-y-1 text-gray-300">
+                          <li><strong>Coordenadas rectangulares (\(x, y, z\)):</strong> Útiles para flujos entre placas o conductos rectos.</li>
+                          <li><strong>Coordenadas cilíndricas (\(r, \theta, z\)):</strong> Empleadas para flujos en tuberías circulares (como el flujo de Poiseuille) o entre cilindros concéntricos.</li>
+                          <li><strong>Coordenadas esféricas (\(r, \theta, \phi\)):</strong> Utilizadas para problemas con simetría esférica.</li>
+                        </ul>
+                      </div>
+
+                      <p class="text-gray-300">
+                        Para resolver un problema de flujo completo, las ecuaciones de Navier-Stokes (que son vectoriales y aportan tres ecuaciones de componentes) deben resolverse simultáneamente con la <strong>ecuación de continuidad</strong> (conservación de la masa) para determinar las incógnitas de velocidad y presión.
+                      </p>
+                      <div class="mt-4 flex flex-col items-center text-center">
+                        <img
+                          src="images/5.4.png"
+                          alt="Figura 5.4"
+                          class="w-full max-w-2xl rounded-xl border border-gray-600 bg-black/30"
+                          loading="lazy"
+                        />
+                      </div>
+                    </div>
                   </div>
                   
                   <!-- Tema 5.5 -->
