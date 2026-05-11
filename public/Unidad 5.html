@@ -71,6 +71,18 @@
         }
       })();
     </script>
+
+    <!-- MathJax para ecuaciones -->
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [['\\(', '\\)']],
+          displayMath: [['\\[', '\\]']],
+        },
+        svg: { fontCache: 'global' },
+      };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
     
     <style>
       html { scroll-behavior: smooth; }
@@ -283,14 +295,366 @@
                         />
                       </div>
                     </div>
-                  </div>
-                  
-                  <!-- Tema 5.5 -->
-                  <div class="bg-gray-800/50 rounded-xl p-5 border border-gray-700">
-                    <h3 class="text-lg font-semibold text-primary-400 mb-2">5.5 Aplicaciones a problemas de Mecánica de Fluidos</h3>
-                    <p class="text-gray-400 text-sm">
-                      Casos básicos y aplicaciones: flujo laminar, condiciones de frontera, interpretación física de términos y ejemplos prácticos.
-                    </p>
+                    <div class="mt-4 flex justify-end">
+                      <a href="pdf/unidad%205%20Navier-stoke.pdf" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white text-sm font-medium rounded-lg transition-all duration-200 shadow-[0_0_10px_rgba(255,255,255,0.7),0_0_20px_rgba(255,255,255,0.5)] hover:shadow-[0_0_16px_rgba(255,255,255,0.9),0_0_28px_rgba(255,255,255,0.7)]">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+                        </svg>
+                        Unidad 5 Navier‑Stoke (PDF)
+                      </a>
+                    </div>
+                    <h4 class="mt-4 text-center text-lg font-bold text-primary-400 tracking-wide">
+                      Guía para el Trabajo de Investigación: Ecuaciones de Navier-Cauchy y Navier-Stokes
+                    </h4>                    <div class="mt-6 border-t border-gray-700 pt-6 text-left text-sm text-gray-300 leading-relaxed space-y-8 hyphens-auto [text-wrap:pretty]">
+                      <section class="space-y-4">
+                        <h4 class="text-base font-semibold text-white">1. Formato de Presentación</h4>
+                        <p>
+                          El presente trabajo deberá elaborarse bajo criterios académicos y técnicos profesionales, siguiendo normas de citación reconocidas como <strong>APA</strong> (American Psychological Association) o un formato equivalente. La estructura mínima requerida será la siguiente:
+                        </p>
+                        <div>
+                          <h5 class="font-semibold text-primary-300 mb-2">Portada</h5>
+                          <p class="mb-2">La portada deberá incluir:</p>
+                          <ul class="list-disc pl-6 space-y-1">
+                            <li>Nombre de la institución educativa.</li>
+                            <li>Título del trabajo.</li>
+                            <li>Nombre completo de los integrantes.</li>
+                            <li>Nombre de la asignatura.</li>
+                            <li>Nombre del docente.</li>
+                            <li>Carrera.</li>
+                            <li>Fecha de entrega.</li>
+                          </ul>
+                        </div>
+                        <div>
+                          <h5 class="font-semibold text-primary-300 mb-2">Índice</h5>
+                          <p>Se deberá presentar un índice estructurado con numeración y paginación correspondiente a cada apartado del documento.</p>
+                        </div>
+                        <div>
+                          <h5 class="font-semibold text-primary-300 mb-2">Introducción</h5>
+                          <p class="mb-2">La introducción debe contextualizar la importancia de la Mecánica de Medios Continuos como una disciplina fundamental en la ingeniería civil, especialmente en áreas como:</p>
+                          <ul class="list-disc pl-6 space-y-1">
+                            <li>Diseño estructural.</li>
+                            <li>Geotecnia.</li>
+                            <li>Hidráulica.</li>
+                            <li>Mecánica de fluidos.</li>
+                            <li>Interacción suelo-estructura.</li>
+                          </ul>
+                          <p class="mt-2">
+                            Asimismo, deberá explicarse cómo las ecuaciones diferenciales que gobiernan sólidos y fluidos permiten modelar fenómenos físicos reales utilizados en proyectos de ingeniería.
+                          </p>
+                        </div>
+                        <div>
+                          <h5 class="font-semibold text-primary-300 mb-2">Desarrollo</h5>
+                          <p>El contenido principal del trabajo deberá desarrollarse conforme a los bloques temáticos establecidos en la investigación.</p>
+                        </div>
+                        <div>
+                          <h5 class="font-semibold text-primary-300 mb-2">Conclusiones</h5>
+                          <p class="mb-2">Las conclusiones deberán resumir:</p>
+                          <ul class="list-disc pl-6 space-y-1">
+                            <li>Los principales hallazgos obtenidos.</li>
+                            <li>La importancia de las ecuaciones constitutivas.</li>
+                            <li>La analogía matemática entre sólidos elásticos y fluidos viscosos.</li>
+                            <li>La relevancia de estas ecuaciones en aplicaciones reales de ingeniería civil.</li>
+                          </ul>
+                        </div>
+                        <div>
+                          <h5 class="font-semibold text-primary-300 mb-2">Bibliografía</h5>
+                          <p>
+                            Las referencias bibliográficas deberán presentarse correctamente citadas en formato APA o equivalente, utilizando libros, artículos científicos y documentos académicos confiables.
+                          </p>
+                        </div>
+                      </section>
+
+                      <section class="space-y-4">
+                        <h4 class="text-base font-semibold text-white">2. Desarrollo del Trabajo</h4>
+
+                        <div>
+                          <h5 class="font-semibold text-primary-300 mb-2">A. Fundamentos Mecánicos Comunes</h5>
+                          <h6 class="text-sm font-semibold text-gray-200 mt-3 mb-1">Principios de Conservación</h6>
+                          <p>La Mecánica de Medios Continuos se fundamenta en leyes físicas universales que gobiernan tanto sólidos como fluidos.</p>
+
+                          <h6 class="text-sm font-semibold text-gray-200 mt-4 mb-1">Conservación de la Masa</h6>
+                          <p>La masa no puede crearse ni destruirse dentro de un sistema continuo. Matemáticamente, este principio se expresa mediante la ecuación de continuidad:</p>
+                          <div class="my-3 p-3 rounded-lg bg-black/20 border border-gray-700 overflow-x-auto">
+                            \[
+                            \frac{\partial \rho}{\partial t} + \nabla \cdot (\rho \mathbf{v}) = 0
+                            \]
+                          </div>
+                          <p class="mb-2">Donde:</p>
+                          <ul class="list-disc pl-6 space-y-1">
+                            <li><strong>\(\rho\)</strong>: densidad.</li>
+                            <li><strong>\(\mathbf{v}\)</strong>: vector velocidad.</li>
+                            <li><strong>\(\nabla \cdot\)</strong>: operador divergencia.</li>
+                          </ul>
+                          <p class="mt-2">En fluidos incompresibles, la ecuación se simplifica a:</p>
+                          <div class="my-3 p-3 rounded-lg bg-black/20 border border-gray-700 overflow-x-auto">
+                            \[
+                            \nabla \cdot \mathbf{v} = 0
+                            \]
+                          </div>
+
+                          <h6 class="text-sm font-semibold text-gray-200 mt-4 mb-1">Conservación de la Cantidad de Movimiento</h6>
+                          <p>Basada en la Segunda Ley de Newton:</p>
+                          <div class="my-3 p-3 rounded-lg bg-black/20 border border-gray-700 overflow-x-auto">
+                            \[
+                            \sum \mathbf{F} = m \mathbf{a}
+                            \]
+                          </div>
+                          <p class="mt-2">En medios continuos se expresa mediante la ecuación de movimiento de Cauchy:</p>
+                          <div class="my-3 p-3 rounded-lg bg-black/20 border border-gray-700 overflow-x-auto">
+                            \[
+                            \rho \frac{D\mathbf{v}}{Dt} = \nabla \cdot \boldsymbol{\sigma} + \rho \mathbf{b}
+                            \]
+                          </div>
+                          <p class="mb-2">Donde:</p>
+                          <ul class="list-disc pl-6 space-y-1">
+                            <li><strong>\(\boldsymbol{\sigma}\)</strong>: tensor de esfuerzos.</li>
+                            <li><strong>\(\mathbf{b}\)</strong>: fuerzas de cuerpo.</li>
+                            <li><strong>\(\dfrac{D}{Dt}\)</strong>: derivada material.</li>
+                          </ul>
+
+                          <h6 class="text-sm font-semibold text-gray-200 mt-4 mb-1">Ecuación de Movimiento de Cauchy</h6>
+                          <p>
+                            Esta ecuación constituye la base general para el análisis tanto de sólidos deformables como de fluidos viscosos. A partir de ella se derivan posteriormente las ecuaciones específicas:
+                          </p>
+                          <ul class="list-disc pl-6 space-y-1 mt-2">
+                            <li><strong>Navier-Cauchy</strong> para sólidos.</li>
+                            <li><strong>Navier-Stokes</strong> para fluidos.</li>
+                          </ul>
+                        </div>
+
+                        <div>
+                          <h5 class="font-semibold text-primary-300 mb-2">B. Ecuación de Navier-Cauchy (Sólidos Elásticos)</h5>
+                          <h6 class="text-sm font-semibold text-gray-200 mt-2 mb-1">Definición</h6>
+                          <p class="mb-2">La ecuación de Navier-Cauchy describe el comportamiento mecánico de materiales:</p>
+                          <ul class="list-disc pl-6 space-y-1">
+                            <li>Elásticos.</li>
+                            <li>Lineales.</li>
+                            <li>Homogéneos.</li>
+                            <li>Isótropos.</li>
+                          </ul>
+                          <p class="mt-2">Es la ecuación fundamental de la teoría de elasticidad lineal.</p>
+
+                          <h6 class="text-sm font-semibold text-gray-200 mt-4 mb-1">Deducción</h6>
+                          <p class="mb-2">La ecuación surge de combinar:</p>
+                          <ul class="list-disc pl-6 space-y-1">
+                            <li>Las ecuaciones de equilibrio.</li>
+                            <li>La Ley de Hooke generalizada.</li>
+                            <li>Las relaciones deformación-desplazamiento.</li>
+                          </ul>
+                          <p class="mt-2">La forma general es:</p>
+                          <div class="my-3 p-3 rounded-lg bg-black/20 border border-gray-700 overflow-x-auto">
+                            \[
+                            (\lambda + G)\,\nabla(\nabla \cdot \mathbf{u}) + G \nabla^2 \mathbf{u} + \mathbf{f} = \rho \frac{\partial^2 \mathbf{u}}{\partial t^2}
+                            \]
+                          </div>
+
+                          <h6 class="text-sm font-semibold text-gray-200 mt-4 mb-1">Variables Clave</h6>
+                          <p class="font-medium text-gray-200">Parámetros de Lamé</p>
+                          <ul class="list-disc pl-6 space-y-1 mt-1">
+                            <li><strong>\(\lambda\)</strong>: primer parámetro de Lamé.</li>
+                            <li><strong>\(G\)</strong> o <strong>\(\mu\)</strong>: módulo de rigidez o módulo cortante.</li>
+                          </ul>
+                          <p class="font-medium text-gray-200 mt-3">Vector de desplazamiento</p>
+                          <div class="my-2 p-3 rounded-lg bg-black/20 border border-gray-700 overflow-x-auto">
+                            \[
+                            \mathbf{u} = (u,\, v,\, w)
+                            \]
+                          </div>
+                          <p>Representa el desplazamiento de una partícula del sólido respecto a su posición inicial.</p>
+
+                          <h6 class="text-sm font-semibold text-gray-200 mt-4 mb-1">Caso Estático</h6>
+                          <p>Cuando las aceleraciones son despreciables:</p>
+                          <div class="my-3 p-3 rounded-lg bg-black/20 border border-gray-700 overflow-x-auto">
+                            \[
+                            (\lambda + G)\,\nabla(\nabla \cdot \mathbf{u}) + G \nabla^2 \mathbf{u} + \mathbf{f} = 0
+                            \]
+                          </div>
+                          <p class="mt-2">Este caso es ampliamente utilizado en análisis estructural y geotécnico.</p>
+                        </div>
+
+                        <div>
+                          <h5 class="font-semibold text-primary-300 mb-2">C. Ecuación de Navier-Stokes (Fluidos Viscosos)</h5>
+                          <h6 class="text-sm font-semibold text-gray-200 mt-2 mb-1">Definición</h6>
+                          <p>
+                            La ecuación de Navier-Stokes describe el movimiento de fluidos viscosos, tanto líquidos como gases. Representa la ecuación fundamental de la mecánica de fluidos.
+                          </p>
+
+                          <h6 class="text-sm font-semibold text-gray-200 mt-4 mb-1">Deducción</h6>
+                          <p class="mb-2">Se obtiene aplicando:</p>
+                          <ul class="list-disc pl-6 space-y-1">
+                            <li>Conservación de cantidad de movimiento.</li>
+                            <li>Ley de viscosidad de Newton.</li>
+                          </ul>
+                          <p class="mt-2">Relacionando esfuerzos viscosos con velocidades de deformación del fluido. La ecuación general es:</p>
+                          <div class="my-3 p-3 rounded-lg bg-black/20 border border-gray-700 overflow-x-auto">
+                            \[
+                            \rho\left(\frac{\partial \mathbf{v}}{\partial t} + \mathbf{v} \cdot \nabla \mathbf{v}\right) = -\nabla p + \mu \nabla^2 \mathbf{v} + \rho \mathbf{g}
+                            \]
+                          </div>
+
+                          <h6 class="text-sm font-semibold text-gray-200 mt-4 mb-1">Variables Clave</h6>
+                          <p class="font-medium text-gray-200">Viscosidad dinámica \(\mu\)</p>
+                          <p>Representa la resistencia interna del fluido al movimiento.</p>
+                          <p class="font-medium text-gray-200 mt-3">Campo de velocidades \(\mathbf{v}\)</p>
+                          <p>Describe la velocidad del fluido en cada punto.</p>
+                          <p class="font-medium text-gray-200 mt-3">Gradiente de presión \(\nabla p\)</p>
+                          <p>Representa la variación espacial de presión.</p>
+
+                          <h6 class="text-sm font-semibold text-gray-200 mt-4 mb-1">Caso Particular: Fluidos Incompresibles</h6>
+                          <p>Para fluidos como el agua:</p>
+                          <div class="my-3 p-3 rounded-lg bg-black/20 border border-gray-700 overflow-x-auto">
+                            \[
+                            \nabla \cdot \mathbf{v} = 0
+                            \]
+                          </div>
+                          <p class="mt-2 mb-2">La ecuación simplificada es ampliamente utilizada en:</p>
+                          <ul class="list-disc pl-6 space-y-1">
+                            <li>Redes hidráulicas.</li>
+                            <li>Sistemas de tuberías.</li>
+                            <li>Canales abiertos.</li>
+                            <li>Ingeniería hidráulica.</li>
+                          </ul>
+                        </div>
+
+                        <div>
+                          <h5 class="font-semibold text-primary-300 mb-2">D. Analogía y Comparación entre Navier-Cauchy y Navier-Stokes</h5>
+                          <p>La relación entre ambas ecuaciones constituye uno de los conceptos más importantes de la Mecánica de Medios Continuos.</p>
+
+                          <h6 class="text-sm font-semibold text-gray-200 mt-3 mb-1">Analogía Matemática</h6>
+                          <p class="mb-2">
+                            La ecuación de Navier-Stokes puede interpretarse como una extensión dinámica de la ecuación de Navier-Cauchy mediante las siguientes sustituciones:
+                          </p>
+                          <ol class="list-decimal pl-6 space-y-3">
+                            <li>
+                              <strong>Sustitución del módulo de rigidez</strong> \(G \rightarrow \mu\). Donde \(G\) es la rigidez del sólido y \(\mu\) la viscosidad del fluido.
+                            </li>
+                            <li>
+                              <strong>Sustitución del vector desplazamiento</strong> \(\mathbf{u} \rightarrow \mathbf{v}\). Donde \(\mathbf{u}\) es el desplazamiento del sólido y \(\mathbf{v}\) la velocidad del fluido.
+                            </li>
+                            <li>
+                              <strong>Incorporación del gradiente de presión</strong> \(-\nabla p\). Este término aparece debido al comportamiento hidrostático y dinámico de los fluidos.
+                            </li>
+                          </ol>
+
+                          <h6 class="text-sm font-semibold text-gray-200 mt-4 mb-1">Interpretación Física</h6>
+                          <ul class="list-disc pl-6 space-y-2 mt-2">
+                            <li>En <strong>sólidos</strong>, las deformaciones generan esfuerzos elásticos.</li>
+                            <li>En <strong>fluidos</strong>, las velocidades de deformación generan esfuerzos viscosos.</li>
+                          </ul>
+                          <p class="mt-2">
+                            Ambos fenómenos obedecen principios físicos semejantes, diferenciándose principalmente por la respuesta constitutiva del material.
+                          </p>
+                        </div>
+                      </section>
+
+                      <section class="space-y-4">
+                        <h4 class="text-base font-semibold text-white">3. Aplicaciones Prácticas en Ingeniería Civil</h4>
+
+                        <div>
+                          <h5 class="font-semibold text-primary-300 mb-2">Aplicaciones de la Ecuación de Navier-Cauchy</h5>
+                          <h6 class="text-sm font-semibold text-gray-200 mt-2 mb-1">Análisis de Estructuras</h6>
+                          <p class="mb-2">Se utiliza para:</p>
+                          <ul class="list-disc pl-6 space-y-1">
+                            <li>Flexión de vigas.</li>
+                            <li>Análisis de placas y cascarones.</li>
+                            <li>Deformaciones en estructuras metálicas y de concreto.</li>
+                          </ul>
+                          <p class="mt-2 mb-2">Permite calcular:</p>
+                          <ul class="list-disc pl-6 space-y-1">
+                            <li>Desplazamientos.</li>
+                            <li>Esfuerzos internos.</li>
+                            <li>Deformaciones.</li>
+                          </ul>
+
+                          <h6 class="text-sm font-semibold text-gray-200 mt-4 mb-1">Geotecnia</h6>
+                          <p class="mb-2">Aplicada en:</p>
+                          <ul class="list-disc pl-6 space-y-1">
+                            <li>Distribución de esfuerzos bajo cimentaciones.</li>
+                            <li>Asentamientos del suelo.</li>
+                            <li>Interacción suelo-estructura.</li>
+                          </ul>
+                          <p class="mt-2 mb-2">Es fundamental en el diseño de:</p>
+                          <ul class="list-disc pl-6 space-y-1">
+                            <li>Zapatas.</li>
+                            <li>Pilotes.</li>
+                            <li>Muros de contención.</li>
+                          </ul>
+                        </div>
+
+                        <div>
+                          <h5 class="font-semibold text-primary-300 mb-2">Aplicaciones de la Ecuación de Navier-Stokes</h5>
+                          <h6 class="text-sm font-semibold text-gray-200 mt-2 mb-1">Hidráulica</h6>
+                          <p class="mb-2">Permite analizar:</p>
+                          <ul class="list-disc pl-6 space-y-1">
+                            <li>Flujo en tuberías.</li>
+                            <li>Pérdidas de carga.</li>
+                            <li>Flujo laminar y turbulento.</li>
+                          </ul>
+
+                          <h6 class="text-sm font-semibold text-gray-200 mt-4 mb-1">Ecuación de Hagen-Poiseuille</h6>
+                          <p>Describe flujo laminar en tuberías circulares:</p>
+                          <div class="my-3 p-3 rounded-lg bg-black/20 border border-gray-700 overflow-x-auto">
+                            \[
+                            Q = \frac{\pi R^4 \Delta P}{8 \mu L}
+                            \]
+                          </div>
+
+                          <h6 class="text-sm font-semibold text-gray-200 mt-4 mb-1">Diseño de Presas</h6>
+                          <p class="mb-2">Utilizada para:</p>
+                          <ul class="list-disc pl-6 space-y-1">
+                            <li>Análisis de filtraciones.</li>
+                            <li>Redes de flujo.</li>
+                            <li>Presiones hidrostáticas.</li>
+                          </ul>
+
+                          <h6 class="text-sm font-semibold text-gray-200 mt-4 mb-1">Aerodinámica en Ingeniería Civil</h6>
+                          <p class="mb-2">Aplicada al estudio de:</p>
+                          <ul class="list-disc pl-6 space-y-1">
+                            <li>Acción del viento sobre edificios.</li>
+                            <li>Capa límite atmosférica.</li>
+                            <li>Estabilidad estructural de puentes y torres.</li>
+                          </ul>
+                        </div>
+                      </section>
+
+                      <section class="space-y-4">
+                        <h4 class="text-base font-semibold text-white">4. Recursos Bibliográficos Recomendados</h4>
+                        <p>Los siguientes textos constituyen referencias fundamentales para el desarrollo de la investigación:</p>
+                        <ul class="list-disc pl-6 space-y-1">
+                          <li><em>Mecánica del Medio Continuo</em></li>
+                          <li><em>Introducción a la Mecánica del Medio Continuo</em></li>
+                          <li><em>Apuntes de Mecánica del Medio Continuo</em></li>
+                        </ul>
+                        <p class="mt-2">Además, se recomienda consultar:</p>
+                        <ul class="list-disc pl-6 space-y-1 mt-2">
+                          <li>Artículos científicos especializados.</li>
+                          <li>Manuales de elasticidad y mecánica de fluidos.</li>
+                          <li>Normativas técnicas aplicables a ingeniería civil.</li>
+                        </ul>
+                      </section>
+
+                      <section class="space-y-3">
+                        <h4 class="text-base font-semibold text-white">Conclusión General</h4>
+                        <p>
+                          La Mecánica de Medios Continuos constituye una herramienta esencial en la ingeniería civil moderna, ya que permite modelar matemáticamente el comportamiento de sólidos y fluidos mediante principios universales de conservación.
+                        </p>
+                        <p>
+                          Las ecuaciones de Navier-Cauchy y Navier-Stokes representan modelos fundamentales para comprender fenómenos estructurales e hidráulicos. A pesar de describir materiales distintos, ambas ecuaciones presentan una profunda analogía matemática basada en la relación entre deformación, esfuerzo y movimiento.
+                        </p>
+                        <p class="mb-2">Su aplicación práctica resulta indispensable en áreas como:</p>
+                        <ul class="list-disc pl-6 space-y-1">
+                          <li>Diseño estructural.</li>
+                          <li>Geotecnia.</li>
+                          <li>Hidráulica.</li>
+                          <li>Aerodinámica.</li>
+                          <li>Mecánica computacional.</li>
+                        </ul>
+                        <p class="mt-2">
+                          El estudio de estas ecuaciones permite desarrollar soluciones más seguras, eficientes y precisas para problemas reales de ingeniería civil.
+                        </p>
+                      </section>
+                    </div>
+
                   </div>
                   
                 </div>
