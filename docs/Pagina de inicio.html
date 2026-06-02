@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<html lang="es" class="scroll-smooth">
+<html lang="es" class="scroll-smooth ct-layout">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
@@ -34,7 +33,8 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/home-redesign.css" />
     
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -97,7 +97,7 @@
     <style>
       html { scroll-behavior: smooth; }
       body {
-        font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-family: 'DM Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
       }
@@ -123,407 +123,236 @@
     </style>
   </head>
   
-  <body class="min-h-screen flex flex-col antialiased text-gray-900 dark:text-gray-100 transition-colors duration-300" style="background-image: url('images/mecanica.png'); background-size: cover; background-position: center; background-attachment: fixed; background-repeat: no-repeat;">
+  <body class="ct-body min-h-screen flex flex-col antialiased transition-colors duration-300">
     
-    <!-- Skip to content link para accesibilidad -->
-    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-primary-600 focus:text-white focus:rounded-lg focus:outline-none" data-i18n="skip">
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-primary-600 focus:text-white focus:outline-none" data-i18n="skip">
       Saltar al contenido principal
     </a>
     
-    <!-- ==================== HEADER ==================== -->
-    <header class="sticky top-0 z-50 w-full border-b border-gray-200/50 dark:border-gray-800/50 bg-white/40 dark:bg-gray-950/40 backdrop-blur-md transition-colors duration-300">
-      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex h-16 items-center justify-between">
-          
-          <!-- Logo -->
-          <a href="/" class="flex items-center gap-3 group" data-i18n-aria="aria.home">
-            <img src="images/tecnologico.png" alt="Tecnológico" class="h-12 w-auto object-contain">
-            <div class="flex flex-col">
-              <span class="text-lg font-bold text-gray-900 dark:text-white leading-tight" data-i18n="brand.title">Mecánica</span>
-              <span class="text-xs text-gray-500 dark:text-gray-400 leading-tight" data-i18n="brand.subtitle">Medio Continuo</span>
-            </div>
-          </a>
-
-          <!-- Navegación Desktop -->
-          <nav class="hidden md:flex items-center gap-1" data-i18n-aria="aria.nav">
-            <a href="/" class="px-4 py-2 rounded-lg text-sm font-medium bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300" aria-current="page" data-i18n="nav.home">Inicio</a>
-            <a href="#el-curso" class="px-4 py-2 rounded-lg text-sm font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white transition-all duration-200" data-i18n="nav.course">El Curso</a>
-            <a href="Libros de Apoyo.html" class="px-4 py-2 rounded-lg text-sm font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white transition-all duration-200" data-i18n="nav.books">Libros de Apoyo</a>
-            <a href="Contacto.html" class="px-4 py-2 rounded-lg text-sm font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white transition-all duration-200" data-i18n="nav.contact">Contacto</a>
-          </nav>
-
-          <!-- Acciones (Resultados + Theme Toggle + Menú móvil) -->
-          <div class="flex items-center gap-2">
-            <a href="pdf/FUND%20MEDIO%20CONTINUO%20CALIFICACION%20FINAL%20%20ENERO%20-%20JUNIO%202026.pdf" target="_blank" rel="noopener noreferrer" class="hidden md:inline-flex items-center px-4 py-2 rounded-lg text-sm font-semibold bg-primary-600 hover:bg-primary-700 text-white shadow-[0_0_15px_rgba(59,130,246,0.55),0_0_30px_rgba(59,130,246,0.3)] hover:shadow-[0_0_20px_rgba(59,130,246,0.7),0_0_40px_rgba(59,130,246,0.4)] transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-gray-950 whitespace-nowrap" data-i18n="btn.results">
-              Resultados del Curso
-            </a>
-
-            <!-- Banderas (idioma) -->
-            <div class="flex items-center gap-1.5" role="group" data-i18n-aria="aria.lang">
-              <button type="button" data-lang="es" class="lang-btn p-0.5 rounded-md border border-gray-200/80 dark:border-gray-700/80 overflow-hidden hover:ring-2 hover:ring-primary-400/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 transition-all duration-200 ring-2 ring-primary-400" data-i18n-aria="aria.langEs" data-i18n-title="aria.langEs" aria-pressed="true">
-                <svg class="block w-7 h-[1.15rem]" viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                  <rect width="300" height="600" fill="#006847"/>
-                  <rect x="300" width="300" height="600" fill="#ffffff"/>
-                  <rect x="600" width="300" height="600" fill="#ce1126"/>
-                  <circle cx="450" cy="300" r="90" fill="#8B4513"/>
-                  <circle cx="450" cy="300" r="72" fill="#006847"/>
-                  <circle cx="450" cy="300" r="58" fill="#ffffff"/>
-                  <circle cx="450" cy="300" r="42" fill="#8B4513"/>
-                </svg>
-              </button>
-              <button type="button" data-lang="en" class="lang-btn p-0.5 rounded-md border border-gray-200/80 dark:border-gray-700/80 overflow-hidden hover:ring-2 hover:ring-primary-400/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 transition-all duration-200" data-i18n-aria="aria.langEn" data-i18n-title="aria.langEn" aria-pressed="false">
-                <img src="images/flag-uk.svg" alt="" width="28" height="19" class="block w-7 h-[1.15rem] object-cover" />
-              </button>
-            </div>
-
-            <!-- Theme Toggle -->
-            <button id="theme-toggle" type="button" class="relative p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-gray-950" data-i18n-aria="aria.theme" data-i18n-title="aria.themeTitle">
-              <!-- Icono del Sol (visible en modo oscuro) -->
-              <svg id="sun-icon" class="w-5 h-5 text-yellow-500 hidden dark:block transition-transform duration-300 hover:rotate-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
-              </svg>
-              <!-- Icono de la Luna (visible en modo claro) -->
-              <svg id="moon-icon" class="w-5 h-5 text-gray-700 block dark:hidden transition-transform duration-300 hover:-rotate-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
-              </svg>
+    <header id="site-header" class="ct-header">
+      <div class="ct-topbar">
+        <div class="ct-topbar__inner">
+          <div class="ct-topbar__links">
+            <a href="#el-curso" class="ct-topbar__link" data-i18n="nav.course">El Curso</a>
+            <a href="Libros de Apoyo.html" class="ct-topbar__link" data-i18n="nav.books">Libros de Apoyo</a>
+            <a href="pdf/ICE.pdf" target="_blank" class="ct-topbar__link" data-i18n="hero.syllabus">Ver temario completo</a>
+            <a href="Inscribir curso.html" class="ct-topbar__link" data-i18n="hero.enroll">Inscribirme al curso</a>
+          </div>
+          <div class="flex items-center gap-2" role="group" data-i18n-aria="aria.lang">
+            <button type="button" data-lang="es" class="lang-btn ct-lang-btn is-active" data-i18n-aria="aria.langEs" aria-pressed="true">
+              <svg class="block w-6 h-4" viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="300" height="600" fill="#006847"/><rect x="300" width="300" height="600" fill="#fff"/><rect x="600" width="300" height="600" fill="#ce1126"/><circle cx="450" cy="300" r="72" fill="#006847"/><circle cx="450" cy="300" r="58" fill="#fff"/></svg>
             </button>
-            
-            <!-- Botón de menú móvil -->
-            <button id="mobile-menu-button" type="button" class="md:hidden p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500" data-i18n-aria="aria.menu" aria-expanded="false" aria-controls="mobile-menu">
-              <svg id="menu-icon" class="w-5 h-5 text-gray-700 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-              </svg>
-              <svg id="close-icon" class="w-5 h-5 text-gray-700 dark:text-gray-300 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-              </svg>
+            <button type="button" data-lang="en" class="lang-btn ct-lang-btn" data-i18n-aria="aria.langEn" aria-pressed="false">
+              <img src="images/flag-uk.svg" alt="" class="block w-6 h-4 object-cover" />
             </button>
           </div>
         </div>
       </div>
-
-      <!-- Menú móvil -->
-      <div id="mobile-menu" class="md:hidden hidden border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950" aria-label="Menú de navegación móvil">
-        <nav class="container mx-auto px-4 py-4 space-y-1">
-          <a href="/" class="block px-4 py-3 rounded-lg text-base font-medium bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300" aria-current="page" data-i18n="nav.home">Inicio</a>
-          <a href="#el-curso" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-200" data-i18n="nav.course">El Curso</a>
-          <a href="Libros de Apoyo.html" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-200" data-i18n="nav.books">Libros de Apoyo</a>
-          <a href="Contacto.html" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-200" data-i18n="nav.contact">Contacto</a>
-          <a href="pdf/FUND%20MEDIO%20CONTINUO%20CALIFICACION%20FINAL%20%20ENERO%20-%20JUNIO%202026.pdf" target="_blank" rel="noopener noreferrer" class="block px-4 py-3 rounded-lg text-base font-semibold text-center bg-primary-600 hover:bg-primary-700 text-white shadow-[0_0_15px_rgba(59,130,246,0.55),0_0_30px_rgba(59,130,246,0.3)] hover:shadow-[0_0_20px_rgba(59,130,246,0.7),0_0_40px_rgba(59,130,246,0.4)] transition-all duration-200" data-i18n="btn.results">Resultados del Curso</a>
-          <div class="flex items-center justify-center gap-3 pt-2" role="group" data-i18n-aria="aria.lang">
-            <button type="button" data-lang="es" class="lang-btn p-1 rounded-md border border-gray-200 dark:border-gray-700 overflow-hidden hover:ring-2 hover:ring-primary-400/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 transition-all duration-200 ring-2 ring-primary-400" data-i18n-aria="aria.langEs" data-i18n-title="aria.langEs" aria-pressed="true">
-              <svg class="block w-9 h-6" viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <rect width="300" height="600" fill="#006847"/>
-                <rect x="300" width="300" height="600" fill="#ffffff"/>
-                <rect x="600" width="300" height="600" fill="#ce1126"/>
-                <circle cx="450" cy="300" r="90" fill="#8B4513"/>
-                <circle cx="450" cy="300" r="72" fill="#006847"/>
-                <circle cx="450" cy="300" r="58" fill="#ffffff"/>
-                <circle cx="450" cy="300" r="42" fill="#8B4513"/>
-              </svg>
-            </button>
-            <button type="button" data-lang="en" class="lang-btn p-1 rounded-md border border-gray-200 dark:border-gray-700 overflow-hidden hover:ring-2 hover:ring-primary-400/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 transition-all duration-200" data-i18n-aria="aria.langEn" data-i18n-title="aria.langEn" aria-pressed="false">
-              <img src="images/flag-uk.svg" alt="" width="36" height="24" class="block w-9 h-6 object-cover" />
-            </button>
+      <div class="ct-header__inner">
+        <a href="/" class="flex items-center gap-3 shrink-0" data-i18n-aria="aria.home">
+          <img src="images/tecnologico.png" alt="Tecnológico" class="h-10 w-auto">
+          <div>
+            <div class="ct-brand__title" data-i18n="brand.title">Mecánica</div>
+            <div class="ct-brand__sub" data-i18n="brand.subtitle">Medio Continuo</div>
           </div>
+        </a>
+        <nav class="ct-nav" data-i18n-aria="aria.nav">
+          <a href="#el-curso" class="ct-nav__link" data-i18n="nav.course">El Curso</a>
+          <a href="Libros de Apoyo.html" class="ct-nav__link" data-i18n="nav.books">Libros de Apoyo</a>
+          <a href="Contacto.html" class="ct-nav__link" data-i18n="nav.contact">Contacto</a>
+        </nav>
+        <div class="ct-header__actions">
+          <a href="pdf/FUND%20MEDIO%20CONTINUO%20CALIFICACION%20FINAL%20%20ENERO%20-%20JUNIO%202026.pdf" target="_blank" rel="noopener noreferrer" class="ct-results-btn" data-i18n="btn.results">Resultados del Curso</a>
+          <button id="theme-toggle" type="button" class="p-1 opacity-70 hover:opacity-100" data-i18n-aria="aria.theme" data-i18n-title="aria.themeTitle">
+            <svg id="sun-icon" class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+            <svg id="moon-icon" class="w-5 h-5 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+          </button>
+          <button id="mobile-menu-button" type="button" class="lg:hidden p-1" data-i18n-aria="aria.menu" aria-expanded="false" aria-controls="mobile-menu">
+            <svg id="menu-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"/></svg>
+            <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
+        </div>
+      </div>
+      <div id="mobile-menu" class="lg:hidden hidden border-t border-[var(--ct-line)] bg-white dark:bg-[#0f0f0f]">
+        <nav class="ct-topbar__inner py-4">
+          <a href="/" data-i18n="nav.home">Inicio</a>
+          <a href="#el-curso" data-i18n="nav.course">El Curso</a>
+          <a href="Libros de Apoyo.html" data-i18n="nav.books">Libros de Apoyo</a>
+          <a href="Contacto.html" data-i18n="nav.contact">Contacto</a>
+          <a href="pdf/FUND%20MEDIO%20CONTINUO%20CALIFICACION%20FINAL%20%20ENERO%20-%20JUNIO%202026.pdf" target="_blank" rel="noopener noreferrer" data-i18n="btn.results">Resultados del Curso</a>
         </nav>
       </div>
     </header>
-    
-    <!-- ==================== MAIN CONTENT ==================== -->
-    <main id="main-content" class="flex-1">
-      
-      <!-- Hero Section -->
-      <section class="relative overflow-hidden bg-gradient-to-br from-gray-50/40 via-white/40 to-primary-50/40 dark:from-gray-950/40 dark:via-gray-900/40 dark:to-primary-950/40">
-        <!-- Patrón de fondo decorativo -->
-        <div class="absolute inset-0 opacity-30 dark:opacity-20" aria-hidden="true">
-          <svg class="absolute w-full h-full" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
-                <path d="M 60 0 L 0 0 0 60" fill="none" stroke="currentColor" stroke-width="0.5" class="text-gray-300 dark:text-gray-700"/>
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#grid)" />
-          </svg>
-        </div>
-        
-        <!-- Elementos decorativos flotantes -->
-        <div class="absolute top-20 left-10 w-72 h-72 bg-primary-400/20 rounded-full blur-3xl" aria-hidden="true"></div>
-        <div class="absolute bottom-20 right-10 w-96 h-96 bg-accent-400/20 rounded-full blur-3xl" aria-hidden="true"></div>
-        
-        <div class="relative container mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
-          <!-- Grid de dos columnas -->
-          <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            
-            <!-- Columna izquierda: Contenido -->
-            <div class="text-center">
-              <!-- Badge -->
-              <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-100 dark:bg-primary-900/40 text-primary-700 dark:text-primary-300 text-sm font-medium mb-6 animate-fade-in">
-                <span class="relative flex h-2 w-2">
-                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-400 opacity-75"></span>
-                  <span class="relative inline-flex rounded-full h-2 w-2 bg-primary-500"></span>
-                </span>
-                <span data-i18n="hero.badge">Curso 2025 - Nueva edición disponible</span>
-              </div>
-              
-              <!-- Título principal -->
-              <h1 class="text-4xl sm:text-5xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6 tracking-tight">
-                <span data-i18n="hero.title1">Domina la </span><span class="bg-gradient-to-r from-primary-600 via-primary-500 to-accent-500 bg-clip-text text-transparent" data-i18n="hero.title2">Mecánica del Medio Continuo</span>
-              </h1>
-              
-              <!-- Descripción -->
-              <p class="text-lg sm:text-xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed" data-i18n="hero.desc">
-                El curso más completo en español para entender los fundamentos de la mecánica de sólidos deformables. 
-                Desde tensores hasta aplicaciones prácticas en ingeniería.
-              </p>
-              
-              <!-- CTAs -->
-              <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
-                <a href="Inscribir curso.html" class="group inline-flex items-center gap-2 px-8 py-4 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-xl shadow-lg shadow-primary-500/25 hover:shadow-xl hover:shadow-primary-500/30 transform hover:-translate-y-0.5 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2">
-                  <span data-i18n="hero.enroll">Inscribirme al curso</span>
-                  <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
-                  </svg>
-                </a>
-                
-                <a href="pdf/ICE.pdf" target="_blank" class="inline-flex items-center gap-2 px-8 py-4 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 font-semibold rounded-xl border border-gray-200 dark:border-gray-700 hover:border-primary-300 dark:hover:border-primary-700 hover:bg-gray-50 dark:hover:bg-gray-700 shadow-sm hover:shadow-md transform hover:-translate-y-0.5 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2">
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-                  </svg>
-                  <span data-i18n="hero.syllabus">Ver temario completo</span>
-                </a>
-              </div>
 
-              <!-- Estadísticas -->
-              <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-md mx-auto">
-                <div class="text-center p-3 rounded-xl bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm border border-gray-100 dark:border-gray-700">
-                  <div class="text-xl sm:text-2xl font-bold text-primary-600 dark:text-primary-400 mb-1">50+</div>
-                  <div class="text-xs text-gray-600 dark:text-gray-400" data-i18n="hero.stat1">Horas de contenido</div>
-                </div>
-                <div class="text-center p-3 rounded-xl bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm border border-gray-100 dark:border-gray-700">
-                  <div class="text-xl sm:text-2xl font-bold text-primary-600 dark:text-primary-400 mb-1">15</div>
-                  <div class="text-xs text-gray-600 dark:text-gray-400" data-i18n="hero.stat2">Módulos temáticos</div>
-                </div>
-                <div class="text-center p-3 rounded-xl bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm border border-gray-100 dark:border-gray-700">
-                  <div class="text-xl sm:text-2xl font-bold text-primary-600 dark:text-primary-400 mb-1">∞</div>
-                  <div class="text-xs text-gray-600 dark:text-gray-400" data-i18n="hero.stat3">Acceso de por vida</div>
-                </div>
-              </div>
+    <main id="main-content">
+      <section class="ct-hero">
+        <div class="ct-hero__wrap">
+          <div>
+            <h1 class="ct-hero__title ct-display"><span data-i18n="hero.title1">Domina la </span><span data-i18n="hero.title2">Mecánica del Medio Continuo</span></h1>
+            <p class="ct-hero__tagline" data-i18n="hero.badge">Curso 2025 - Nueva edición disponible</p>
+            <div class="ct-hero__cta-row">
+              <a href="Inscribir curso.html" class="ct-btn ct-btn--fill" data-i18n="hero.enroll">Inscribirme al curso</a>
+              <a href="pdf/ICE.pdf" target="_blank" class="ct-btn ct-btn--line" data-i18n="hero.syllabus">Ver temario completo</a>
             </div>
-            
-            <!-- Columna derecha: Video -->
-            <div class="flex justify-center lg:justify-center">
-              <video 
-                controls 
-                autoplay
-                muted
-                playsinline
-                loop
-                class="w-full max-w-sm rounded-2xl border border-gray-200 dark:border-gray-700"
-                style="box-shadow: 0 0 40px rgba(59, 130, 246, 0.5), 0 0 80px rgba(59, 130, 246, 0.3), 0 0 120px rgba(59, 130, 246, 0.1);"
-                poster="images/mecanica.png"
-              >
-                <source src="videos/video1.mp4" type="video/mp4">
-                <span data-i18n="video.unsupported">Tu navegador no soporta el elemento de video.</span>
+            <p class="ct-hero__lead" data-i18n="hero.desc">El curso más completo en español para entender los fundamentos de la mecánica de sólidos deformables. Desde tensores hasta aplicaciones prácticas en ingeniería.</p>
+            <a href="#el-curso" class="ct-text-link" data-i18n="ui.moreAbout">Más información sobre el curso</a>
+          </div>
+          <div class="ct-hero__media">
+            <img src="images/hero-portrait.png" alt="" class="ct-hero__poster" width="800" height="600">
+            <video controls autoplay muted playsinline loop poster="images/hero-portrait.png">
+              <source src="videos/video1.mp4" type="video/mp4">
+              <span data-i18n="video.unsupported">Tu navegador no soporta el elemento de video.</span>
+            </video>
+          </div>
+        </div>
+      </section>
+
+      <section class="ct-intro">
+        <video class="ct-intro__bg" autoplay muted playsinline loop preload="metadata" aria-hidden="true">
+          <source src="videos/fondo.mp4" type="video/mp4">
+        </video>
+        <div class="ct-intro__overlay" aria-hidden="true"></div>
+        <div class="ct-intro__inner">
+          <p class="ct-intro__text" data-i18n="course.desc">Un recorrido completo por los temas fundamentales de la mecánica del medio continuo, diseñado para que construyas una base sólida y duradera.</p>
+        </div>
+      </section>
+
+      <section class="ct-products" id="el-curso" aria-labelledby="features-heading">
+        <div class="ct-section-head">
+          <span class="ct-eyebrow" data-i18n="section.beyond">Más allá de tus expectativas</span>
+          <h2 id="features-heading" class="ct-section-title ct-display" data-i18n="section.modules">Nuestros módulos</h2>
+        </div>
+        <div class="ct-products__bar">
+          <span class="ct-eyebrow" data-i18n="course.label">Contenido del curso</span>
+          <a href="#el-curso" class="ct-text-link" data-i18n="ui.viewAll">Ver todo el curso</a>
+        </div>
+        <div class="ct-products-scroll">
+          <a href="Unidad 1.html" class="ct-card">
+            <div class="ct-card__img">
+              <video class="ct-card__video" controls playsinline loop preload="metadata" poster="images/u1.jpg" title="Unidad 1 — Fundamentos Matemáticos" onclick="event.stopPropagation()">
+                <source src="videos/u1.mp4" type="video/mp4">
               </video>
             </div>
-            
+            <h3 class="ct-card__name" data-i18n="u1.title">Unidad 1 Fundamentos Matemáticos</h3>
+            <p class="ct-card__meta" data-i18n="ui.todo">Todo · <span data-i18n="course.label">Contenido del curso</span></p>
+            <p class="ct-card__desc"><span data-i18n="u1.l1">1.1. Notación indicial.</span> <span data-i18n="u1.l2">1.2. Operaciones de tensores.</span></p>
+            <span class="ct-card__arrow" data-i18n="unit.explore">Explorar tema</span>
+          </a>
+          <a href="Unidad 2.html" class="ct-card">
+            <div class="ct-card__img">
+              <video class="ct-card__video" controls playsinline loop preload="metadata" poster="images/u2.jpg" title="Unidad 2 — Estado de Esfuerzos" onclick="event.stopPropagation()">
+                <source src="videos/u2.mp4" type="video/mp4">
+              </video>
+            </div>
+            <h3 class="ct-card__name" data-i18n="u2.title">Unidad 2 Estado de Esfuerzos</h3>
+            <p class="ct-card__meta" data-i18n="ui.todo">Todo · <span data-i18n="course.label">Contenido del curso</span></p>
+            <p class="ct-card__desc"><span data-i18n="u2.l1">2.1. Fuerzas de superficie y de cuerpo.</span> <span data-i18n="u2.l2">2.2. Teorema de Cauchy.</span></p>
+            <span class="ct-card__arrow" data-i18n="unit.explore">Explorar tema</span>
+          </a>
+          <a href="Unidad-3.html" class="ct-card">
+            <div class="ct-card__img">
+              <video class="ct-card__video" controls playsinline loop preload="metadata" poster="images/u3.jpg" title="Unidad 3 — Estado de Deformación" onclick="event.stopPropagation()">
+                <source src="videos/u3.mp4" type="video/mp4">
+              </video>
+            </div>
+            <h3 class="ct-card__name" data-i18n="u3.title">Unidad 3 Estado de Deformación</h3>
+            <p class="ct-card__meta" data-i18n="ui.todo">Todo · <span data-i18n="course.label">Contenido del curso</span></p>
+            <p class="ct-card__desc"><span data-i18n="u3.l1">3.1. Descripción del movimiento.</span> <span data-i18n="u3.l2">3.2. Descripción matemática de la deformación.</span></p>
+            <span class="ct-card__arrow" data-i18n="unit.explore">Explorar tema</span>
+          </a>
+          <a href="Unidad-4.html" class="ct-card">
+            <div class="ct-card__img">
+              <video class="ct-card__video" controls playsinline loop preload="metadata" poster="images/u4.jpg" title="Unidad 4 — Principios Básicos de la Mecánica" onclick="event.stopPropagation()">
+                <source src="videos/u4.mp4" type="video/mp4">
+              </video>
+            </div>
+            <h3 class="ct-card__name" data-i18n="u4.title">Unidad 4 Principios Básicos de la Mecánica</h3>
+            <p class="ct-card__meta" data-i18n="ui.todo">Todo · <span data-i18n="course.label">Contenido del curso</span></p>
+            <p class="ct-card__desc"><span data-i18n="u4.l1">4.1. Principio de la Conservación de la cantidad de Movimiento lineal y angular.</span></p>
+            <span class="ct-card__arrow" data-i18n="unit.explore">Explorar tema</span>
+          </a>
+          <a href="Unidad-5.html" class="ct-card">
+            <div class="ct-card__img">
+              <video class="ct-card__video" controls playsinline loop preload="metadata" poster="images/u5.jpg" title="Unidad 5 — Ecuaciones Constitutivas" onclick="event.stopPropagation()">
+                <source src="videos/u5.mp4" type="video/mp4">
+              </video>
+            </div>
+            <h3 class="ct-card__name" data-i18n="u5.title">Unidad 5 Ecuaciones Constitutivas</h3>
+            <p class="ct-card__meta" data-i18n="ui.todo">Todo · <span data-i18n="course.label">Contenido del curso</span></p>
+            <p class="ct-card__desc"><span data-i18n="u5.l1">5.1. Ecuación generalizada de esfuerzo de Hooke.</span> <span data-i18n="u5.l3">5.3. Ecuación de Navier-Cauchy.</span></p>
+            <span class="ct-card__arrow" data-i18n="unit.explore">Explorar tema</span>
+          </a>
+          <div class="ct-card">
+            <div class="ct-card__img">
+              <img class="ct-card__photo" src="images/mecanica.png" alt="" width="560" height="747" loading="lazy">
+            </div>
+            <h3 class="ct-card__name" data-i18n="u6.title">Aplicaciones Modernas</h3>
+            <p class="ct-card__meta" data-i18n="ui.todo">Todo · <span data-i18n="section.specialty">Nuestra especialidad</span></p>
+            <p class="ct-card__desc" data-i18n="u6.desc">Conecta la teoría con aplicaciones reales: biomecánica, aeroespacial, materiales compuestos y simulación computacional.</p>
           </div>
         </div>
       </section>
 
-      <!-- Features Section -->
-      <section id="el-curso" class="py-20 lg:py-28 bg-white/50 dark:bg-gray-950/50 backdrop-blur-sm" aria-labelledby="features-heading">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-          
-          <!-- Encabezado de la sección -->
-          <div class="text-center max-w-3xl mx-auto mb-16">
-            <span class="text-primary-600 dark:text-primary-400 font-semibold text-sm uppercase tracking-wider" data-i18n="course.label">
-              Contenido del curso
-            </span>
-            <h2 id="features-heading" class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mt-2 mb-4" data-i18n="course.title">
-              Todo lo que aprenderás
-            </h2>
-            <p class="text-lg text-gray-600 dark:text-gray-400" data-i18n="course.desc">
-              Un recorrido completo por los temas fundamentales de la mecánica del medio continuo, 
-              diseñado para que construyas una base sólida y duradera.
-            </p>
+      <div class="ct-stats">
+        <div class="ct-stats__cell"><div class="ct-stats__num">50+</div><div class="ct-stats__label" data-i18n="hero.stat1">Horas de contenido</div></div>
+        <div class="ct-stats__cell"><div class="ct-stats__num">15</div><div class="ct-stats__label" data-i18n="hero.stat2">Módulos temáticos</div></div>
+        <div class="ct-stats__cell"><div class="ct-stats__num">∞</div><div class="ct-stats__label" data-i18n="hero.stat3">Acceso de por vida</div></div>
+      </div>
+
+      <section class="ct-specialty">
+        <div class="ct-section-head" style="max-width:1400px;margin:0 auto 3rem;padding:0 1.5rem;">
+          <span class="ct-eyebrow" data-i18n="section.specialty">Nuestra especialidad</span>
+        </div>
+        <div class="ct-specialty__grid">
+          <div class="ct-specialty__item">
+            <h4 data-i18n="u1.title">Unidad 1 Fundamentos Matemáticos</h4>
+            <p><span data-i18n="u1.l1">1.1. Notación indicial.</span> <span data-i18n="u1.l2">1.2. Operaciones de tensores.</span> <span data-i18n="u1.l3">1.3. Métodos para el cálculo de valores y vectores propios.</span></p>
           </div>
-          
-          <!-- Grid de características -->
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full auto-rows-fr">
-            
-            <!-- Feature 1 -->
-            <a href="Unidad 1.html" class="block h-full">
-              <article class="group relative p-5 rounded-2xl border border-gray-800 hover:border-primary-800 transition-all duration-300 overflow-hidden h-full" style="box-shadow: 0 0 30px rgba(59, 130, 246, 0.3), 0 0 60px rgba(59, 130, 246, 0.15); background: linear-gradient(to bottom, rgba(17, 24, 39, 0.85), rgba(17, 24, 39, 0.95)), url('images/unidad1.jpg'); background-size: cover; background-position: center;">
-                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-primary-500/20">
-                  <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15"/>
-                  </svg>
-                </div>
-                <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-3" data-i18n="u1.title">Unidad 1 Fundamentos Matemáticos</h3>
-                <ul class="text-gray-600 dark:text-gray-400 leading-relaxed text-sm space-y-1">
-                  <li data-i18n="u1.l1">1.1. Notación indicial.</li>
-                  <li data-i18n="u1.l2">1.2. Operaciones de tensores.</li>
-                  <li data-i18n="u1.l3">1.3. Métodos para el cálculo de valores y vectores propios.</li>
-                  <li data-i18n="u1.l4">1.4. Gradiente, divergencia y rotacional.</li>
-                  <li data-i18n="u1.l5">1.5. Teoremas de Green y Stokes.</li>
-                </ul>
-                <div class="mt-4 flex items-center text-primary-600 dark:text-primary-400 font-medium text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <span data-i18n="unit.explore">Explorar tema</span>
-                  <svg class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-                  </svg>
-                </div>
-              </article>
-            </a>
-            
-            <!-- Feature 2 -->
-            <a href="Unidad 2.html" class="block h-full">
-              <article class="group relative p-5 rounded-2xl border border-gray-800 hover:border-primary-800 transition-all duration-300 overflow-hidden h-full" style="box-shadow: 0 0 30px rgba(59, 130, 246, 0.3), 0 0 60px rgba(59, 130, 246, 0.15); background: linear-gradient(to bottom, rgba(17, 24, 39, 0.85), rgba(17, 24, 39, 0.95)), url('images/v2.jpg'); background-size: cover; background-position: center;">
-                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-primary-500/20">
-                  <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.611L5 14.5"/>
-                  </svg>
-                </div>
-                <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-3" data-i18n="u2.title">Unidad 2 Estado de Esfuerzos</h3>
-                <ul class="text-gray-600 dark:text-gray-400 leading-relaxed text-sm space-y-1">
-                  <li data-i18n="u2.l1">2.1. Fuerzas de superficie y de cuerpo.</li>
-                  <li data-i18n="u2.l2">2.2. Teorema de Cauchy.</li>
-                  <li data-i18n="u2.l3">2.3. Tensor de esfuerzos.</li>
-                  <li data-i18n="u2.l4">2.4. Esfuerzos y direcciones principales.</li>
-                  <li data-i18n="u2.l5">2.5. Representación gráfica del estado tridimensional y plano de esfuerzo.</li>
-                </ul>
-                <div class="mt-4 flex items-center text-primary-600 dark:text-primary-400 font-medium text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <span data-i18n="unit.explore">Explorar tema</span>
-                  <svg class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-                  </svg>
-                </div>
-              </article>
-            </a>
-            
-            <!-- Feature 3 -->
-            <a href="Unidad-3.html" class="block h-full">
-            <article class="group relative p-5 rounded-2xl bg-gray-900 border border-gray-800 hover:border-primary-800 transition-all duration-300 h-full" style="box-shadow: 0 0 30px rgba(59, 130, 246, 0.3), 0 0 60px rgba(59, 130, 246, 0.15);">
-              <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-primary-500/20">
-                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"/>
-                </svg>
-              </div>
-              <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-3" data-i18n="u3.title">Unidad 3 Estado de Deformación</h3>
-              <ul class="text-gray-600 dark:text-gray-400 leading-relaxed text-sm space-y-1">
-                <li data-i18n="u3.l1">3.1. Descripción del movimiento.</li>
-                <li data-i18n="u3.l2">3.2. Descripción matemática de la deformación.</li>
-                <li data-i18n="u3.l3">3.3. Tensor de deformación para deformaciones infinitesimales y desplazamientos pequeños.</li>
-                <li data-i18n="u3.l4">3.4. Deformaciones por rotación, deformación lineal y angular.</li>
-                <li data-i18n="u3.l5">3.5. Deformaciones y direcciones principales.</li>
-                <li data-i18n="u3.l6">3.6. Ecuaciones de compatibilidad.</li>
-              </ul>
-              <div class="mt-4 flex items-center text-primary-600 dark:text-primary-400 font-medium text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <span data-i18n="unit.explore">Explorar tema</span>
-                <svg class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-                </svg>
-              </div>
-            </article>
-            </a>
-            
-            <!-- Feature 4 -->
-            <a href="Unidad-4.html" class="block h-full">
-            <article class="group relative p-5 rounded-2xl bg-gray-900 border border-gray-800 hover:border-primary-800 transition-all duration-300 h-full" style="box-shadow: 0 0 30px rgba(59, 130, 246, 0.3), 0 0 60px rgba(59, 130, 246, 0.15);">
-              <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-primary-500/20">
-                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5"/>
-                </svg>
-              </div>
-              <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-3" data-i18n="u4.title">Unidad 4 Principios Básicos de la Mecánica</h3>
-              <ul class="text-gray-600 dark:text-gray-400 leading-relaxed text-sm space-y-1">
-                <li data-i18n="u4.l1">4.1. Principio de la Conservación de la cantidad de Movimiento lineal y angular.</li>
-                <li data-i18n="u4.l2">4.2. Principio de Conservación de la masa.</li>
-                <li data-i18n="u4.l3">4.3. Principio de Conservación de la energía.</li>
-              </ul>
-              <div class="mt-4 flex items-center text-primary-600 dark:text-primary-400 font-medium text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <span data-i18n="unit.explore">Explorar tema</span>
-                <svg class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-                </svg>
-              </div>
-            </article>
-            </a>
-            
-            <!-- Feature 5 -->
-            <a href="Unidad-5.html" class="block h-full">
-            <article class="group relative p-5 rounded-2xl bg-gray-900 border border-gray-800 hover:border-primary-800 transition-all duration-300 h-full" style="box-shadow: 0 0 30px rgba(59, 130, 246, 0.3), 0 0 60px rgba(59, 130, 246, 0.15);">
-              <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-primary-500/20">
-                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.75 15.75V18m-7.5-6.75h.008v.008H8.25v-.008zm0 2.25h.008v.008H8.25V13.5zm0 2.25h.008v.008H8.25v-.008zm0 2.25h.008v.008H8.25V18zm2.498-6.75h.007v.008h-.007v-.008zm0 2.25h.007v.008h-.007V13.5zm0 2.25h.007v.008h-.007v-.008zm0 2.25h.007v.008h-.007V18zm2.504-6.75h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V13.5zm0 2.25h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V18zm2.498-6.75h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V13.5zM8.25 6h7.5v2.25h-7.5V6zM12 2.25c-1.892 0-3.758.11-5.593.322C5.307 2.7 4.5 3.65 4.5 4.757V19.5a2.25 2.25 0 002.25 2.25h10.5a2.25 2.25 0 002.25-2.25V4.757c0-1.108-.806-2.057-1.907-2.185A48.507 48.507 0 0012 2.25z"/>
-                </svg>
-              </div>
-              <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-3" data-i18n="u5.title">Unidad 5 Ecuaciones Constitutivas</h3>
-              <ul class="text-gray-600 dark:text-gray-400 leading-relaxed text-sm space-y-1">
-                <li data-i18n="u5.l1">5.1. Ecuación generalizada de esfuerzo de Hooke.</li>
-                <li data-i18n="u5.l2">5.2. Aplicaciones a problemas de Elasticidad lineal.</li>
-                <li data-i18n="u5.l3">5.3. Ecuación de Navier-Cauchy.</li>
-                <li data-i18n="u5.l4">5.4. Ecuación de Navier-Stokes.</li>
-              </ul>
-              <div class="mt-4 flex items-center text-primary-600 dark:text-primary-400 font-medium text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <span data-i18n="unit.explore">Explorar tema</span>
-                <svg class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-                </svg>
-              </div>
-            </article>
-            </a>
-            
-            <!-- Feature 6 -->
-            <article class="group relative p-5 rounded-2xl bg-gray-900 border border-gray-800 hover:border-primary-800 transition-all duration-300 h-full" style="box-shadow: 0 0 30px rgba(59, 130, 246, 0.3), 0 0 60px rgba(59, 130, 246, 0.15);">
-              <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-primary-500/20">
-                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.631 8.41m5.96 5.96a14.926 14.926 0 01-5.841 2.58m-.119-8.54a6 6 0 00-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 00-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 01-2.448-2.448 14.9 14.9 0 01.06-.312m-2.24 2.39a4.493 4.493 0 00-1.757 4.306 4.493 4.493 0 004.306-1.758M16.5 9a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"/>
-                </svg>
-              </div>
-              <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-3" data-i18n="u6.title">Aplicaciones Modernas</h3>
-              <p class="text-gray-600 dark:text-gray-400 leading-relaxed" data-i18n="u6.desc">Conecta la teoría con aplicaciones reales: biomecánica, aeroespacial, materiales compuestos y simulación computacional.</p>
-              <div class="mt-4 flex items-center text-primary-600 dark:text-primary-400 font-medium text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <span data-i18n="unit.explore">Explorar tema</span>
-                <svg class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-                </svg>
-              </div>
-            </article>
-            
+          <div class="ct-specialty__item">
+            <h4 data-i18n="u2.title">Unidad 2 Estado de Esfuerzos</h4>
+            <p><span data-i18n="u2.l1">2.1. Fuerzas de superficie y de cuerpo.</span> <span data-i18n="u2.l3">2.3. Tensor de esfuerzos.</span> <span data-i18n="u2.l4">2.4. Esfuerzos y direcciones principales.</span></p>
+          </div>
+          <div class="ct-specialty__item">
+            <h4 data-i18n="u6.title">Aplicaciones Modernas</h4>
+            <p data-i18n="u6.desc">Conecta la teoría con aplicaciones reales: biomecánica, aeroespacial, materiales compuestos y simulación computacional.</p>
           </div>
         </div>
       </section>
 
-      <!-- CTA Section -->
-      <section class="py-20 bg-gradient-to-r from-primary-600/70 via-primary-700/70 to-accent-700/70 dark:from-primary-800/70 dark:via-primary-900/70 dark:to-accent-900/70 backdrop-blur-sm">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="max-w-3xl mx-auto text-center">
-            <h2 class="text-3xl sm:text-4xl font-bold text-white mb-6" data-i18n="cta.title">
-              ¿Listo para dominar la mecánica del medio continuo?
-            </h2>
-            <p class="text-lg text-primary-100 mb-8" data-i18n="cta.desc">
-              Únete a cientos de estudiantes e ingenieros que ya están transformando su comprensión de la mecánica de sólidos.
-            </p>
-            <a href="Inscribir curso.html" class="inline-flex items-center gap-2 px-8 py-4 bg-white text-primary-700 font-semibold rounded-xl shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary-700">
-              <span data-i18n="cta.btn">Inscribirme al curso</span>
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
-              </svg>
-            </a>
+      <section class="ct-approach">
+        <div class="ct-approach__head">
+          <span class="ct-eyebrow" data-i18n="section.approach">Nuestro enfoque</span>
+        </div>
+        <div class="ct-approach__tabs">
+          <div class="ct-approach__tab">
+            <h3 class="ct-display" data-i18n="approach.tech">Teoría</h3>
+            <p data-i18n="course.desc">Un recorrido completo por los temas fundamentales de la mecánica del medio continuo, diseñado para que construyas una base sólida y duradera.</p>
+          </div>
+          <div class="ct-approach__tab">
+            <h3 class="ct-display" data-i18n="approach.eff">Práctica</h3>
+            <p data-i18n="hero.stat1">Horas de contenido</p>
+          </div>
+          <div class="ct-approach__tab">
+            <h3 class="ct-display" data-i18n="approach.sus">Aplicaciones</h3>
+            <p data-i18n="u6.desc">Conecta la teoría con aplicaciones reales: biomecánica, aeroespacial, materiales compuestos y simulación computacional.</p>
           </div>
         </div>
       </section>
-      
+
+      <section class="ct-cta">
+        <p class="ct-cta__eyebrow" data-i18n="section.interest">¿Te interesa saber más?</p>
+        <h2 class="ct-cta__title ct-display" data-i18n="cta.title">¿Listo para dominar la mecánica del medio continuo?</h2>
+        <p class="ct-cta__desc" data-i18n="cta.desc">Únete a cientos de estudiantes e ingenieros que ya están transformando su comprensión de la mecánica de sólidos.</p>
+        <div class="ct-cta__buttons">
+          <a href="Inscribir curso.html" class="ct-btn ct-btn--fill" data-i18n="cta.btn">Inscribirme al curso</a>
+          <a href="Contacto.html" class="ct-btn ct-btn--line" data-i18n="nav.contact">Contacto</a>
+        </div>
+      </section>
     </main>
     
-    <!-- ==================== FOOTER ==================== -->
-    <footer class="bg-gray-50/50 dark:bg-gray-900/50 border-t border-gray-200/50 dark:border-gray-800/50 backdrop-blur-sm transition-colors duration-300">
-      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-        
-        <!-- Sección principal del footer -->
-        <div class="py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+    <footer class="ct-footer">
+      <div style="max-width:1400px;margin:0 auto;">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-4">
           
           <!-- Branding y descripción -->
           <div class="lg:col-span-2">
@@ -594,16 +423,9 @@
           </div>
         </div>
 
-        <!-- Línea divisoria y copyright -->
-        <div class="py-6 border-t border-gray-200 dark:border-gray-800">
-          <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
-            <p class="text-sm text-gray-500 dark:text-gray-400 text-center sm:text-left">
-              © <span id="current-year">2025</span> <span data-i18n="footer.copyright">Mecánica del Medio Continuo. Todos los derechos reservados.</span>
-            </p>
-            <p class="text-xs text-gray-400 dark:text-gray-500" data-i18n="footer.made">
-              Hecho con ❤ para estudiantes de ingeniería
-            </p>
-          </div>
+        <div class="ct-footer__bottom">
+          <p>© <span id="current-year">2025</span> <span data-i18n="footer.copyright">Mecánica del Medio Continuo. Todos los derechos reservados.</span></p>
+          <p data-i18n="footer.made">Hecho con ❤ para estudiantes de ingeniería</p>
         </div>
       </div>
     </footer>
@@ -636,7 +458,6 @@
       }
 
       document.addEventListener('DOMContentLoaded', () => {
-        // Theme toggle button
         const themeToggle = document.getElementById('theme-toggle');
         if (themeToggle) {
           themeToggle.addEventListener('click', toggleTheme);

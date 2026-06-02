@@ -23,6 +23,18 @@
       'hero.stat2': 'Módulos temáticos',
       'hero.stat3': 'Acceso de por vida',
       'video.unsupported': 'Tu navegador no soporta el elemento de video.',
+      'section.beyond': 'Más allá de tus expectativas',
+      'section.modules': 'Nuestros módulos',
+      'section.specialty': 'Nuestra especialidad',
+      'section.approach': 'Nuestro enfoque',
+      'section.interest': '¿Te interesa saber más?',
+      'ui.exploreCatalog': 'Explora el temario',
+      'ui.moreAbout': 'Más información sobre el curso',
+      'ui.viewAll': 'Ver todo el curso',
+      'ui.todo': 'Todo',
+      'approach.tech': 'Teoría',
+      'approach.eff': 'Práctica',
+      'approach.sus': 'Aplicaciones',
       'course.label': 'Contenido del curso',
       'course.title': 'Todo lo que aprenderás',
       'course.desc': 'Un recorrido completo por los temas fundamentales de la mecánica del medio continuo, diseñado para que construyas una base sólida y duradera.',
@@ -105,6 +117,18 @@
       'hero.stat2': 'Thematic modules',
       'hero.stat3': 'Lifetime access',
       'video.unsupported': 'Your browser does not support the video element.',
+      'section.beyond': 'Beyond your expectations',
+      'section.modules': 'Our modules',
+      'section.specialty': 'Our focus',
+      'section.approach': 'Our approach',
+      'section.interest': 'Want to learn more?',
+      'ui.exploreCatalog': 'Explore the syllabus',
+      'ui.moreAbout': 'More about the course',
+      'ui.viewAll': 'View full course',
+      'ui.todo': 'All',
+      'approach.tech': 'Theory',
+      'approach.eff': 'Practice',
+      'approach.sus': 'Applications',
       'course.label': 'Course content',
       'course.title': 'Everything you will learn',
       'course.desc': 'A complete journey through the fundamental topics of continuum mechanics, designed to help you build a solid and lasting foundation.',
@@ -203,8 +227,7 @@
 
     document.querySelectorAll('.lang-btn').forEach((btn) => {
       const active = btn.dataset.lang === lang;
-      btn.classList.toggle('ring-2', active);
-      btn.classList.toggle('ring-primary-400', active);
+      btn.classList.toggle('is-active', active);
       btn.setAttribute('aria-pressed', active ? 'true' : 'false');
     });
 
