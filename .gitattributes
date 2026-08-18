@@ -1,2 +1,2 @@
-docs/videos/*.mp4 filter=lfs diff=lfs merge=lfs -text
-public/videos/*.mp4 filter=lfs diff=lfs merge=lfs -text
+# Videos en Git normal (Vercel no descarga Git LFS desde GitHub).
+# Archivos grandes: mantener bajo 100 MB por archivo.
