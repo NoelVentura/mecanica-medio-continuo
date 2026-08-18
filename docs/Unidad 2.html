@@ -1,10 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <base href="https://noelventura.github.io/mecanica-medio-continuo/" />
     
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -79,10 +78,39 @@
         font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         -webkit-font-smoothing: antialiased;
       }
+      .page-bg-video {
+        position: fixed;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: -2;
+        pointer-events: none;
+      }
+      body > header,
+      body > main,
+      body > footer,
+      body > #img-viewer {
+        position: relative;
+        z-index: 1;
+      }
+      body > header { z-index: 50; }
+      body > #img-viewer { z-index: 100; }
+      .teoria-block .katex { font-size: 1.05em; }
+      .teoria-block .katex-display { margin: 0.75rem 0; overflow-x: auto; overflow-y: hidden; }
+      .teoria-block p,
+      .teoria-block li {
+        text-align: justify;
+        hyphens: auto;
+      }
     </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous" />
   </head>
   
-  <body class="min-h-screen flex flex-col antialiased text-gray-900 dark:text-gray-100 transition-colors duration-300" style="background-image: url('images/mecanica.png'); background-size: cover; background-position: center; background-attachment: fixed; background-repeat: no-repeat;">
+  <body class="min-h-screen flex flex-col antialiased text-gray-900 dark:text-gray-100 transition-colors duration-300 bg-transparent">
+    <video class="page-bg-video" autoplay muted playsinline loop preload="metadata" aria-hidden="true">
+      <source src="videos/fondomecanica.mp4" type="video/mp4">
+    </video>
     
     <!-- ==================== HEADER ==================== -->
     <header class="sticky top-0 z-50 w-full border-b border-gray-200/50 dark:border-gray-800/50 bg-white/40 dark:bg-gray-950/40 backdrop-blur-md transition-colors duration-300">
@@ -91,7 +119,7 @@
           
           <!-- Logo -->
           <a href="Pagina de inicio.html" class="flex items-center gap-3 group" aria-label="Ir al inicio">
-            <img src="https://noelventura.github.io/mecanica-medio-continuo/images/tecnologico.png" alt="Tecnológico" class="h-12 w-auto object-contain">
+            <img src="images/tecnologico.png" alt="Tecnológico" class="h-12 w-auto object-contain">
             <div class="flex flex-col">
               <span class="text-lg font-bold text-gray-900 dark:text-white leading-tight">Mecánica</span>
               <span class="text-xs text-gray-500 dark:text-gray-400 leading-tight">Medio Continuo</span>
@@ -127,11 +155,6 @@
           
           <!-- Título de la página -->
           <div class="text-center mb-12">
-            <div class="w-16 h-16 rounded-xl bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center mb-6 mx-auto shadow-lg">
-              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.611L5 14.5"/>
-              </svg>
-            </div>
             <h1 class="text-4xl font-bold mb-4" style="color: #001f3f; text-shadow: -1px -1px 2px rgba(255, 255, 255, 0.9), 1px -1px 2px rgba(255, 255, 255, 0.9), -1px 1px 2px rgba(255, 255, 255, 0.9), 1px 1px 2px rgba(255, 255, 255, 0.9), 0 -1px 2px rgba(255, 255, 255, 0.9), 0 1px 2px rgba(255, 255, 255, 0.9), -1px 0 2px rgba(255, 255, 255, 0.9), 1px 0 2px rgba(255, 255, 255, 0.9), 0 0 8px rgba(255, 255, 255, 0.6), 0 0 16px rgba(255, 255, 255, 0.4);">
               Unidad 2: Estado de Esfuerzos
             </h1>
@@ -155,9 +178,122 @@
                   <!-- Tema 2.1 -->
                   <div class="bg-gray-800/50 rounded-xl p-5 border border-gray-700">
                     <h3 class="text-lg font-semibold text-primary-400 mb-2">2.1 Fuerzas de superficie y de cuerpo</h3>
-                    <p class="text-gray-400 text-sm">
+                    <p class="text-gray-400 text-sm mb-4">
                       Distinción entre fuerzas que actúan en la superficie del medio (tensiones) y fuerzas distribuidas en el volumen (peso, inercia, etc.).
                     </p>
+
+                    <div class="teoria-block mt-2 pt-5 border-t border-gray-700 space-y-5 text-sm leading-relaxed text-gray-300">
+                      <p>
+                        En la Mecánica de Medios Continuos, el estado mecánico de un cuerpo, así como su movimiento o equilibrio, está determinado por las interacciones y cargas que actúan sobre él.
+                        Estas acciones mecánicas se clasifican de manera rigurosa en dos grandes categorías, dependiendo de si su origen físico está asociado a la masa contenida en el volumen del cuerpo
+                        o a las interacciones de contacto directo en sus fronteras.
+                      </p>
+
+                      <div>
+                        <h4 class="text-base font-semibold text-primary-300 mb-2">1. Fuerzas de cuerpo (o de volumen)</h4>
+                        <p class="mb-3">
+                          Las fuerzas de cuerpo (también denominadas fuerzas másicas o volumétricas) son aquellas que actúan de manera distribuida sobre todos y cada uno de los elementos de volumen
+                          (y, por ende, de masa) que constituyen el medio continuo.
+                        </p>
+                        <p class="mb-3">
+                          <strong class="text-white">Naturaleza física:</strong> tienen un carácter de acción a distancia. No requieren de un contacto físico o interfaz material directa con la superficie del cuerpo
+                          para manifestarse, ya que son el resultado de la interacción del medio con campos de fuerza externos (gravitacionales, inerciales o electromagnéticos).
+                        </p>
+                        <p class="mb-2"><strong class="text-white">Ejemplos representativos:</strong></p>
+                        <ul class="list-disc pl-5 space-y-2 mb-3">
+                          <li>
+                            <strong class="text-white">Fuerza gravitacional (peso):</strong> la atracción que ejerce un campo gravitatorio sobre la masa del medio.
+                          </li>
+                          <li>
+                            <strong class="text-white">Fuerzas de inercia:</strong> fuerzas aparentes que surgen en sistemas de referencia no inerciales (fuerzas centrífugas, de Coriolis)
+                            o debido a la aceleración local del propio medio.
+                          </li>
+                          <li>
+                            <strong class="text-white">Fuerzas electromagnéticas:</strong> fuerzas de Lorentz que actúan sobre partículas cargadas o medios polarizables/magnetizables dentro del volumen.
+                          </li>
+                        </ul>
+                        <p class="mb-2">
+                          <strong class="text-white">Formulación matemática:</strong> se denotan habitualmente de dos maneras en las ecuaciones de campo:
+                        </p>
+                        <ul class="list-disc pl-5 space-y-2 mb-3">
+                          <li>
+                            <strong class="text-white">Por unidad de masa (\(\mathbf{b}\)):</strong> tiene dimensiones de aceleración (\([L/T^2]\)). Es la forma preferida en la física teórica.
+                          </li>
+                          <li>
+                            <strong class="text-white">Por unidad de volumen (\(\mathbf{f}\)):</strong> relacionada con la anterior a través de la densidad local del medio (\(\rho\)), mediante la expresión:
+                            \[
+                              \mathbf{f} = \rho\,\mathbf{b}
+                            \]
+                          </li>
+                        </ul>
+                        <p class="mb-2">
+                          La fuerza resultante de cuerpo (\(\mathbf{F}_c\)) que actúa sobre una porción del medio continuo que ocupa un volumen \(V\) se calcula mediante la integración volumétrica:
+                        </p>
+                        \[
+                          \mathbf{F}_c = \int_V \rho\,\mathbf{b}\,dV
+                        \]
+                      </div>
+
+                      <div>
+                        <h4 class="text-base font-semibold text-primary-300 mb-2">2. Fuerzas de superficie (o de contacto)</h4>
+                        <p class="mb-3">
+                          Las fuerzas de superficie son aquellas que actúan exclusivamente sobre las fronteras externas del medio continuo, o bien sobre las superficies imaginarias de separación interna
+                          que dividen al cuerpo en subdominios contiguos.
+                        </p>
+                        <p class="mb-3">
+                          <strong class="text-white">Naturaleza física:</strong> tienen un carácter de acción por contacto. Son el resultado directo de la colisión molecular, la fricción o la presión ejercida
+                          por el entorno inmediato (otros sólidos, fluidos circundantes o porciones contiguas del mismo material) sobre la superficie de interés.
+                        </p>
+                        <p class="mb-2"><strong class="text-white">Ejemplos representativos:</strong></p>
+                        <ul class="list-disc pl-5 space-y-2 mb-3">
+                          <li>
+                            <strong class="text-white">Presión:</strong> fuerza normal por unidad de área ejercida por un fluido en reposo o en movimiento sobre la frontera del sólido.
+                          </li>
+                          <li>
+                            <strong class="text-white">Tensiones de cizallamiento (fricción):</strong> fuerzas tangenciales debidas al deslizamiento o viscosidad en la interfaz de contacto.
+                          </li>
+                          <li>
+                            <strong class="text-white">Cargas de apoyo:</strong> fuerzas concentradas o distribuidas aplicadas mecánicamente en la superficie de un elemento estructural.
+                          </li>
+                        </ul>
+                        <p class="mb-2">
+                          <strong class="text-white">Formulación matemática:</strong> debido a que estas fuerzas dependen de la orientación de la superficie sobre la que actúan, se describen a través del
+                          <strong class="text-white">vector de tracción</strong> o vector de esfuerzos (\(\mathbf{t}^{(n)}\)).
+                          Este vector representa la fuerza por unidad de área que actúa sobre un plano infinitesimal con un vector normal unitario exterior \(\mathbf{n}\).
+                        </p>
+                        <p class="mb-2">
+                          La fuerza resultante de superficie (\(\mathbf{F}_s\)) que actúa sobre la frontera o área \(S\) de un volumen de control se obtiene mediante la integral de superficie:
+                        </p>
+                        \[
+                          \mathbf{F}_s = \int_S \mathbf{t}^{(n)}\,dS
+                        \]
+                      </div>
+
+                      <div>
+                        <h4 class="text-base font-semibold text-primary-300 mb-2">3. Síntesis y relación fundamental</h4>
+                        <p class="mb-2">
+                          La suma de ambos tipos de fuerzas define la acción mecánica total o fuerza neta (\(\mathbf{F}_{\mathrm{total}}\)) que actúa sobre cualquier porción aislada de un medio continuo:
+                        </p>
+                        \[
+                          \mathbf{F}_{\mathrm{total}} = \int_V \rho\,\mathbf{b}\,dV + \int_S \mathbf{t}^{(n)}\,dS
+                        \]
+                      </div>
+
+                      <div>
+                        <h4 class="text-base font-semibold text-primary-300 mb-2">El postulado de Cauchy</h4>
+                        <p class="mb-3">
+                          La distinción entre estas fuerzas es el pilar para el desarrollo del Principio de Esfuerzos de Cauchy, el cual postula que para cualquier plano interno definido por su vector normal \(\mathbf{n}\),
+                          existe un vector de tracción \(\mathbf{t}^{(n)}\) que representa las fuerzas de contacto internas ejercidas por la parte del cuerpo hacia la cual apunta \(\mathbf{n}\) sobre la parte opuesta.
+                          Este postulado permite transitar de las fuerzas macroscópicas superficiales a la definición del tensor de esfuerzos de Cauchy (\(\mathbf{T}\)) mediante la relación lineal:
+                        </p>
+                        \[
+                          t_i^{(n)} = T_{ji}\, n_j \quad\Longrightarrow\quad \mathbf{t}^{(n)} = \mathbf{T}^{\mathrm{T}}\,\mathbf{n}
+                        \]
+                        <p>
+                          <em>Nota:</em> para un medio en equilibrio que conserva el momento angular, el tensor de esfuerzos es simétrico, por lo que \(\mathbf{t}^{(n)} = \mathbf{T}\,\mathbf{n}\).
+                        </p>
+                      </div>
+                    </div>
                   </div>
                   
                   <!-- Tema 2.2 -->
@@ -166,7 +302,188 @@
                     <p class="text-gray-400 text-sm mb-4">
                       Relación entre el vector de tracción en una superficie y el estado de esfuerzos en el punto; base para la definición del tensor de esfuerzos.
                     </p>
-                    <div class="mt-4 flex flex-col items-center text-center">
+
+                    <div class="teoria-block mt-2 pt-5 border-t border-gray-700 space-y-5 text-sm leading-relaxed text-gray-300">
+                      <p>
+                        El Teorema de Cauchy es uno de los pilares fundamentales de la Mecánica de Medios Continuos.
+                        Establece que el estado de esfuerzos en un punto físico queda completamente determinado si se conocen los vectores de tracción
+                        que actúan sobre tres planos mutuamente perpendiculares que pasan por dicho punto.
+                      </p>
+                      <p>
+                        Este teorema demuestra la existencia del tensor de esfuerzos de Cauchy (\(\mathbf{T}\)) como un operador lineal que asocia de forma única
+                        cualquier vector normal unitario \(\mathbf{n}\) (que define la orientación de una superficie infinitesimal) con su respectivo vector de tracción o esfuerzos \(\mathbf{t}^{(n)}\).
+                      </p>
+
+                      <div>
+                        <h4 class="text-base font-semibold text-primary-300 mb-2">1. El planteamiento geométrico: el tetraedro de Cauchy</h4>
+                        <p class="mb-3">
+                          Para demostrar la relación entre las fuerzas de contacto y la orientación del plano sobre el cual actúan, se aísla un volumen infinitesimal
+                          en forma de pirámide triangular (tetraedro) en el entorno de un punto \(P\) del medio continuo.
+                        </p>
+                        <p class="mb-2"><strong class="text-white">Configuración del tetraedro:</strong></p>
+                        <ul class="list-disc pl-5 space-y-2 mb-3">
+                          <li>
+                            Tres de sus caras (caras coordenadas) son perpendiculares a los ejes cartesianos de referencia, con vectores normales unitarios dirigidos
+                            en el sentido negativo de los ejes: \(-\mathbf{e}_1\), \(-\mathbf{e}_2\) y \(-\mathbf{e}_3\). Sus áreas se denotan como \(dS_1\), \(dS_2\) y \(dS_3\).
+                          </li>
+                          <li>
+                            La cuarta cara es un plano inclinado u oblicuo de área \(dS\), cuya orientación espacial está definida por un vector normal unitario exterior arbitrario
+                            \(\mathbf{n}=(n_1,n_2,n_3)\).
+                          </li>
+                          <li>
+                            La altura del tetraedro respecto a la cara oblicua se denota como \(h\).
+                          </li>
+                        </ul>
+                        <p class="mb-2">
+                          <strong class="text-white">Relaciones de proyección geométrica:</strong> por trigonometría y proyección de áreas en el espacio tridimensional,
+                          las áreas de las caras coordenadas representan las componentes proyectadas de la cara oblicua:
+                        </p>
+                        \[
+                          dS_i = dS\cos(\mathbf{n},\mathbf{e}_i) = n_i\, dS \qquad (i=1,2,3)
+                        \]
+                      </div>
+
+                      <div>
+                        <h4 class="text-base font-semibold text-primary-300 mb-2">2. Demostración matemática mediante equilibrio dinámico</h4>
+                        <p class="mb-2">
+                          De acuerdo con la segunda ley de Newton, la suma de todas las fuerzas (de superficie y de cuerpo) que actúan sobre el tetraedro de masa \(dm\)
+                          debe ser igual al producto de su masa por su aceleración \(\mathbf{a}\):
+                        </p>
+                        \[
+                          \sum\mathbf{F} = dm\,\mathbf{a}
+                        \]
+
+                        <h5 class="font-semibold text-white mb-2">A. Fuerzas que actúan sobre el tetraedro</h5>
+                        <ul class="list-disc pl-5 space-y-3 mb-4">
+                          <li>
+                            <strong class="text-white">Fuerza de superficie en la cara oblicua:</strong>
+                            \[
+                              \mathbf{F}_{\mathrm{oblicua}} = \mathbf{t}^{(n)}\, dS
+                            \]
+                          </li>
+                          <li>
+                            <strong class="text-white">Fuerzas de superficie en las caras coordenadas:</strong>
+                            \[
+                              \mathbf{F}_{\mathrm{coordenadas}} = -\mathbf{t}^{(1)}\, dS_1 - \mathbf{t}^{(2)}\, dS_2 - \mathbf{t}^{(3)}\, dS_3 = -\mathbf{t}^{(i)}\, dS_i
+                            \]
+                            <p>
+                              Donde \(\mathbf{t}^{(i)}\) representa el vector de esfuerzos que actúa en la cara cuyo vector normal exterior apunta en la dirección positiva del eje \(x_i\).
+                              El signo negativo proviene de que las normales exteriores de las caras del tetraedro apuntan en sentido opuesto.
+                            </p>
+                          </li>
+                          <li>
+                            <strong class="text-white">Fuerzas de cuerpo en el volumen (\(dV\)):</strong>
+                            \[
+                              \mathbf{F}_{\mathrm{cuerpo}} = \rho\,\mathbf{b}\, dV
+                            \]
+                            <p>
+                              Donde \(\rho\) es la densidad del medio, \(\mathbf{b}\) son las fuerzas másicas por unidad de masa, y \(dV=\tfrac{1}{3}h\,dS\) es el volumen del tetraedro.
+                            </p>
+                          </li>
+                        </ul>
+
+                        <h5 class="font-semibold text-white mb-2">B. Ecuación de movimiento</h5>
+                        <p class="mb-2">Sustituyendo los términos anteriores en la ecuación de Newton:</p>
+                        \[
+                          \mathbf{t}^{(n)}\, dS - \mathbf{t}^{(i)}\, dS_i + \rho\,\mathbf{b}\, dV = \rho\, dV\,\mathbf{a}
+                        \]
+                        <p class="mb-2">
+                          Sustituyendo las relaciones de área \(dS_i = n_i\, dS\) y el volumen \(dV=\tfrac{1}{3}h\,dS\):
+                        </p>
+                        \[
+                          \mathbf{t}^{(n)}\, dS - \mathbf{t}^{(i)}\, n_i\, dS + \rho\,\mathbf{b}\bigl(\tfrac{1}{3}h\,dS\bigr) = \rho\bigl(\tfrac{1}{3}h\,dS\bigr)\mathbf{a}
+                        \]
+                        <p class="mb-2">Dividiendo toda la expresión entre el diferencial de área oblicua \(dS\):</p>
+                        \[
+                          \mathbf{t}^{(n)} - \mathbf{t}^{(i)}\, n_i + \tfrac{1}{3}\rho\,\mathbf{b}\, h = \tfrac{1}{3}\rho\,\mathbf{a}\, h
+                        \]
+
+                        <h5 class="font-semibold text-white mb-2">C. Límite infinitesimal (paso al punto)</h5>
+                        <p class="mb-2">
+                          Haciendo tender la altura del tetraedro a cero (\(h\to 0\)) para contraer el volumen de control al punto \(P\),
+                          los términos que dependen de \(h\) (asociados a las fuerzas de cuerpo y a la inercia) se anulan,
+                          ya que el volumen decrece a una tasa de orden superior respecto a las áreas de superficie:
+                        </p>
+                        \[
+                          \lim_{h\to 0}\Bigl(\mathbf{t}^{(n)} - \mathbf{t}^{(i)}\, n_i + \tfrac{1}{3}\rho\,\mathbf{b}\, h\Bigr)
+                          = \lim_{h\to 0}\bigl(\tfrac{1}{3}\rho\,\mathbf{a}\, h\bigr)
+                        \]
+                        \[
+                          \mathbf{t}^{(n)} = \mathbf{t}^{(i)}\, n_i
+                        \]
+                      </div>
+
+                      <div>
+                        <h4 class="text-base font-semibold text-primary-300 mb-2">3. Definición del tensor de esfuerzos de Cauchy</h4>
+                        <p class="mb-2">
+                          Cada uno de los tres vectores de tracción coordenados \(\mathbf{t}^{(i)}\) puede descomponerse en sus tres componentes cartesianas:
+                        </p>
+                        \[
+                          \mathbf{t}^{(1)} = T_{11}\,\mathbf{e}_1 + T_{12}\,\mathbf{e}_2 + T_{13}\,\mathbf{e}_3
+                        \]
+                        \[
+                          \mathbf{t}^{(2)} = T_{21}\,\mathbf{e}_1 + T_{22}\,\mathbf{e}_2 + T_{23}\,\mathbf{e}_3
+                        \]
+                        \[
+                          \mathbf{t}^{(3)} = T_{31}\,\mathbf{e}_1 + T_{32}\,\mathbf{e}_2 + T_{33}\,\mathbf{e}_3
+                        \]
+                        <p class="mb-2">De forma general en notación indicial:</p>
+                        \[
+                          \mathbf{t}^{(i)} = T_{ij}\,\mathbf{e}_j
+                        \]
+                        <p class="mb-3">
+                          (Donde el primer subíndice \(i\) designa la normal de la cara sobre la cual actúa la fuerza, y el segundo subíndice \(j\) indica la dirección física de la componente del esfuerzo).
+                        </p>
+                        <p class="mb-2">
+                          Sustituyendo esta descomposición en el resultado del límite infinitesimal se obtiene la relación fundamental de Cauchy:
+                        </p>
+                        \[
+                          t_j^{(n)} = T_{ij}\, n_i \quad\Longleftrightarrow\quad t_i^{(n)} = T_{ji}\, n_j
+                        \]
+                        <p class="mb-2">En notación vectorial y matricial:</p>
+                        \[
+                          \mathbf{t}^{(n)} = \mathbf{T}^{\mathrm{T}}\,\mathbf{n}
+                        \]
+                        <p class="mb-2">
+                          Debido a que el principio de conservación del momento angular exige que el tensor de esfuerzos sea simétrico (\(T_{ij}=T_{ji}\)),
+                          la ecuación se expresa de manera convencional como:
+                        </p>
+                        \[
+                          \mathbf{t}^{(n)} = \mathbf{T}\,\mathbf{n}
+                        \]
+                        <p class="mb-2">O de forma expandida matricialmente:</p>
+                        \[
+                          \begin{Bmatrix} t_x \\ t_y \\ t_z \end{Bmatrix}
+                          =
+                          \begin{bmatrix}
+                            T_{xx} & T_{xy} & T_{xz} \\
+                            T_{yx} & T_{yy} & T_{yz} \\
+                            T_{zx} & T_{zy} & T_{zz}
+                          \end{bmatrix}
+                          \begin{Bmatrix} n_x \\ n_y \\ n_z \end{Bmatrix}
+                        \]
+                      </div>
+
+                      <div>
+                        <h4 class="text-base font-semibold text-primary-300 mb-2">4. Importancia física y trascendencia</h4>
+                        <ul class="list-disc pl-5 space-y-2">
+                          <li>
+                            <strong class="text-white">Linealidad del esfuerzo:</strong> demuestra que la dependencia entre el vector de tracción \(\mathbf{t}^{(n)}\)
+                            y la orientación de la superficie \(\mathbf{n}\) es de carácter lineal.
+                          </li>
+                          <li>
+                            <strong class="text-white">Suficiencia del tensor:</strong> garantiza que no es necesario ensayar físicamente infinitas orientaciones de planos
+                            para conocer el estado tensional de un punto. Basta con medir o calcular las 9 componentes (6 independientes por simetría) del tensor de esfuerzos \(\mathbf{T}\).
+                          </li>
+                          <li>
+                            <strong class="text-white">Carácter tensorial:</strong> el tensor \(\mathbf{T}\) es un tensor de segundo rango real que obedece las leyes de transformación de coordenadas
+                            (cambios de base) bajo rotaciones, permitiendo calcular fácilmente los planos principales mediante métodos espectrales.
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+
+                    <div class="mt-6 flex flex-col items-center text-center">
                       <p class="text-sm font-medium text-gray-300 mb-2">Tensor de tensiones</p>
                       <video
                         controls
@@ -187,7 +504,144 @@
                     <p class="text-gray-400 text-sm mb-4">
                       Definición del tensor de esfuerzos de Cauchy, simetría y componentes en diferentes sistemas de referencia.
                     </p>
-                    <div class="mt-4 flex flex-col items-center text-center">
+
+                    <div class="teoria-block mt-2 pt-5 border-t border-gray-700 space-y-5 text-sm leading-relaxed text-gray-300">
+                      <p>
+                        El tensor de esfuerzos de Cauchy (denotado comúnmente como \(\mathbf{T}\) o \(\boldsymbol{\sigma}\)) es un tensor simétrico de segundo orden
+                        que describe de manera completa y unívoca el estado de esfuerzos internos en un punto específico de un medio continuo en su configuración actual.
+                      </p>
+
+                      <div>
+                        <h4 class="text-base font-semibold text-primary-300 mb-2">1. Definición y significado físico de sus componentes</h4>
+                        <p class="mb-2">
+                          En un sistema de coordenadas cartesianas tridimensional (\(x_1,x_2,x_3\) o \(x,y,z\)), el estado de esfuerzos en un punto se representa
+                          mediante una matriz de \(3\times 3\) que agrupa un total de 9 componentes de esfuerzo:
+                        </p>
+                        \[
+                          \mathbf{T} =
+                          \begin{bmatrix}
+                            T_{11} & T_{12} & T_{13} \\
+                            T_{21} & T_{22} & T_{23} \\
+                            T_{31} & T_{32} & T_{33}
+                          \end{bmatrix}
+                          \qquad\text{o bien}\qquad
+                          \boldsymbol{\sigma} =
+                          \begin{bmatrix}
+                            \sigma_{xx} & \tau_{xy} & \tau_{xz} \\
+                            \tau_{yx} & \sigma_{yy} & \tau_{yz} \\
+                            \tau_{zx} & \tau_{zy} & \sigma_{zz}
+                          \end{bmatrix}
+                        \]
+
+                        <h5 class="font-semibold text-white mb-2">Convenio de subíndices</h5>
+                        <p class="mb-2">Para cualquier componente de esfuerzo \(T_{ij}\):</p>
+                        <ul class="list-disc pl-5 space-y-2 mb-3">
+                          <li>
+                            <strong class="text-white">El primer subíndice (\(i\)):</strong> identifica la orientación de la cara (plano de acción) sobre la cual actúa el esfuerzo,
+                            definida por la dirección de su vector normal unitario (paralelo al eje \(x_i\)).
+                          </li>
+                          <li>
+                            <strong class="text-white">El segundo subíndice (\(j\)):</strong> señala la dirección física de la fuerza o componente de esfuerzo.
+                          </li>
+                        </ul>
+
+                        <p class="mb-2"><strong class="text-white">Clasificación de las componentes:</strong></p>
+                        <ul class="list-disc pl-5 space-y-2">
+                          <li>
+                            <strong class="text-white">Esfuerzos normales (\(i=j\)):</strong> corresponden a los elementos de la diagonal principal
+                            (\(T_{11}\), \(T_{22}\), \(T_{33}\) o \(\sigma_{xx}\), \(\sigma_{yy}\), \(\sigma_{zz}\)).
+                            Representan fuerzas perpendiculares a las caras del elemento infinitesimal. Físicamente producen tracción (tensión) si su signo es positivo, o compresión si es negativo.
+                          </li>
+                          <li>
+                            <strong class="text-white">Esfuerzos cortantes o tangenciales (\(i\neq j\)):</strong> corresponden a los elementos fuera de la diagonal
+                            (\(T_{12}\), \(T_{13}\), \(T_{23}\), \(\ldots\)).
+                            Representan fuerzas de cizallamiento que actúan paralelas o tangenciales a las caras del elemento, tendiendo a distorsionar angularmente el volumen material.
+                          </li>
+                        </ul>
+                      </div>
+
+                      <div>
+                        <h4 class="text-base font-semibold text-primary-300 mb-2">2. Simetría del tensor de esfuerzos</h4>
+                        <p class="mb-2">
+                          Una de las propiedades mecánicas más importantes en la física del medio continuo es la simetría del tensor de esfuerzos, expresada matemáticamente como:
+                        </p>
+                        \[
+                          T_{ij} = T_{ji} \quad\Longleftrightarrow\quad \mathbf{T} = \mathbf{T}^{\mathrm{T}}
+                        \]
+
+                        <h5 class="font-semibold text-white mb-2">Justificación física: conservación del momento angular</h5>
+                        <p class="mb-3">
+                          Esta propiedad no es un postulado arbitrario, sino una consecuencia directa del segundo principio de Euler (la conservación del momento angular o equilibrio de momentos rotacionales)
+                          aplicado a un volumen infinitesimal, asumiendo la ausencia de momentos de cuerpo distribuidos (como los que podrían inducir campos magnéticos en materiales polares).
+                        </p>
+                        <p class="mb-2">
+                          Al plantear el equilibrio de momentos respecto a los ejes de simetría de un elemento de volumen infinitesimal (por ejemplo, el eje \(x_3\)),
+                          las fuerzas debidas a los esfuerzos cortantes \(T_{12}\) y \(T_{21}\) generan un par de giros opuestos.
+                          Para evitar una aceleración angular infinita cuando el volumen tiende a cero (ya que el momento de inercia decrece a una tasa de orden superior \(h^5\)
+                          respecto a los momentos de superficie \(h^4\)), se exige rigurosamente que:
+                        </p>
+                        \[
+                          T_{12} = T_{21},\qquad T_{23} = T_{32},\qquad T_{13} = T_{31}
+                        \]
+                        <p>
+                          <strong class="text-white">Consecuencia práctica:</strong> la simetría reduce el número de componentes necesarias para definir completamente el estado de esfuerzos
+                          en un punto de 9 a únicamente 6 componentes independientes (3 esfuerzos normales y 3 esfuerzos cortantes).
+                        </p>
+                      </div>
+
+                      <div>
+                        <h4 class="text-base font-semibold text-primary-300 mb-2">3. Componentes en diferentes sistemas de referencia</h4>
+                        <p class="mb-3">
+                          Dado que el tensor de esfuerzos de Cauchy representa un estado físico real, su existencia es independiente de los ejes coordenados elegidos para medirlo.
+                          Sin embargo, las componentes numéricas de su matriz asociada cambian al modificar el sistema de referencia (por ejemplo, al rotar los ejes coordenados).
+                        </p>
+
+                        <h5 class="font-semibold text-white mb-2">Ley de transformación de coordenadas</h5>
+                        <p class="mb-2">
+                          Consideremos un sistema de coordenadas original \(x_i\) donde el tensor tiene componentes \(T_{ij}\), y un nuevo sistema de coordenadas rotado \(x_i'\).
+                          La relación geométrica entre ambos sistemas se define mediante una matriz de rotación u ortogonal (\(\mathbf{Q}\)),
+                          cuyas componentes \(Q_{ij}\) representan los cosenos directores de los nuevos ejes respecto a los originales:
+                        </p>
+                        \[
+                          Q_{ij} = \cos(x_i', x_j) = \mathbf{e}_i'\cdot\mathbf{e}_j
+                        \]
+                        <p class="mb-2">
+                          Por ser una transformación ortogonal (cambio de base ortonormal), se cumple que \(\mathbf{Q}\mathbf{Q}^{\mathrm{T}}=\mathbf{I}\)
+                          (o bien, \(Q_{ip}Q_{jp}=\delta_{ij}\)).
+                        </p>
+                        <p class="mb-2">
+                          La ley de transformación para las componentes de un tensor de segundo orden (como el de esfuerzos) se expresa en notación indicial como:
+                        </p>
+                        \[
+                          T_{ij}' = Q_{ip}\, Q_{jq}\, T_{pq}
+                        \]
+                        <p class="mb-2">Y en notación matricial como:</p>
+                        \[
+                          \mathbf{T}' = \mathbf{Q}\,\mathbf{T}\,\mathbf{Q}^{\mathrm{T}}
+                        \]
+                        <ul class="list-disc pl-5 space-y-2 mb-3">
+                          <li>\(\mathbf{T}'\): matriz del tensor de esfuerzos en el nuevo sistema rotado.</li>
+                          <li>\(\mathbf{T}\): matriz de esfuerzos en el sistema de referencia original.</li>
+                          <li>\(\mathbf{Q}\): matriz de transformación de coordenadas (rotación).</li>
+                          <li>\(\mathbf{Q}^{\mathrm{T}}\): matriz transpuesta de \(\mathbf{Q}\).</li>
+                        </ul>
+
+                        <p class="mb-2"><strong class="text-white">Importancia de la transformación:</strong> esta ley permite:</p>
+                        <ul class="list-disc pl-5 space-y-2">
+                          <li>
+                            <strong class="text-white">Determinar esfuerzos en planos inclinados:</strong> esencial para analizar planos de falla en geotecnia,
+                            soldaduras en elementos mecánicos o planos de deslizamiento cristalino.
+                          </li>
+                          <li>
+                            <strong class="text-white">Identificar el estado principal de esfuerzos:</strong> al rotar el sistema a una orientación donde la matriz \(\mathbf{T}'\)
+                            se vuelve diagonal (esfuerzos cortantes nulos), los elementos de la diagonal corresponden a los esfuerzos principales
+                            y los ejes coordenados representan las direcciones principales del material.
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+
+                    <div class="mt-6 flex flex-col items-center text-center">
                       <video
                         controls
                         class="w-full max-w-lg rounded-xl border border-gray-600 bg-black/30"
@@ -207,8 +661,177 @@
                     <p class="text-gray-400 text-sm mb-4">
                       Cálculo de esfuerzos principales y direcciones principales; interpretación física y método de cálculo (valores y vectores propios).
                     </p>
-                    <div class="mt-4">
-                      <a href="pdf/v1.pdf" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white text-sm font-medium rounded-lg transition-all duration-200">
+
+                    <div class="teoria-block mt-2 pt-5 border-t border-gray-700 space-y-5 text-sm leading-relaxed text-gray-300">
+                      <p>
+                        En la mecánica de medios continuos, el estado de esfuerzos en el entorno de un punto varía según la orientación del plano de corte elegido.
+                        Los <strong class="text-white">esfuerzos principales</strong> son aquellos esfuerzos normales puros que actúan sobre planos donde los esfuerzos cortantes (tangenciales)
+                        se anulan por completo, los cuales se denominan <strong class="text-white">planos principales</strong>.
+                      </p>
+                      <p>
+                        Físicamente, estos esfuerzos representan los valores extremos (máximos y mínimos) de los esfuerzos normales en el punto bajo análisis.
+                        A los vectores unitarios normales a dichos planos principales se les define como <strong class="text-white">direcciones principales</strong>.
+                      </p>
+
+                      <div>
+                        <h4 class="text-base font-semibold text-primary-300 mb-2">1. Planteamiento matemático</h4>
+                        <p class="mb-2">
+                          Por definición, en un plano principal el vector de esfuerzos actuante \(\mathbf{t}^{(n)}\) debe ser puramente normal y, por lo tanto,
+                          colineal al vector unitario normal \(\mathbf{n}\). Esto se expresa como:
+                        </p>
+                        \[
+                          \mathbf{t}^{(n)} = \sigma\,\mathbf{n} \quad\Longrightarrow\quad \mathbf{T}\,\mathbf{n} = \sigma\,\mathbf{n}
+                        \]
+                        <p class="mb-2">
+                          Donde \(\mathbf{T}\) representa el tensor de esfuerzos de Cauchy y el escalar \(\sigma\) representa la magnitud del esfuerzo principal.
+                          En notación matricial, la ecuación se escribe como \(\mathbf{T}\,\mathbf{n}=\sigma\mathbf{I}\,\mathbf{n}\),
+                          y mediante notación indicial utilizando la Delta de Kronecker (\(\delta_{ij}\)) se expresa como:
+                        </p>
+                        \[
+                          T_{ij}\, n_j = \sigma\,\delta_{ij}\, n_j \quad\Longrightarrow\quad \bigl(T_{ij} - \sigma\,\delta_{ij}\bigr)\, n_j = 0
+                        \]
+                        <p class="mb-2">
+                          Este sistema constituye un grupo de ecuaciones lineales homogéneas. Para evitar la solución trivial
+                          (donde el vector propio es nulo, \(\mathbf{n}=\mathbf{0}\), lo cual carece de significado físico),
+                          el determinante del sistema de coeficientes debe ser igual a cero:
+                        </p>
+                        \[
+                          \det\bigl(T_{ij} - \sigma\,\delta_{ij}\bigr) = 0
+                        \]
+                        \[
+                          \det
+                          \begin{bmatrix}
+                            T_{11}-\sigma & T_{12} & T_{13} \\
+                            T_{21} & T_{22}-\sigma & T_{23} \\
+                            T_{31} & T_{32} & T_{33}-\sigma
+                          \end{bmatrix}
+                          = 0
+                        \]
+                      </div>
+
+                      <div>
+                        <h4 class="text-base font-semibold text-primary-300 mb-2">2. Polinomio característico e invariantes del esfuerzo</h4>
+                        <p class="mb-2">
+                          Al desarrollar algebraicamente el determinante tridimensional anterior, se obtiene una ecuación cúbica conocida como el
+                          <strong class="text-white">polinomio característico</strong>:
+                        </p>
+                        \[
+                          \sigma^3 - I_1\sigma^2 + I_2\sigma - I_3 = 0
+                        \]
+                        <p class="mb-3">
+                          Los coeficientes \(I_1\), \(I_2\) e \(I_3\) corresponden a los <strong class="text-white">invariantes del tensor de esfuerzos</strong>.
+                          Estas magnitudes físicas permanecen constantes sin importar el sistema de coordenadas cartesiano utilizado para representar el estado tensional en el punto:
+                        </p>
+                        <ul class="list-disc pl-5 space-y-3">
+                          <li>
+                            <strong class="text-white">Primer invariante (\(I_1\) — invariante lineal):</strong>
+                            corresponde a la traza del tensor. Físicamente representa la suma de los esfuerzos normales en tres planos perpendiculares entre sí.
+                            \[
+                              I_1 = T_{ii} = T_{11} + T_{22} + T_{33} = \sigma_x + \sigma_y + \sigma_z
+                            \]
+                          </li>
+                          <li>
+                            <strong class="text-white">Segundo invariante (\(I_2\) — invariante cuadrático):</strong>
+                            \[
+                              I_2 = \tfrac{1}{2}\bigl(T_{ii}T_{jj} - T_{ij}T_{ji}\bigr)
+                              = T_{11}T_{22} + T_{22}T_{33} + T_{33}T_{11} - T_{12}^2 - T_{23}^2 - T_{31}^2
+                            \]
+                          </li>
+                          <li>
+                            <strong class="text-white">Tercer invariante (\(I_3\) — invariante cúbico):</strong>
+                            equivale al determinante de la matriz asociada al tensor de esfuerzos.
+                            \[
+                              I_3 = \det(T_{ij})
+                            \]
+                          </li>
+                        </ul>
+                      </div>
+
+                      <div>
+                        <h4 class="text-base font-semibold text-primary-300 mb-2">3. Método de cálculo</h4>
+
+                        <h5 class="font-semibold text-white mb-2">Paso 1: determinación de los esfuerzos principales (valores propios)</h5>
+                        <p class="mb-2">
+                          Dado que el tensor de esfuerzos de Cauchy es real y simétrico, la teoría de matrices garantiza que las tres raíces del polinomio característico
+                          siempre serán números reales. Al resolver la ecuación cúbica, se obtienen las raíces denominadas esfuerzos principales,
+                          las cuales se ordenan convencionalmente de forma decreciente:
+                        </p>
+                        <ul class="list-disc pl-5 space-y-2 mb-4">
+                          <li>
+                            \(\sigma_1\): esfuerzo principal mayor (máximo valor algebraico de esfuerzo normal en el punto).
+                          </li>
+                          <li>
+                            \(\sigma_2\): esfuerzo principal intermedio.
+                          </li>
+                          <li>
+                            \(\sigma_3\): esfuerzo principal menor (mínimo valor algebraico de esfuerzo normal en el punto).
+                          </li>
+                        </ul>
+
+                        <h5 class="font-semibold text-white mb-2">Paso 2: determinación de las direcciones principales (vectores propios)</h5>
+                        <p class="mb-2">
+                          Para encontrar el vector unitario \(\mathbf{n}^{(p)}\) que define la dirección principal asociada a cada esfuerzo principal obtenido \(\sigma_p\)
+                          (para \(p=1,2,3\)), se sustituye la raíz correspondiente en el sistema homogéneo original:
+                        </p>
+                        \[
+                          \bigl(T_{ij} - \sigma_p\,\delta_{ij}\bigr)\, n_j^{(p)} = 0
+                        \]
+                        <p class="mb-2">
+                          Dado que este sistema es linealmente dependiente (determinante nulo), existen infinitas soluciones.
+                          Para restringir el resultado a un vector de longitud unitaria, se incorpora de manera simultánea la ecuación de normalización
+                          (la suma de los cuadrados de sus componentes o cosenos directores es igual a la unidad):
+                        </p>
+                        \[
+                          n_i^{(p)}\, n_i^{(p)} = 1 \quad\Longrightarrow\quad
+                          \bigl(n_1^{(p)}\bigr)^2 + \bigl(n_2^{(p)}\bigr)^2 + \bigl(n_3^{(p)}\bigr)^2 = 1
+                        \]
+                        <p>
+                          La resolución simultánea del sistema compatible indeterminado junto con la condición de normalización proporciona las componentes
+                          (o cosenos directores) del vector propio unitario \(\mathbf{n}^{(p)}\) para cada uno de los tres esfuerzos principales.
+                        </p>
+                      </div>
+
+                      <div>
+                        <h4 class="text-base font-semibold text-primary-300 mb-2">4. Propiedades físicas y tensoriales</h4>
+                        <ul class="list-disc pl-5 space-y-3 mb-3">
+                          <li>
+                            <strong class="text-white">Ortogonalidad mutua:</strong> las direcciones principales correspondientes a esfuerzos principales distintos
+                            (\(\sigma_a \neq \sigma_b\)) son rigurosamente mutuamente perpendiculares entre sí, constituyendo una base ortonormal
+                            para el espacio físico tridimensional en ese punto.
+                          </li>
+                          <li>
+                            <strong class="text-white">Representación diagonal:</strong> siempre existirá al menos un sistema de coordenadas
+                            (el sistema principal de esfuerzos) bajo el cual el tensor de esfuerzos adopta una forma diagonal,
+                            donde los componentes fuera de la diagonal principal son nulos:
+                            \[
+                              \mathbf{T}_{\mathrm{principal}} =
+                              \begin{bmatrix}
+                                \sigma_1 & 0 & 0 \\
+                                0 & \sigma_2 & 0 \\
+                                0 & 0 & \sigma_3
+                              \end{bmatrix}
+                            \]
+                          </li>
+                        </ul>
+                        <p class="mb-2"><strong class="text-white">Casos especiales de multiplicidad de raíces:</strong></p>
+                        <ul class="list-disc pl-5 space-y-2">
+                          <li>
+                            <strong class="text-white">Estado cilíndrico de esfuerzos:</strong> si dos esfuerzos principales son idénticos
+                            (\(\sigma_1=\sigma_2\neq\sigma_3\)), la dirección asociada al valor único \(\sigma_3\) es única y bien definida,
+                            mientras que cualquier vector perpendicular a ella contenido en el plano formado por los otros dos ejes actúa como una dirección principal válida.
+                          </li>
+                          <li>
+                            <strong class="text-white">Estado esférico o hidrostático:</strong> si las tres raíces son idénticas
+                            (\(\sigma_1=\sigma_2=\sigma_3\)), el estado se reduce a una presión hidrostática pura.
+                            Bajo esta condición, no existen componentes de esfuerzo cortante en ningún plano y cualquier terna de ejes mutuamente perpendiculares
+                            actúa como direcciones principales del punto.
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+
+                    <div class="mt-6">
+                      <a href="pdf/v1.pdf" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white text-sm font-medium rounded-lg transition-all duration-200">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
                         </svg>
@@ -223,33 +846,219 @@
                     <p class="text-gray-400 text-sm mb-4">
                       Círculos de Mohr, elipsoide de esfuerzos y representaciones del estado de esfuerzos en dos y tres dimensiones.
                     </p>
-                    <div class="mt-4">
-                      <a href="pdf/UNIDAD II MECANICA DE MEDIO CONTINUO 2.pdf" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white text-sm font-medium rounded-lg transition-all duration-200">
+
+                    <div class="teoria-block mt-2 pt-5 border-t border-gray-700 space-y-5 text-sm leading-relaxed text-gray-300">
+                      <p>
+                        La representación gráfica de los estados de esfuerzo es una herramienta fundamental en la Mecánica de Medios Continuos para visualizar, analizar y calcular
+                        los esfuerzos normales y cortantes que actúan sobre planos con diferentes orientaciones en un punto dado.
+                        Estas metodologías permiten simplificar problemas tridimensionales complejos y facilitan la determinación de planos críticos de falla en el diseño de ingeniería.
+                      </p>
+
+                      <div>
+                        <h4 class="text-base font-semibold text-primary-300 mb-2">1. El círculo de Mohr para el estado tridimensional de esfuerzos</h4>
+                        <p class="mb-3">
+                          El círculo de Mohr tridimensional (propuesto por Otto Mohr en 1914) es una representación geométrica en el plano cartesiano \((\sigma,\tau)\),
+                          donde el eje de las abscisas representa el esfuerzo normal (\(\sigma\)) y el de las ordenadas el esfuerzo cortante (\(\tau\)).
+                        </p>
+
+                        <h5 class="font-semibold text-white mb-2">Fundamentación matemática</h5>
+                        <p class="mb-2">
+                          Si se conoce el tensor de esfuerzos en sus direcciones principales, este adopta una forma diagonal:
+                        </p>
+                        \[
+                          [\mathbf{T}] =
+                          \begin{bmatrix}
+                            \sigma_1 & 0 & 0 \\
+                            0 & \sigma_2 & 0 \\
+                            0 & 0 & \sigma_3
+                          \end{bmatrix}
+                        \]
+                        <p class="mb-2">
+                          Donde los esfuerzos principales se ordenan algebraicamente como \(\sigma_1 > \sigma_2 > \sigma_3\).
+                          Para un plano inclinado cualquiera definido por su vector normal unitario \(\mathbf{n}=(\cos\alpha,\cos\beta,\cos\gamma)\),
+                          la magnitud del vector de esfuerzos resultante \(\mathbf{S}\) se expresa como:
+                        </p>
+                        \[
+                          S^2 = \sigma^2 + \tau^2 = \sigma_1^2\cos^2\alpha + \sigma_2^2\cos^2\beta + \sigma_3^2\cos^2\gamma
+                        \]
+                        <p class="mb-2">Considerando la condición de normalización del vector unitario:</p>
+                        \[
+                          \cos^2\alpha + \cos^2\beta + \cos^2\gamma = 1
+                        \]
+                        <p class="mb-2">Y la definición del esfuerzo normal en dicho plano:</p>
+                        \[
+                          \sigma = \sigma_1\cos^2\alpha + \sigma_2\cos^2\beta + \sigma_3\cos^2\gamma
+                        \]
+                        <p class="mb-2">
+                          Al resolver este sistema de ecuaciones para los cosenos directores \((\cos^2\alpha,\cos^2\beta,\cos^2\gamma)\),
+                          se obtienen las expresiones que definen tres familias de circunferencias en el plano de Mohr:
+                        </p>
+                        \[
+                          \Bigl(\sigma - \tfrac{\sigma_2+\sigma_3}{2}\Bigr)^2 + \tau^2 \ge \Bigl(\tfrac{\sigma_2-\sigma_3}{2}\Bigr)^2
+                        \]
+                        \[
+                          \Bigl(\sigma - \tfrac{\sigma_1+\sigma_3}{2}\Bigr)^2 + \tau^2 \le \Bigl(\tfrac{\sigma_1-\sigma_3}{2}\Bigr)^2
+                        \]
+                        \[
+                          \Bigl(\sigma - \tfrac{\sigma_1+\sigma_2}{2}\Bigr)^2 + \tau^2 \ge \Bigl(\tfrac{\sigma_1-\sigma_2}{2}\Bigr)^2
+                        \]
+
+                        <h5 class="font-semibold text-white mb-2">Interpretación de la región de esfuerzos</h5>
+                        <p class="mb-2">Estas ecuaciones definen tres círculos con centros sobre el eje de las abscisas (\(\sigma\)):</p>
+                        <ul class="list-disc pl-5 space-y-2 mb-3">
+                          <li>
+                            <strong class="text-white">Círculo 1:</strong> centro en \(C_1\bigl(\tfrac{\sigma_2+\sigma_3}{2},0\bigr)\) y radio \(R_1=\tfrac{\sigma_2-\sigma_3}{2}\).
+                          </li>
+                          <li>
+                            <strong class="text-white">Círculo 2:</strong> centro en \(C_2\bigl(\tfrac{\sigma_1+\sigma_3}{2},0\bigr)\) y radio \(R_2=\tfrac{\sigma_1-\sigma_3}{2}\).
+                          </li>
+                          <li>
+                            <strong class="text-white">Círculo 3:</strong> centro en \(C_3\bigl(\tfrac{\sigma_1+\sigma_2}{2},0\bigr)\) y radio \(R_3=\tfrac{\sigma_1-\sigma_2}{2}\).
+                          </li>
+                        </ul>
+                        <p class="mb-3">
+                          Dado que el estado físico de esfuerzos para cualquier orientación debe cumplir simultáneamente con las tres restricciones,
+                          las coordenadas \((\sigma,\tau)\) admisibles para cualquier plano inclinado quedan restringidas a la zona sombreada (hachurada)
+                          delimitada por las tres circunferencias.
+                        </p>
+                        <p class="mb-2">De este análisis gráfico se desprenden dos conclusiones críticas para la física del medio continuo:</p>
+                        <ul class="list-disc pl-5 space-y-2">
+                          <li>
+                            El esfuerzo normal en cualquier plano está estrictamente acotado por los esfuerzos principales extremos: \(\sigma_3\le\sigma\le\sigma_1\).
+                          </li>
+                          <li>
+                            El esfuerzo cortante máximo absoluto (\(\tau_{\max}\)) ocurre en planos inclinados a \(45^\circ\) respecto a las direcciones principales mayor y menor,
+                            y su valor es numéricamente igual al radio del círculo mayor:
+                            \[
+                              \tau_{\max} = \tfrac{\sigma_1-\sigma_3}{2}
+                            \]
+                          </li>
+                        </ul>
+                      </div>
+
+                      <div>
+                        <h4 class="text-base font-semibold text-primary-300 mb-2">2. El círculo de Mohr para el estado plano de esfuerzos</h4>
+                        <p class="mb-3">
+                          El estado plano de esfuerzos (o estado biaxial) se presenta cuando las fuerzas aplicadas actúan de forma coplanar,
+                          de manera que los esfuerzos normales y cortantes asociados a un eje (por ejemplo, el eje \(z\)) son nulos
+                          (\(\sigma_z=0\), \(\tau_{zx}=0\), \(\tau_{zy}=0\)).
+                          Bajo esta condición, el círculo de Mohr tridimensional se reduce a una sola circunferencia representativa.
+                        </p>
+
+                        <h5 class="font-semibold text-white mb-2">Ecuación de la circunferencia</h5>
+                        <p class="mb-2">
+                          A partir de las ecuaciones de transformación de esfuerzos para un plano inclinado un ángulo \(\alpha\) con respecto a la horizontal:
+                        </p>
+                        \[
+                          \sigma = \tfrac{\sigma_x+\sigma_y}{2} + \tfrac{\sigma_x-\sigma_y}{2}\cos 2\alpha + \tau_{xy}\sin 2\alpha
+                        \]
+                        \[
+                          \tau = -\tfrac{\sigma_x-\sigma_y}{2}\sin 2\alpha + \tau_{xy}\cos 2\alpha
+                        \]
+                        <p class="mb-2">
+                          Elevando al cuadrado y sumando ambas ecuaciones se elimina el parámetro angular \(\alpha\), lo que conduce directamente a la ecuación de una circunferencia:
+                        </p>
+                        \[
+                          \Bigl(\sigma - \tfrac{\sigma_x+\sigma_y}{2}\Bigr)^2 + \tau^2
+                          = \Bigl(\tfrac{\sigma_x-\sigma_y}{2}\Bigr)^2 + \tau_{xy}^2
+                        \]
+                        <ul class="list-disc pl-5 space-y-2 mb-3">
+                          <li>
+                            <strong class="text-white">Centro del círculo (\(C\)):</strong> se ubica en las coordenadas \(C\bigl(\tfrac{\sigma_x+\sigma_y}{2},0\bigr)\).
+                          </li>
+                          <li>
+                            <strong class="text-white">Radio del círculo (\(R\)):</strong>
+                            \[
+                              R = \sqrt{\Bigl(\tfrac{\sigma_x-\sigma_y}{2}\Bigr)^2 + \tau_{xy}^2}
+                            \]
+                          </li>
+                        </ul>
+
+                        <h5 class="font-semibold text-white mb-2">Propiedades y lectura del círculo plano</h5>
+                        <ul class="list-disc pl-5 space-y-3">
+                          <li>
+                            <strong class="text-white">Esfuerzos principales (\(\sigma_1,\sigma_2\)):</strong>
+                            corresponden a los puntos donde la circunferencia interseca el eje horizontal (\(\tau=0\)):
+                            \[
+                              \sigma_{1,2} = \tfrac{\sigma_x+\sigma_y}{2} \pm \sqrt{\Bigl(\tfrac{\sigma_x-\sigma_y}{2}\Bigr)^2 + \tau_{xy}^2}
+                            \]
+                          </li>
+                          <li>
+                            <strong class="text-white">Esfuerzo cortante máximo (\(\tau_{\max}\)):</strong>
+                            es igual al radio del círculo (\(R\)) y se presenta acompañado de un esfuerzo normal promedio igual a la coordenada de la abscisa del centro \(C\).
+                          </li>
+                        </ul>
+                      </div>
+
+                      <div>
+                        <h4 class="text-base font-semibold text-primary-300 mb-2">3. El método del polo de los esfuerzos (origen de planos)</h4>
+                        <p class="mb-3">
+                          El polo de los esfuerzos (también conocido como origen de planos) es un método gráfico de gran utilidad práctica que permite determinar de manera directa y rápida
+                          la orientación física de los planos asociados a cualquier par de esfuerzos \((\sigma,\tau)\) medidos en el círculo de Mohr.
+                        </p>
+                        <p class="mb-3">
+                          <strong class="text-white">Propiedad fundamental:</strong> el polo es un punto único ubicado sobre la circunferencia del círculo de Mohr que posee la siguiente propiedad:
+                          cualquier recta trazada desde el polo paralela a la inclinación física de un plano en el elemento real cortará al círculo de Mohr en un punto
+                          cuyas coordenadas corresponden exactamente al estado de esfuerzos \((\sigma,\tau)\) que actúa sobre dicho plano.
+                        </p>
+                        <p class="mb-2"><strong class="text-white">Procedimiento para localizar el polo:</strong></p>
+                        <ol class="list-decimal pl-5 space-y-2">
+                          <li>Se traza el círculo de Mohr empleando las componentes conocidas del tensor de esfuerzos.</li>
+                          <li>
+                            Se selecciona un punto del círculo representativo de un plano físico conocido; por ejemplo, el punto \(P(\sigma_x,-\tau_{xy})\),
+                            el cual actúa sobre el plano vertical del elemento infinitesimal.
+                          </li>
+                          <li>
+                            Desde este punto \(P\) en el plano de Mohr, se traza una línea paralela al plano físico sobre el cual actúa (en este caso, una línea vertical).
+                          </li>
+                          <li>
+                            La intersección de esta recta con la circunferencia del círculo define de forma unívoca el polo de los esfuerzos (\(P_p\)).
+                          </li>
+                        </ol>
+                        <p class="mt-3">
+                          Una vez ubicado el polo, para conocer el estado de esfuerzos sobre un plano inclinado un ángulo arbitrario, basta con trazar una recta paralela a dicho plano desde el polo;
+                          el punto donde esta recta cruce la circunferencia indicará los valores de \(\sigma\) y \(\tau\) buscados.
+                        </p>
+                      </div>
+
+                      <div>
+                        <h4 class="text-base font-semibold text-primary-300 mb-2">4. Representación octaédrica de esfuerzos</h4>
+                        <p class="mb-3">
+                          Complementando el análisis tridimensional, cualquier estado de esfuerzos se puede descomponer en un plano octaédrico
+                          (aquel que forma ángulos idénticos con las tres direcciones principales, con normal unitaria
+                          \(\mathbf{n}=\bigl(\tfrac{1}{\sqrt{3}},\tfrac{1}{\sqrt{3}},\tfrac{1}{\sqrt{3}}\bigr)\)).
+                          Los esfuerzos sobre este plano se dividen en:
+                        </p>
+                        <ul class="list-disc pl-5 space-y-3 mb-3">
+                          <li>
+                            <strong class="text-white">Esfuerzo normal octaédrico (\(\sigma_{\mathrm{oct}}\)):</strong>
+                            equivale exactamente al esfuerzo medio o hidrostático:
+                            \[
+                              \sigma_{\mathrm{oct}} = \tfrac{1}{3}(\sigma_1+\sigma_2+\sigma_3) = \sigma_m
+                            \]
+                          </li>
+                          <li>
+                            <strong class="text-white">Esfuerzo cortante octaédrico (\(\tau_{\mathrm{oct}}\)):</strong>
+                            representa el cizallamiento que tiende a distorsionar el elemento sin cambiar su volumen:
+                            \[
+                              \tau_{\mathrm{oct}} = \tfrac{1}{3}\sqrt{(\sigma_1-\sigma_2)^2 + (\sigma_2-\sigma_3)^2 + (\sigma_3-\sigma_1)^2}
+                            \]
+                          </li>
+                        </ul>
+                        <p>
+                          Este enfoque octaédrico es de suma importancia ya que sirve como base para criterios de falla y plastificación de materiales dúctiles
+                          (como el criterio de energía de distorsión de von Mises).
+                        </p>
+                      </div>
+                    </div>
+
+                    <div class="mt-6">
+                      <a href="pdf/UNIDAD II MECANICA DE MEDIO CONTINUO 2.pdf" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white text-sm font-medium rounded-lg transition-all duration-200">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
                         </svg>
                         Diapositiva 1
                       </a>
-                    </div>
-                  </div>
-                  
-                  <!-- Clase Ejercicio No 6 -->
-                  <div class="bg-gray-800/50 rounded-xl p-5 border border-gray-700">
-                    <h3 class="text-lg font-semibold text-primary-400 mb-2">Clase para Ejercicio No 6</h3>
-                    <p class="text-gray-400 text-sm mb-4">
-                      Material y recursos para el Ejercicio No 6 de la Unidad 2 clase del 25 de febrero 2026.
-                    </p>
-                    <div class="mt-4 flex flex-col items-center text-center">
-                      <video
-                        controls
-                        class="w-full max-w-lg rounded-xl border border-gray-600 bg-black/30"
-                        poster="images/mecanica.png"
-                        preload="metadata"
-                        src="videos/v4.mp4"
-                      >
-                        <source src="videos/v4.mp4" type="video/mp4">
-                        Tu navegador no soporta la reproducción de video.
-                      </video>
                     </div>
                   </div>
                   
@@ -292,7 +1101,7 @@
           <!-- Logo y descripción -->
           <div class="space-y-4">
             <a href="Pagina de inicio.html" class="flex items-center gap-3">
-              <img src="https://noelventura.github.io/mecanica-medio-continuo/images/tecnologico.png" alt="Tecnológico" class="h-12 w-auto object-contain">
+              <img src="images/tecnologico.png" alt="Tecnológico" class="h-12 w-auto object-contain">
               <div class="flex flex-col">
                 <span class="text-lg font-bold text-gray-900 dark:text-white leading-tight">Mecánica</span>
                 <span class="text-xs text-gray-500 dark:text-gray-400 leading-tight">Medio Continuo</span>
@@ -381,5 +1190,20 @@
         if (e.key === 'Escape') closeViewer();
       });
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+    <script>
+      if (typeof renderMathInElement === 'function') {
+        renderMathInElement(document.body, {
+          delimiters: [
+            { left: '\\[', right: '\\]', display: true },
+            { left: '\\(', right: '\\)', display: false }
+          ],
+          throwOnError: false
+        });
+      }
+    </script>
+    <script src="https://cdn.botpress.cloud/webchat/v3.7/inject.js"></script>
+    <script src="https://files.bpcontent.cloud/2026/08/07/20/20260807200306-50CKT62T.js" defer></script>
   </body>
 </html>

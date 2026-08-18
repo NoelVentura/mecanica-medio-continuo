@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mecánica de Medio Continuo</title>
+
+<!-- AOS: animaciones al hacer scroll (fade-in, slide-up, etc.) -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+
+<style>
+  :root{
+    --bg: #0b0b12;
+    --bg-soft: #14141f;
+    --card: #1a1a27;
+    --accent: #8E6BFF;
+    --text: #f4f3f8;
+    --text-dim: #a9a6bd;
+    --radius: 20px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family: -apple-system, "Segoe UI", Roboto, sans-serif;
+    overflow-x:hidden;
+  }
+  h1,h2,h3{font-weight:700; line-height:1.15;}
+
+  /* ---------- HEADER ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    display:flex; justify-content:space-between; align-items:center;
+    padding:20px 6vw;
+    background:rgba(11,11,18,0.7);
+    backdrop-filter: blur(10px);
+    border-bottom:1px solid rgba(255,255,255,0.06);
+  }
+  header nav a{
+    color:var(--text-dim); text-decoration:none; margin-left:28px; font-size:14px;
+  }
+  header nav a:hover{color:var(--text);}
+  .btn{
+    background:var(--accent); color:white; border:none; padding:12px 22px;
+    border-radius:999px; font-weight:600; cursor:pointer; font-size:14px;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    text-align:center; padding:120px 6vw 80px;
+  }
+  .hero h1{font-size:clamp(2.2rem, 5vw, 4rem); max-width:900px; margin:0 auto 20px;}
+  .hero p{color:var(--text-dim); max-width:600px; margin:0 auto 32px; font-size:1.1rem;}
+
+  /* ---------- MARQUEE (texto en movimiento infinito) ---------- */
+  .marquee-wrap{
+    overflow:hidden; white-space:nowrap; border-top:1px solid rgba(255,255,255,0.08);
+    border-bottom:1px solid rgba(255,255,255,0.08); padding:16px 0;
+  }
+  .marquee-track{
+    display:inline-block; padding-left:100%;
+    animation: scroll-left 22s linear infinite;
+    color:var(--accent); font-weight:600; letter-spacing:1px;
+  }
+  @keyframes scroll-left{
+    0%{ transform: translateX(0); }
+    100%{ transform: translateX(-100%); }
+  }
+
+  /* ---------- FEATURE SECTIONS (texto + mockup alternado) ---------- */
+  .feature{
+    display:flex; align-items:center; gap:60px;
+    padding:100px 6vw; max-width:1200px; margin:0 auto;
+  }
+  .feature.reverse{flex-direction:row-reverse;}
+  .feature-text{flex:1;}
+  .feature-text h2{font-size:2rem; margin-bottom:16px;}
+  .feature-text p{color:var(--text-dim); font-size:1.05rem;}
+  .feature-mock{
+    flex:1; background:var(--card); border-radius:var(--radius);
+    padding:32px; min-height:260px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  }
+
+  /* ---------- GRID DE TARJETAS ---------- */
+  .grid-cards{
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:24px; padding:80px 6vw; max-width:1200px; margin:0 auto;
+  }
+  .card{
+    background:var(--card); border-radius:var(--radius); padding:28px;
+    border:1px solid rgba(255,255,255,0.06);
+  }
+  .card h3{font-size:1.1rem; margin-bottom:8px; color:var(--accent);}
+  .card p{color:var(--text-dim); font-size:0.95rem;}
+
+  /* ---------- FAQ ACORDEÓN ---------- */
+  .faq{max-width:800px; margin:0 auto; padding:80px 6vw;}
+  .faq-item{border-bottom:1px solid rgba(255,255,255,0.08);}
+  .faq-q{
+    width:100%; text-align:left; background:none; border:none; color:var(--text);
+    padding:22px 0; font-size:1.05rem; cursor:pointer;
+    display:flex; justify-content:space-between; align-items:center;
+  }
+  .faq-a{
+    max-height:0; overflow:hidden; color:var(--text-dim); transition:max-height 0.3s ease;
+  }
+  .faq-a p{padding-bottom:20px;}
+  .faq-item.open .faq-a{max-height:200px;}
+  .faq-icon{transition:transform 0.3s ease;}
+  .faq-item.open .faq-icon{transform:rotate(45deg);}
+
+  /* ---------- CALCULADORA INTERACTIVA ---------- */
+  .calc{
+    max-width:900px; margin:0 auto; padding:80px 6vw;
+    background:var(--bg-soft); border-radius:var(--radius);
+  }
+  .calc-grid{display:grid; grid-template-columns:1fr 1fr; gap:40px; padding:20px;}
+  .calc label{display:block; color:var(--text-dim); margin-bottom:8px; font-size:0.9rem;}
+  .calc input[type=range]{width:100%; accent-color:var(--accent);}
+  .calc-result{
+    background:var(--card); border-radius:16px; padding:24px; text-align:center;
+  }
+  .calc-result .value{font-size:2.4rem; color:var(--accent); font-weight:700;}
+
+  /* ---------- TESTIMONIOS ---------- */
+  .testimonials{padding:80px 6vw; text-align:center;}
+  .testi-track{
+    display:flex; gap:24px; overflow-x:auto; scroll-snap-type:x mandatory;
+    padding:20px 0;
+  }
+  .testi-card{
+    scroll-snap-align:start; flex:0 0 320px; background:var(--card);
+    border-radius:var(--radius); padding:28px; text-align:left;
+  }
+
+  footer{
+    padding:60px 6vw; border-top:1px solid rgba(255,255,255,0.08);
+    color:var(--text-dim); text-align:center; font-size:0.9rem;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <strong>Medio Continuo</strong>
+  <nav>
+    <a href="#temas">Temas</a>
+    <a href="#faq">FAQ</a>
+    <a href="#calc">Calculadora</a>
+    <button class="btn">Empezar</button>
+  </nav>
+</header>
+
+<section class="hero" data-aos="fade-up">
+  <h1>Fundamentos de la Mecánica de Medio Continuo</h1>
+  <p>Tensores, deformación, esfuerzo y leyes de conservación explicados paso a paso, con ejemplos interactivos.</p>
+  <button class="btn">Ver el curso</button>
+</section>
+
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    TENSORES ✦ DEFORMACIÓN ✦ ESFUERZO ✦ CONSERVACIÓN DE MASA ✦ ELASTICIDAD ✦ TENSORES ✦ DEFORMACIÓN ✦ ESFUERZO ✦ CONSERVACIÓN DE MASA ✦ ELASTICIDAD ✦
+  </div>
+</div>
+
+<section class="feature" id="temas">
+  <div class="feature-text" data-aos="fade-right">
+    <h2>Cinemática del continuo</h2>
+    <p>Descripción del movimiento, gradiente de deformación y tensores de deformación finita, con visualizaciones paso a paso.</p>
+  </div>
+  <div class="feature-mock" data-aos="fade-left">
+    <p style="color:var(--text-dim)">[ mockup / diagrama / animación GSAP aquí ]</p>
+  </div>
+</section>
+
+<section class="feature reverse">
+  <div class="feature-text" data-aos="fade-left">
+    <h2>Esfuerzo y equilibrio</h2>
+    <p>Tensor de esfuerzos de Cauchy, ecuaciones de equilibrio y condiciones de frontera.</p>
+  </div>
+  <div class="feature-mock" data-aos="fade-right">
+    <p style="color:var(--text-dim)">[ mockup / gráfica interactiva aquí ]</p>
+  </div>
+</section>
+
+<div class="grid-cards">
+  <div class="card" data-aos="fade-up"><h3>Elasticidad lineal</h3><p>Ley de Hooke generalizada y módulos elásticos.</p></div>
+  <div class="card" data-aos="fade-up" data-aos-delay="100"><h3>Termodinámica del continuo</h3><p>Primer y segundo principio aplicados a medios deformables.</p></div>
+  <div class="card" data-aos="fade-up" data-aos-delay="200"><h3>Mecánica de fluidos</h3><p>Ecuaciones de Navier-Stokes desde el enfoque continuo.</p></div>
+</div>
+
+<section class="faq" id="faq">
+  <h2 style="margin-bottom:24px;">Preguntas frecuentes</h2>
+  <div class="faq-item">
+    <button class="faq-q">¿Qué requisitos necesito? <span class="faq-icon">+</span></button>
+    <div class="faq-a"><p>Álgebra lineal y cálculo vectorial básico.</p></div>
+  </div>
+  <div class="faq-item">
+    <button class="faq-q">¿Incluye ejercicios resueltos? <span class="faq-icon">+</span></button>
+    <div class="faq-a"><p>Sí, cada tema tiene ejemplos resueltos paso a paso.</p></div>
+  </div>
+</section>
+
+<section class="calc" id="calc">
+  <h2 style="text-align:center; margin-bottom:8px;">Calculadora de deformación</h2>
+  <p style="text-align:center; color:var(--text-dim); margin-bottom:20px;">Ejemplo de widget interactivo, mismo patrón que un "ROI calculator".</p>
+  <div class="calc-grid">
+    <div>
+      <label>Longitud inicial (mm): <span id="l0val">100</span></label>
+      <input type="range" id="l0" min="10" max="500" value="100">
+      <label style="margin-top:20px;">Longitud final (mm): <span id="l1val">120</span></label>
+      <input type="range" id="l1" min="10" max="500" value="120">
+    </div>
+    <div class="calc-result">
+      <div class="value" id="result">20.0%</div>
+      <p style="color:var(--text-dim); margin-top:6px;">Deformación unitaria (ε)</p>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials">
+  <h2 style="margin-bottom:24px;">Lo que dicen los estudiantes</h2>
+  <div class="testi-track">
+    <div class="testi-card"><p>"Por fin entendí los tensores de deformación."</p><strong style="display:block; margin-top:16px;">— Estudiante A</strong></div>
+    <div class="testi-card"><p>"Las animaciones ayudan mucho a visualizar."</p><strong style="display:block; margin-top:16px;">— Estudiante B</strong></div>
+    <div class="testi-card"><p>"Excelente material de apoyo."</p><strong style="display:block; margin-top:16px;">— Estudiante C</strong></div>
+  </div>
+</section>
+
+<footer>
+  © 2026 Mecánica de Medio Continuo — Material de curso
+</footer>
+
+<!-- AOS: inicializa animaciones al hacer scroll -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script>
+  AOS.init({ duration: 800, once: true, easing: 'ease-out-cubic' });
+
+  // ---- Acordeón FAQ ----
+  document.querySelectorAll('.faq-q').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      btn.parentElement.classList.toggle('open');
+    });
+  });
+
+  // ---- Calculadora interactiva (misma lógica que un ROI slider) ----
+  const l0 = document.getElementById('l0');
+  const l1 = document.getElementById('l1');
+  const l0val = document.getElementById('l0val');
+  const l1val = document.getElementById('l1val');
+  const result = document.getElementById('result');
+
+  function updateCalc(){
+    l0val.textContent = l0.value;
+    l1val.textContent = l1.value;
+    const eps = ((l1.value - l0.value) / l0.value) * 100;
+    result.textContent = eps.toFixed(1) + '%';
+  }
+  l0.addEventListener('input', updateCalc);
+  l1.addEventListener('input', updateCalc);
+</script>
+
+<!-- Si quieres animaciones más elaboradas ligadas al scroll (parallax, timelines),
+     agrega GSAP + ScrollTrigger así:
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.from(".feature-mock", {
+    scrollTrigger: { trigger: ".feature-mock", start: "top 80%" },
+    y: 60, opacity: 0, duration: 1, stagger: 0.2
+  });
+</script>
+-->
+
+</body>
+</html>

@@ -1,10 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <base href="https://noelventura.github.io/mecanica-medio-continuo/" />
     
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -91,10 +90,40 @@
         font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         -webkit-font-smoothing: antialiased;
       }
+      .page-bg-video {
+        position: fixed;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: -2;
+        pointer-events: none;
+      }
+      body > header,
+      body > main,
+      body > footer,
+      body > #img-viewer {
+        position: relative;
+        z-index: 1;
+      }
+      body > header { z-index: 50; }
+      body > #img-viewer { z-index: 100; }
+      .teoria-block .katex { font-size: 1.05em; }
+      .teoria-block .katex-display { margin: 0.75rem 0; overflow-x: auto; overflow-y: hidden; }
+      .rounded-xl p,
+      .rounded-xl li,
+      .teoria-block p,
+      .teoria-block li {
+        text-align: justify;
+        hyphens: auto;
+      }
     </style>
   </head>
   
-  <body class="min-h-screen flex flex-col antialiased text-gray-900 dark:text-gray-100 transition-colors duration-300" style="background-image: url('https://noelventura.github.io/mecanica-medio-continuo/images/mecanica.png'); background-size: cover; background-position: center; background-attachment: fixed; background-repeat: no-repeat;">
+  <body class="min-h-screen flex flex-col antialiased text-gray-900 dark:text-gray-100 transition-colors duration-300 bg-transparent">
+    <video class="page-bg-video" autoplay muted playsinline loop preload="metadata" aria-hidden="true">
+      <source src="videos/fondo5.mp4" type="video/mp4">
+    </video>
     
     <!-- ==================== HEADER ==================== -->
     <header class="sticky top-0 z-50 w-full border-b border-gray-200/50 dark:border-gray-800/50 bg-white/40 dark:bg-gray-950/40 backdrop-blur-md transition-colors duration-300">
@@ -103,7 +132,7 @@
           
           <!-- Logo -->
           <a href="Pagina de inicio.html" class="flex items-center gap-3 group" aria-label="Ir al inicio">
-            <img src="https://noelventura.github.io/mecanica-medio-continuo/images/tecnologico.png" alt="Tecnológico" class="h-12 w-auto object-contain">
+            <img src="images/tecnologico.png" alt="Tecnológico" class="h-12 w-auto object-contain">
             <div class="flex flex-col">
               <span class="text-lg font-bold text-gray-900 dark:text-white leading-tight">Mecánica</span>
               <span class="text-xs text-gray-500 dark:text-gray-400 leading-tight">Medio Continuo</span>
@@ -139,12 +168,6 @@
           
           <!-- Título de la página -->
           <div class="text-center mb-12">
-            <div class="w-16 h-16 rounded-xl bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center mb-6 mx-auto shadow-lg">
-              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 21l9-5.25v-7.5L12 3 3 8.25v7.5L12 21z"/>
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 12l9-3.75M12 12L3 8.25M12 12v9"/>
-              </svg>
-            </div>
             <h1 class="text-4xl font-bold mb-4" style="color: #001f3f; text-shadow: -1px -1px 2px rgba(255, 255, 255, 0.9), 1px -1px 2px rgba(255, 255, 255, 0.9), -1px 1px 2px rgba(255, 255, 255, 0.9), 1px 1px 2px rgba(255, 255, 255, 0.9), 0 -1px 2px rgba(255, 255, 255, 0.9), 0 1px 2px rgba(255, 255, 255, 0.9), -1px 0 2px rgba(255, 255, 255, 0.9), 1px 0 2px rgba(255, 255, 255, 0.9), 0 0 8px rgba(255, 255, 255, 0.6), 0 0 16px rgba(255, 255, 255, 0.4);">
               Unidad 5: Ecuaciones Constitutivas
             </h1>
@@ -251,7 +274,7 @@
                       </div>
 
                       <div class="pt-2 flex justify-end">
-                        <a href="https://noelventura.github.io/mecanica-medio-continuo/pdf/RELACION%20DE%20POISSON%20Y%20LEY%20DE%20HOOKE.pdf" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white text-sm font-medium rounded-lg transition-all duration-200 shadow-[0_0_10px_rgba(255,255,255,0.7),0_0_20px_rgba(255,255,255,0.5)] hover:shadow-[0_0_16px_rgba(255,255,255,0.9),0_0_28px_rgba(255,255,255,0.7)]">
+                        <a href="pdf/RELACION%20DE%20POISSON%20Y%20LEY%20DE%20HOOKE.pdf" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white text-sm font-medium rounded-lg transition-all duration-200 shadow-[0_0_10px_rgba(255,255,255,0.7),0_0_20px_rgba(255,255,255,0.5)] hover:shadow-[0_0_16px_rgba(255,255,255,0.9),0_0_28px_rgba(255,255,255,0.7)]">
                           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
                           </svg>
@@ -264,11 +287,11 @@
                         <video
                           controls
                           class="w-full max-w-lg rounded-xl border border-gray-600 bg-black/30"
-                          poster="https://noelventura.github.io/mecanica-medio-continuo/images/mecanica.png"
+                          poster="images/mecanica.png"
                           preload="metadata"
-                          src="https://noelventura.github.io/mecanica-medio-continuo/videos/laboratorio-resistencia-materiales.mp4"
+                          src="videos/laboratorio-resistencia-materiales.mp4"
                         >
-                          <source src="https://noelventura.github.io/mecanica-medio-continuo/videos/laboratorio-resistencia-materiales.mp4" type="video/mp4">
+                          <source src="videos/laboratorio-resistencia-materiales.mp4" type="video/mp4">
                           Tu navegador no soporta la reproducción de video.
                         </video>
                       </div>
@@ -281,20 +304,6 @@
                     <p class="text-gray-400 text-sm">
                       Formulación de problemas típicos de elasticidad lineal: condiciones de frontera, desplazamientos, esfuerzos y compatibilidad.
                     </p>
-                    <div class="mt-4 flex flex-col items-center text-center">
-                      <p class="text-sm font-medium text-gray-300 mb-2">Video (YouTube)</p>
-                      <div class="w-full max-w-lg overflow-hidden rounded-xl border border-gray-600 bg-black/30 aspect-video">
-                        <iframe
-                          class="w-full h-full"
-                          src="https://www.youtube.com/embed/YectKJB2zxM"
-                          title="LABORATORIO DE RESISTENCIA DE MATERIALES"
-                          frameborder="0"
-                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                          referrerpolicy="strict-origin-when-cross-origin"
-                          allowfullscreen
-                        ></iframe>
-                      </div>
-                    </div>
                   </div>
                   
                   <!-- Tema 5.3 -->
@@ -520,7 +529,7 @@
                       </div>
                     </div>
                     <div class="mt-4 flex justify-end">
-                      <a href="https://noelventura.github.io/mecanica-medio-continuo/pdf/unidad%205%20Navier-stoke.pdf" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white text-sm font-medium rounded-lg transition-all duration-200 shadow-[0_0_10px_rgba(255,255,255,0.7),0_0_20px_rgba(255,255,255,0.5)] hover:shadow-[0_0_16px_rgba(255,255,255,0.9),0_0_28px_rgba(255,255,255,0.7)]">
+                      <a href="pdf/unidad%205%20Navier-stoke.pdf" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white text-sm font-medium rounded-lg transition-all duration-200 shadow-[0_0_10px_rgba(255,255,255,0.7),0_0_20px_rgba(255,255,255,0.5)] hover:shadow-[0_0_16px_rgba(255,255,255,0.9),0_0_28px_rgba(255,255,255,0.7)]">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
                         </svg>
@@ -912,7 +921,7 @@
           <!-- Logo y descripción -->
           <div class="space-y-4">
             <a href="Pagina de inicio.html" class="flex items-center gap-3">
-              <img src="https://noelventura.github.io/mecanica-medio-continuo/images/tecnologico.png" alt="Tecnológico" class="h-12 w-auto object-contain">
+              <img src="images/tecnologico.png" alt="Tecnológico" class="h-12 w-auto object-contain">
               <div class="flex flex-col">
                 <span class="text-lg font-bold text-gray-900 dark:text-white leading-tight">Mecánica</span>
                 <span class="text-xs text-gray-500 dark:text-gray-400 leading-tight">Medio Continuo</span>
@@ -967,5 +976,7 @@
         localStorage.setItem('theme', isDark ? 'dark' : 'light');
       });
     </script>
+    <script src="https://cdn.botpress.cloud/webchat/v3.7/inject.js"></script>
+    <script src="https://files.bpcontent.cloud/2026/08/07/20/20260807200306-50CKT62T.js" defer></script>
   </body>
 </html>

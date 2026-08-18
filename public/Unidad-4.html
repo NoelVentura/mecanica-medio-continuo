@@ -78,10 +78,39 @@
         font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         -webkit-font-smoothing: antialiased;
       }
+      .page-bg-video {
+        position: fixed;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: -2;
+        pointer-events: none;
+      }
+      body > header,
+      body > main,
+      body > footer,
+      body > #img-viewer {
+        position: relative;
+        z-index: 1;
+      }
+      body > header { z-index: 50; }
+      body > #img-viewer { z-index: 100; }
+      .teoria-block .katex { font-size: 1.05em; }
+      .teoria-block .katex-display { margin: 0.75rem 0; overflow-x: auto; overflow-y: hidden; }
+      .teoria-block p,
+      .teoria-block li {
+        text-align: justify;
+        hyphens: auto;
+      }
     </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous" />
   </head>
   
-  <body class="min-h-screen flex flex-col antialiased text-gray-900 dark:text-gray-100 transition-colors duration-300" style="background-image: url('images/mecanica.png'); background-size: cover; background-position: center; background-attachment: fixed; background-repeat: no-repeat;">
+  <body class="min-h-screen flex flex-col antialiased text-gray-900 dark:text-gray-100 transition-colors duration-300 bg-transparent">
+    <video class="page-bg-video" autoplay muted playsinline loop preload="metadata" aria-hidden="true">
+      <source src="videos/fondo4.mp4" type="video/mp4">
+    </video>
     
     <!-- ==================== HEADER ==================== -->
     <header class="sticky top-0 z-50 w-full border-b border-gray-200/50 dark:border-gray-800/50 bg-white/40 dark:bg-gray-950/40 backdrop-blur-md transition-colors duration-300">
@@ -126,11 +155,6 @@
           
           <!-- Título de la página -->
           <div class="text-center mb-12">
-            <div class="w-16 h-16 rounded-xl bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center mb-6 mx-auto shadow-lg">
-              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5"/>
-              </svg>
-            </div>
             <h1 class="text-4xl font-bold mb-4" style="color: #001f3f; text-shadow: -1px -1px 2px rgba(255, 255, 255, 0.9), 1px -1px 2px rgba(255, 255, 255, 0.9), -1px 1px 2px rgba(255, 255, 255, 0.9), 1px 1px 2px rgba(255, 255, 255, 0.9), 0 -1px 2px rgba(255, 255, 255, 0.9), 0 1px 2px rgba(255, 255, 255, 0.9), -1px 0 2px rgba(255, 255, 255, 0.9), 1px 0 2px rgba(255, 255, 255, 0.9), 0 0 8px rgba(255, 255, 255, 0.6), 0 0 16px rgba(255, 255, 255, 0.4);">
               Unidad 4: Principios Básicos de la Mecánica
             </h1>
@@ -154,25 +178,586 @@
                   <!-- Tema 4.1 -->
                   <div class="bg-gray-800/50 rounded-xl p-5 border border-gray-700">
                     <h3 class="text-lg font-semibold text-primary-400 mb-2">4.1 Principio de la Conservación de la cantidad de Movimiento lineal y angular</h3>
-                    <p class="text-gray-400 text-sm">
+                    <p class="text-gray-400 text-sm mb-4">
                       Ecuaciones integrales y diferenciales de la cantidad de movimiento. Balance lineal y angular, fuerzas externas y momentos.
                     </p>
+
+                    <div class="teoria-block mt-2 pt-5 border-t border-gray-700 space-y-5 text-sm leading-relaxed text-gray-300">
+                      <p>
+                        Los principios de conservación de la cantidad de movimiento (tanto lineal como angular) representan la aplicación de las leyes de movimiento de Newton a un medio continuo deformable.
+                        Estos principios de balance establecen que la variación temporal de la cantidad de movimiento (lineal o angular) de un sistema material es equivalente a la acción neta de las fuerzas y momentos externos aplicados sobre este.
+                      </p>
+                      <p>
+                        En la Mecánica de Medios Continuos, estos balances se formulan bajo dos perspectivas matemáticas complementarias: la <strong class="text-white">forma integral</strong>, válida para un volumen finito de material,
+                        y la <strong class="text-white">forma diferencial</strong> (o ecuaciones de campo), aplicable localmente en cada punto espacial bajo análisis.
+                      </p>
+
+                      <div>
+                        <h4 class="text-base font-semibold text-primary-300 mb-2">1. Conservación de la cantidad de movimiento lineal (balance lineal)</h4>
+
+                        <h5 class="font-semibold text-white mb-2">A. Ecuaciones integrales</h5>
+                        <p class="mb-3">
+                          El balance de cantidad de movimiento lineal puede plantearse considerando un volumen material (\(V_t\)) que se mueve con el medio,
+                          o bien un volumen de control (\(V_c\)) fijo en el espacio a través de cuyas fronteras fluye la masa.
+                        </p>
+
+                        <p class="mb-2"><strong class="text-white">Enfoque de volumen material (lagrangiano):</strong></p>
+                        <p class="mb-2">
+                          Para un volumen material \(V_t\) delimitado por una superficie \(S_t\), la rapidez de cambio con respecto al tiempo de la cantidad de movimiento total
+                          es igual a la resultante de las fuerzas externas (fuerzas de cuerpo y de superficie) que actúan sobre este:
+                        </p>
+                        \[
+                          \frac{d}{dt}\int_{V_t}\rho\,\mathbf{v}\,dV
+                          = \int_{V_t}\rho\,\mathbf{b}\,dV + \oint_S \mathbf{t}\,dS
+                        \]
+                        <ul class="list-disc pl-5 space-y-1 mb-3">
+                          <li>\(\rho\) representa la densidad local del medio continuo.</li>
+                          <li>\(\mathbf{v}\) es el campo vectorial de velocidades.</li>
+                          <li>\(\mathbf{b}\) representa el vector de fuerzas de cuerpo (o fuerzas másicas) por unidad de masa.</li>
+                          <li>\(\mathbf{t}\) es el vector de esfuerzos en la superficie (fuerzas de contacto).</li>
+                        </ul>
+                        <p class="mb-2">En notación indicial, este balance se expresa como:</p>
+                        \[
+                          \frac{d}{dt}\int_{V_t}\rho\, v_i\,dV
+                          = \int_{V_t}\rho\, b_i\,dV + \oint_S t_i\,dS
+                        \]
+
+                        <p class="mb-2"><strong class="text-white">Enfoque de volumen de control (euleriano):</strong></p>
+                        <p class="mb-2">
+                          Si se fija la atención en un volumen espacial fijo \(V_c\) delimitado por una superficie de control \(S_c\),
+                          el cambio de cantidad de movimiento se descompone en la variación temporal local dentro del volumen y el flujo convectivo neto que cruza las fronteras:
+                        </p>
+                        \[
+                          \int_{V_c}\frac{\partial(\rho\mathbf{v})}{\partial t}\,dV
+                          + \oint_{S_c}\rho\,\mathbf{v}(\mathbf{v}\cdot\mathbf{n})\,dS
+                          = \int_{V_c}\rho\,\mathbf{f}\,dV
+                          + \oint_{S_c}\mathbf{T}(\mathbf{n})\,dS
+                        \]
+                        <p class="mb-4">
+                          Donde \(\mathbf{n}\) es el vector normal exterior unitario a la superficie de control, \(\mathbf{T}(\mathbf{n})\) es el vector de esfuerzos asociado a dicho plano
+                          y \(\mathbf{f}\) representa las fuerzas de cuerpo por unidad de volumen.
+                        </p>
+
+                        <h5 class="font-semibold text-white mb-2">B. Ecuaciones diferenciales (ecuaciones de movimiento de Cauchy)</h5>
+                        <p class="mb-2">Para transitar de la formulación integral a la diferencial, se realizan las siguientes simplificaciones matemáticas:</p>
+                        <ul class="list-disc pl-5 space-y-3 mb-3">
+                          <li>
+                            Se sustituye el vector de esfuerzos de la integral de superficie empleando la relación fundamental de Cauchy: \(t_i=T_{ji}n_j\),
+                            donde \(T_{ji}\) representa el tensor de esfuerzos de Cauchy.
+                          </li>
+                          <li>
+                            Se aplica el teorema de la divergencia de Gauss para transformar la integral de superficie en una integral de volumen:
+                            \[
+                              \oint_S t_i\,dS = \oint_S T_{ji}\, n_j\,dS = \int_V \frac{\partial T_{ji}}{\partial x_j}\,dV
+                            \]
+                          </li>
+                        </ul>
+                        <p class="mb-2">
+                          Al aplicar el lema de Reynolds o el teorema del transporte de Reynolds junto con la ecuación de continuidad (conservación de la masa),
+                          el balance de fuerzas en el volumen material se reduce a:
+                        </p>
+                        \[
+                          \int_V \bigl(\rho\,\tfrac{dv_i}{dt} - T_{ji,j} - \rho\, b_i\bigr)\,dV = 0
+                        \]
+                        <p class="mb-2">
+                          Dado que el volumen material elegido es completamente arbitrario, el integrando debe anularse localmente en cada punto del continuo,
+                          dando origen a la <strong class="text-white">primera ley de movimiento de Cauchy</strong>:
+                        </p>
+                        \[
+                          \rho\,\frac{dv_i}{dt} = T_{ji,j} + \rho\, b_i
+                          \quad\Longleftrightarrow\quad
+                          \rho\,\mathbf{a} = \mathrm{div}(\mathbf{T}) + \rho\,\mathbf{b}
+                        \]
+                        <ul class="list-disc pl-5 space-y-1 mb-3">
+                          <li>\(\mathbf{a}=dv/dt\) es el vector de aceleración material (derivada sustancial).</li>
+                          <li>\(\mathrm{div}(\mathbf{T})\) es el vector divergencia espacial del tensor de esfuerzos.</li>
+                        </ul>
+                        <p class="mb-2">En coordenadas cartesianas tridimensionales de referencia, estas ecuaciones diferenciales se expanden como:</p>
+                        \[
+                          \rho a_x = \rho f_x + \frac{\partial\sigma_x}{\partial x} + \frac{\partial\tau_{yx}}{\partial y} + \frac{\partial\tau_{zx}}{\partial z}
+                        \]
+                        \[
+                          \rho a_y = \rho f_y + \frac{\partial\tau_{xy}}{\partial x} + \frac{\partial\sigma_y}{\partial y} + \frac{\partial\tau_{zy}}{\partial z}
+                        \]
+                        \[
+                          \rho a_z = \rho f_z + \frac{\partial\tau_{xz}}{\partial x} + \frac{\partial\tau_{yz}}{\partial y} + \frac{\partial\sigma_z}{\partial z}
+                        \]
+                      </div>
+
+                      <div>
+                        <h4 class="text-base font-semibold text-primary-300 mb-2">2. Conservación del momento de la cantidad de movimiento (momento angular)</h4>
+
+                        <h5 class="font-semibold text-white mb-2">A. Ecuaciones integrales</h5>
+                        <p class="mb-2">
+                          Este principio físico de balance establece que el momento neto resultante de todas las fuerzas externas que actúan sobre un cuerpo
+                          es igual a la variación temporal del momento de la cantidad de movimiento (momento angular) respecto a un origen fijo \(O\):
+                        </p>
+                        <p class="mb-2"><strong class="text-white">Enfoque de volumen material (\(V_t\)):</strong></p>
+                        \[
+                          \frac{d}{dt}\int_{V_t}\rho\,(\mathbf{r}\times\mathbf{v})\,dV
+                          = \int_{V_t}(\mathbf{r}\times\rho\,\mathbf{b})\,dV
+                          + \oint_S (\mathbf{r}\times\mathbf{t})\,dS
+                        \]
+                        <p class="mb-2">
+                          Donde \(\mathbf{r}=\mathbf{x}\) representa el vector de posición espacial de cada punto material respecto al origen \(O\).
+                          Utilizando el permutador o símbolo de permutación de Levi-Civita (\(e_{mnr}\)), la ecuación integral se expresa en notación indicial como:
+                        </p>
+                        \[
+                          \frac{d}{dt}\int_{V_t} e_{mnr}\, x_n\, v_r\,\rho\,dV
+                          = \int_{V_t} e_{mnr}\, x_n\,\rho\, b_r\,dV
+                          + \oint_S e_{mnr}\, x_n\, t_r\,dS
+                        \]
+                        <p class="mb-2"><strong class="text-white">Enfoque de volumen de control (\(V_c\)):</strong></p>
+                        \[
+                          \frac{\partial}{\partial t}\int_{V_c}(\mathbf{r}\times\rho\mathbf{v})\,dV
+                          + \oint_{S_c}(\mathbf{r}\times\rho\mathbf{v})(\mathbf{v}\cdot\mathbf{n})\,dS
+                          = \int_{V_c}(\mathbf{r}\times\rho\mathbf{f})\,dV
+                          + \oint_{S_c}(\mathbf{r}\times\mathbf{T}(\mathbf{n}))\,dS
+                        \]
+
+                        <h5 class="font-semibold text-white mb-2">B. Ecuaciones diferenciales y la simetría de esfuerzos</h5>
+                        <p class="mb-2">Para deducir la forma local diferencial del momento angular, se realizan las siguientes operaciones sobre la formulación indicial material:</p>
+                        <ul class="list-disc pl-5 space-y-3 mb-3">
+                          <li>Se sustituye la tracción superficial empleando el tensor de esfuerzos: \(t_r=T_{jr}n_j\).</li>
+                          <li>
+                            Se aplica el teorema de la divergencia generalizado para productos vectoriales, transformando la integral de superficie en una de volumen:
+                            \[
+                              \oint_S e_{mnr}\, x_n\, T_{jr}\, n_j\,dS
+                              = \int_V \frac{\partial}{\partial x_j}\bigl(e_{mnr}\, x_n\, T_{jr}\bigr)\,dV
+                            \]
+                          </li>
+                        </ul>
+                        <p class="mb-2">
+                          Desarrollando la derivada por la regla del producto y sabiendo que la derivada de la posición espacial es la Delta de Kronecker (\(\partial x_n/\partial x_j=\delta_{nj}\)):
+                        </p>
+                        \[
+                          \frac{\partial}{\partial x_j}\bigl(e_{mnr}\, x_n\, T_{jr}\bigr)
+                          = e_{mnr}\Bigl(\delta_{nj}T_{jr} + x_n\frac{\partial T_{jr}}{\partial x_j}\Bigr)
+                          = e_{mnr}T_{nr} + e_{mnr}\, x_n\frac{\partial T_{jr}}{\partial x_j}
+                        \]
+                        <p class="mb-2">
+                          Sustituyendo esto en la ecuación integral y simplificando con ayuda de la derivada temporal del momento material de la cantidad de movimiento, se obtiene:
+                        </p>
+                        \[
+                          \int_V e_{mnr}\Biggl[
+                            x_n\Bigl(\rho\frac{dv_r}{dt} - \rho b_r - \frac{\partial T_{jr}}{\partial x_j}\Bigr) + T_{nr}
+                          \Biggr] dV = 0
+                        \]
+                        <p class="mb-2">
+                          Puesto que el término entre paréntesis es idénticamente nulo por cumplirse la primera ley de movimiento de Cauchy (balance lineal),
+                          la expresión se simplifica a:
+                        </p>
+                        \[
+                          \int_V e_{mnr}\, T_{nr}\,dV = 0
+                        \]
+                        <p class="mb-2">Por la arbitrariedad del volumen material de integración, se requiere que en cada punto del medio continuo se satisfaga localmente que:</p>
+                        \[
+                          e_{mnr}\, T_{nr} = 0
+                        \]
+                        <p class="mb-2">Al desarrollar esta condición para cada componente coordenada del espacio tridimensional (\(m=1,2,3\)), se demuestran las siguientes relaciones de igualdad:</p>
+                        <ul class="list-disc pl-5 space-y-1 mb-3">
+                          <li>Para \(m=1\): \(T_{23}-T_{32}=0 \;\Longrightarrow\; T_{23}=T_{32}\).</li>
+                          <li>Para \(m=2\): \(T_{31}-T_{13}=0 \;\Longrightarrow\; T_{31}=T_{13}\).</li>
+                          <li>Para \(m=3\): \(T_{12}-T_{21}=0 \;\Longrightarrow\; T_{12}=T_{21}\).</li>
+                        </ul>
+                        <p class="mb-2">
+                          Este resultado constituye la <strong class="text-white">segunda ley de movimiento de Cauchy</strong>, la cual establece de forma rigurosa que,
+                          en ausencia de momentos de cuerpo distribuidos, el tensor de esfuerzos de Cauchy debe ser estrictamente simétrico:
+                        </p>
+                        \[
+                          T_{ij} = T_{ji} \quad\Longleftrightarrow\quad \mathbf{T} = \mathbf{T}^{\mathrm{T}}
+                        \]
+                      </div>
+
+                      <div>
+                        <h4 class="text-base font-semibold text-primary-300 mb-2">3. Clasificación de las acciones externas (fuerzas y momentos)</h4>
+                        <p class="mb-3">
+                          Las variaciones espaciales y temporales descritas en los balances lineal y angular están regidas por dos categorías de solicitaciones externas aplicadas:
+                        </p>
+                        <ul class="list-disc pl-5 space-y-3">
+                          <li>
+                            <strong class="text-white">Acciones de cuerpo</strong> (fuerzas y momentos másicos): son fuerzas generadas por campos externos (gravedad, inercia o electromagnetismo)
+                            que actúan de manera distribuida sobre cada unidad de masa (y por ende de volumen) del medio continuo.
+                            \[
+                              \mathbf{F}_c = \int_V \rho\,\mathbf{b}\,dV
+                            \]
+                            \[
+                              \mathbf{M}_c = \int_V (\mathbf{r}\times\rho\,\mathbf{b})\,dV
+                            \]
+                          </li>
+                          <li>
+                            <strong class="text-white">Acciones de superficie</strong> (fuerzas y momentos de contacto): son fuerzas mecánicas producidas por el contacto directo
+                            en las fronteras externas del medio continuo o sobre una interfaz imaginaria de corte.
+                            \[
+                              \mathbf{F}_s = \oint_S \mathbf{t}\,dS = \oint_S \mathbf{T}\,\mathbf{n}\,dS
+                            \]
+                            \[
+                              \mathbf{M}_s = \oint_S (\mathbf{r}\times\mathbf{t})\,dS
+                            \]
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
                   </div>
                   
                   <!-- Tema 4.2 -->
                   <div class="bg-gray-800/50 rounded-xl p-5 border border-gray-700">
                     <h3 class="text-lg font-semibold text-primary-400 mb-2">4.2 Principio de Conservación de la masa</h3>
-                    <p class="text-gray-400 text-sm">
+                    <p class="text-gray-400 text-sm mb-4">
                       Ecuación de continuidad: forma integral y local. Materialidad y transporte de masa en el medio continuo.
                     </p>
+
+                    <div class="teoria-block mt-2 pt-5 border-t border-gray-700 space-y-5 text-sm leading-relaxed text-gray-300">
+                      <p>
+                        El principio de conservación de la masa es una de las leyes fundamentales de la física que rige de manera general el comportamiento mecánico de cualquier medio continuo,
+                        siendo completamente independiente del tipo de material bajo análisis.
+                        Este principio establece de forma rigurosa que la masa de un sistema material o de cualquier porción aislada de este permanece constante a lo largo del tiempo,
+                        lo que matemáticamente se traduce en que la masa no se crea ni se destruye.
+                      </p>
+
+                      <div>
+                        <h4 class="text-base font-semibold text-primary-300 mb-2">1. Materialidad y transporte de masa en el medio continuo</h4>
+                        <p class="mb-2">
+                          En la modelación de un medio continuo, a cada partícula material de un cuerpo se le asocia una cantidad escalar positiva e invariante denominada masa.
+                          Cuando el medio no es homogéneo, la cantidad de materia dentro de un volumen elemental varía, por lo que se define la
+                          <strong class="text-white">densidad local de masa</strong> (\(\rho\)) como el límite de la relación masa-volumen a medida que el elemento diferencial se contrae a un punto en el espacio:
+                        </p>
+                        \[
+                          \rho(\mathbf{x},t) = \lim_{\Delta V\to 0}\frac{\Delta m}{\Delta V}
+                        \]
+                        <p class="mb-2">
+                          La masa total (\(M\)) contenida en una configuración con volumen de control (\(V\)) se calcula mediante la integración de la densidad sobre dicho dominio:
+                        </p>
+                        \[
+                          M = \int_V \rho\,dV
+                        \]
+
+                        <h5 class="font-semibold text-white mb-2">El transporte de masa (flujo convectivo)</h5>
+                        <p class="mb-2">
+                          Cuando el medio continuo experimenta movimiento con un campo de velocidades \(\mathbf{v}\), la materia cruza las fronteras espaciales del sistema.
+                          Para una superficie infinitesimal \(dS\), el volumen de material que fluye por unidad de tiempo a través de esta se describe como el volumen de un cilindro
+                          con base \(dS\) y altura de desplazamiento paralela al vector velocidad. El flujo total volumétrico por unidad de tiempo corresponde a la integral de superficie:
+                        </p>
+                        \[
+                          \text{Flujo de volumen} = \int_S (\mathbf{v}\cdot\mathbf{n})\,dS
+                        \]
+                        <p class="mb-2">Donde \(\mathbf{n}\) representa el vector normal exterior unitario de la superficie.</p>
+                        <p class="mb-2">
+                          Al multiplicar esta cantidad por la densidad local \(\rho(\mathbf{x},t)\), se obtiene el flujo de transporte de masa (o convectivo) neto
+                          que atraviesa la superficie de control por unidad de tiempo:
+                        </p>
+                        \[
+                          \text{Flujo de masa} = \int_S \rho(\mathbf{v}\cdot\mathbf{n})\,dS
+                        \]
+                      </div>
+
+                      <div>
+                        <h4 class="text-base font-semibold text-primary-300 mb-2">2. Formulación integral del principio</h4>
+                        <p class="mb-3">
+                          El principio de conservación de masa puede formularse en forma integral bajo dos enfoques geométricos distintos según el sistema de referencia empleado:
+                        </p>
+
+                        <h5 class="font-semibold text-white mb-2">A. Enfoque de volumen de control (euleriano / sistema fijo)</h5>
+                        <p class="mb-2">
+                          Se define un volumen de control fijo en el espacio \(V_c\) delimitado por una superficie de control \(S_c\).
+                          Bajo este esquema, cualquier cambio temporal de la masa contenida en el interior del volumen debe ser consecuencia exclusiva del flujo neto de materia
+                          a través de la superficie de frontera. Debido a que el flujo entrante posee una dirección de velocidad opuesta al vector normal unitario exterior \(\mathbf{n}\),
+                          la integral de superficie se escribe con signo negativo:
+                        </p>
+                        \[
+                          \int_{V_c}\frac{\partial\rho}{\partial t}\,dV = -\oint_{S_c}\rho(\mathbf{v}\cdot\mathbf{n})\,dS
+                        \]
+
+                        <h5 class="font-semibold text-white mb-2">B. Enfoque de volumen material (lagrangiano / sistema móvil)</h5>
+                        <p class="mb-2">
+                          Se analiza un volumen material \(V_t\) compuesto por las mismas partículas físicas, cuyas fronteras se deforman y desplazan con la velocidad del medio continuo.
+                          Dado que este volumen contiene siempre la misma cantidad de masa, su rapidez de cambio con respecto al tiempo debe ser idénticamente nula:
+                        </p>
+                        \[
+                          \frac{dM(t)}{dt} = \frac{d}{dt}\int_{V_t}\rho(\mathbf{x},t)\,dV = 0
+                        \]
+                        <p>
+                          (O bien expresada como \(\dfrac{D}{Dt}\displaystyle\int_V\rho\,dV=0\) en la notación de la derivada material).
+                        </p>
+                      </div>
+
+                      <div>
+                        <h4 class="text-base font-semibold text-primary-300 mb-2">3. Formulación local (ecuación de continuidad)</h4>
+                        <p class="mb-3">
+                          Para obtener las ecuaciones de campo diferenciales válidas de forma puntual dentro del medio continuo,
+                          se transforman las expresiones integrales anteriores empleando herramientas de cálculo vectorial:
+                        </p>
+
+                        <h5 class="font-semibold text-white mb-2">A. Forma espacial o euleriana (referencia fija)</h5>
+                        <p class="mb-2">
+                          Aplicando el teorema de la divergencia (teorema de Gauss), se convierte la integral de flujo sobre la superficie cerrada en una integral volumétrica:
+                        </p>
+                        \[
+                          \oint_{S_c}\rho(\mathbf{v}\cdot\mathbf{n})\,dS = \int_{V_c}\mathrm{div}(\rho\mathbf{v})\,dV
+                        \]
+                        <p class="mb-2">Sustituyendo esto en la formulación de volumen de control e igualando a cero se obtiene:</p>
+                        \[
+                          \int_{V_c}\Biggl[\frac{\partial\rho}{\partial t} + \mathrm{div}(\rho\mathbf{v})\Biggr] dV = 0
+                        \]
+                        <p class="mb-2">
+                          Como esta condición debe cumplirse para cualquier volumen de control arbitrario \(V_c\), independientemente de su tamaño,
+                          la única forma de garantizar la igualdad es que el integrando sea nulo localmente en cada punto del campo.
+                          Esto define la ecuación de continuidad local en forma espacial:
+                        </p>
+                        \[
+                          \frac{\partial\rho}{\partial t} + \mathrm{div}(\rho\mathbf{v}) = 0
+                        \]
+                        <p class="mb-4">o en notación indicial:</p>
+                        \[
+                          \frac{\partial\rho}{\partial t} + \frac{\partial(\rho v_i)}{\partial x_i} = 0
+                        \]
+
+                        <h5 class="font-semibold text-white mb-2">B. Forma material o lagrangiana (referencia móvil)</h5>
+                        <p class="mb-2">
+                          Al aplicar la identidad de la divergencia, el término espacial de transporte de masa se expande como \(\mathrm{div}(\rho\mathbf{v})=\mathrm{grad}\,\rho\cdot\mathbf{v}+\rho\,\mathrm{div}(\mathbf{v})\).
+                          Al sustituir este desarrollo en la ecuación espacial, se obtiene:
+                        </p>
+                        \[
+                          \frac{\partial\rho}{\partial t} + \mathrm{grad}\,\rho\cdot\mathbf{v} + \rho\,\mathrm{div}(\mathbf{v}) = 0
+                        \]
+                        <p class="mb-2">
+                          Sabiendo que la derivada temporal local sumada al producto escalar del gradiente espacial por la velocidad representa la derivada material total de la densidad respecto al tiempo
+                          (\(d\rho/dt\) o \(D\rho/Dt\)):
+                        </p>
+                        \[
+                          \frac{d\rho}{dt} = \frac{\partial\rho}{\partial t} + \mathrm{grad}\,\rho\cdot\mathbf{v}
+                        \]
+                        <p class="mb-2">Se establece la ecuación de continuidad local en forma material:</p>
+                        \[
+                          \frac{d\rho}{dt} + \rho\,\mathrm{div}(\mathbf{v}) = 0
+                          \qquad\text{o bien}\qquad
+                          \frac{D\rho}{Dt} + \rho\,\mathrm{div}(\mathbf{v}) = 0
+                        \]
+                        <p>
+                          <strong class="text-white">Significado físico de la divergencia:</strong> la ecuación de continuidad material demuestra de manera precisa que la variación temporal
+                          de la densidad de una partícula material es proporcional a la divergencia de su campo de velocidades
+                          (\(\dfrac{d\rho}{dt}=-\rho\,\mathrm{div}(\mathbf{v})\)).
+                          Si la divergencia en un punto es negativa (convergencia de flujo), se produce un incremento en la concentración local de masa y la densidad aumenta;
+                          si la divergencia es positiva, hay expansión espacial y la densidad disminuye.
+                        </p>
+                      </div>
+
+                      <div>
+                        <h4 class="text-base font-semibold text-primary-300 mb-2">4. Casos particulares de la ecuación de continuidad</h4>
+
+                        <h5 class="font-semibold text-white mb-2">A. Condición de incompresibilidad</h5>
+                        <p class="mb-2">
+                          Si el medio continuo bajo análisis se considera un material incompresible (idealización común para la mayoría de los fluidos líquidos),
+                          la densidad en el entorno de cualquier partícula se mantiene constante durante el movimiento físico
+                          (\(d\rho/dt=0\) o \(D\rho/Dt=0\)).
+                          Bajo esta restricción cinemática, la ecuación de continuidad se reduce a la condición de incompresibilidad:
+                        </p>
+                        \[
+                          \mathrm{div}(\mathbf{v}) = 0
+                          \qquad\text{o bien}\qquad
+                          \frac{\partial v_i}{\partial x_i} = 0
+                        \]
+
+                        <h5 class="font-semibold text-white mb-2">B. Ecuación de continuidad en la configuración referencial (forma material local)</h5>
+                        <p class="mb-2">
+                          La conservación de la masa también puede expresarse comparando directamente la densidad local en la configuración de referencia inicial,
+                          \(\rho_0(\mathbf{X})\) en el instante de tiempo de referencia \(t=0\), con la densidad actual \(\rho(\mathbf{x},t)\) en la configuración espacial o actualizada.
+                        </p>
+                        <p class="mb-2">
+                          La relación volumétrica local entre ambas configuraciones está gobernada por el jacobiano del movimiento \(J(\mathbf{X},t)\),
+                          el cual equivale matemáticamente al determinante del gradiente de deformación (\(J=\det(\mathbf{F})>0\)).
+                          A partir de este mapeo geométrico, la forma local material de la conservación de masa se expresa como:
+                        </p>
+                        \[
+                          \rho_0(\mathbf{X}) = \rho(\mathbf{x},t)\, J(\mathbf{X},t)
+                          \qquad\text{o de forma equivalente}\qquad
+                          \rho J = \rho_0
+                        \]
+                        <p class="mb-2">
+                          Derivando esta expresión material respecto al tiempo, se constata que el cambio temporal del producto de la densidad por el jacobiano es nulo,
+                          validando que la masa no varía durante el proceso de deformación del cuerpo:
+                        </p>
+                        \[
+                          \frac{D(\rho J)}{Dt} = 0
+                        \]
+                      </div>
+                    </div>
                   </div>
                   
                   <!-- Tema 4.3 -->
                   <div class="bg-gray-800/50 rounded-xl p-5 border border-gray-700">
                     <h3 class="text-lg font-semibold text-primary-400 mb-2">4.3 Principio de Conservación de la energía</h3>
-                    <p class="text-gray-400 text-sm">
+                    <p class="text-gray-400 text-sm mb-4">
                       Balance de energía interna y cinética: trabajo, calor y potencia. Relación con esfuerzos y deformaciones.
                     </p>
+
+                    <div class="teoria-block mt-2 pt-5 border-t border-gray-700 space-y-5 text-sm leading-relaxed text-gray-300">
+                      <p>
+                        El principio de conservación de la energía (también conocido como el primer principio de la termodinámica) representa una de las leyes fundamentales
+                        que rigen el comportamiento de cualquier medio continuo, independientemente de su constitución material.
+                        Este principio establece de manera rigurosa que la energía no se crea ni se destruye, solo se transforma.
+                      </p>
+                      <p>
+                        En la Mecánica de Medios Continuos, el balance se describe analizando cómo el trabajo mecánico de las fuerzas externas y el calor suministrado al sistema
+                        se traducen en variaciones de la energía cinética (asociada al movimiento macroscópico) y la energía interna (asociada a los campos de deformación y temperatura).
+                      </p>
+
+                      <div>
+                        <h4 class="text-base font-semibold text-primary-300 mb-2">1. Definiciones de las energías en el medio continuo</h4>
+                        <p class="mb-3">
+                          Para un volumen material de control \(V_t\) delimitado por una superficie \(S_t\), se definen las siguientes variables de estado energético:
+                        </p>
+                        <ul class="list-disc pl-5 space-y-3">
+                          <li>
+                            <strong class="text-white">Energía cinética (\(K\)):</strong> es la energía acumulada debido al movimiento macroscópico y al campo de velocidades \(\mathbf{v}\) de las partículas materiales:
+                            \[
+                              K = \int_{V_t}\tfrac{1}{2}\rho\,(\mathbf{v}\cdot\mathbf{v})\,dV
+                            \]
+                            Donde \(\rho\) representa la densidad local de masa.
+                          </li>
+                          <li>
+                            <strong class="text-white">Energía interna (\(U\)):</strong> representa la energía almacenada a nivel microscópico (atómico y molecular),
+                            la cual incluye la energía elástica de deformación y la energía térmica asociada al movimiento molecular aleatorio.
+                            Se cuantifica mediante la energía interna específica (por unidad de masa), denotada como \(u\) (o \(\epsilon\)):
+                            \[
+                              U = \int_{V_t}\rho\, u\,dV
+                            \]
+                          </li>
+                        </ul>
+                      </div>
+
+                      <div>
+                        <h4 class="text-base font-semibold text-primary-300 mb-2">2. Balances de potencia suministrada (trabajo y calor)</h4>
+                        <p class="mb-3">
+                          El medio continuo interactúa con su entorno absorbiendo energía en forma de potencia mecánica (trabajo por unidad de tiempo)
+                          y potencia calórica (transferencia de calor por unidad de tiempo):
+                        </p>
+
+                        <h5 class="font-semibold text-white mb-2">A. Potencia mecánica entrante (\(P_e\) o \(\dot{W}\))</h5>
+                        <p class="mb-2">Representa la rapidez con la que las fuerzas externas realizan trabajo sobre el sistema. Se compone de dos contribuciones:</p>
+                        <ul class="list-disc pl-5 space-y-3 mb-3">
+                          <li>
+                            <strong class="text-white">Fuerzas de cuerpo:</strong> trabajo realizado por campos externos (como la gravedad o la inercia)
+                            que actúan sobre la masa del volumen con aceleración material \(\mathbf{b}\):
+                            \[
+                              P_{\mathrm{cuerpo}} = \int_{V_t}\rho\,\mathbf{b}\cdot\mathbf{v}\,dV
+                            \]
+                          </li>
+                          <li>
+                            <strong class="text-white">Fuerzas de superficie:</strong> trabajo mecánico efectuado por el vector de esfuerzos o tracciones de contacto \(\mathbf{t}\)
+                            que actúa sobre la frontera \(S_t\):
+                            \[
+                              P_{\mathrm{superficie}} = \oint_{S_t}\mathbf{t}\cdot\mathbf{v}\,dS
+                            \]
+                          </li>
+                        </ul>
+                        <p class="mb-2">La potencia mecánica neta introducida al sistema es:</p>
+                        \[
+                          P_e = \int_{V_t}\rho\,\mathbf{b}\cdot\mathbf{v}\,dV + \oint_{S_t}\mathbf{t}\cdot\mathbf{v}\,dS
+                        \]
+
+                        <h5 class="font-semibold text-white mb-2">B. Potencia calórica entrante (\(Q_e\) o \(\dot{Q}\))</h5>
+                        <p class="mb-2">Representa la tasa de energía térmica que el sistema intercambia con el entorno mediante dos mecanismos:</p>
+                        <ul class="list-disc pl-5 space-y-3 mb-3">
+                          <li>
+                            <strong class="text-white">Conducción térmica de superficie:</strong> regulada por el vector de flujo de calor \(\mathbf{q}\) que atraviesa la superficie de control.
+                            El vector normal exterior unitario es \(\mathbf{n}\); el signo negativo denota energía térmica que entra al sistema:
+                            \[
+                              Q_{\mathrm{cond}} = -\oint_{S_t}\mathbf{q}\cdot\mathbf{n}\,dS
+                            \]
+                          </li>
+                          <li>
+                            <strong class="text-white">Fuentes de calor internas:</strong> calor generado volumétricamente (por radiación, reacciones químicas, etc.)
+                            con una tasa específica \(r\) (o \(h\)) por unidad de masa:
+                            \[
+                              Q_{\mathrm{fuente}} = \int_{V_t}\rho\, r\,dV
+                            \]
+                          </li>
+                        </ul>
+                        <p class="mb-2">La potencia calórica neta es:</p>
+                        \[
+                          Q_e = -\oint_{S_t}\mathbf{q}\cdot\mathbf{n}\,dS + \int_{V_t}\rho\, r\,dV
+                        \]
+                      </div>
+
+                      <div>
+                        <h4 class="text-base font-semibold text-primary-300 mb-2">3. Formulación integral del principio (ecuación global)</h4>
+                        <p class="mb-2">
+                          La primera ley de la termodinámica establece que la rapidez de cambio de la energía total del sistema (cinética más interna)
+                          es idéntica a la suma de la potencia mecánica y calórica suministradas desde el exterior:
+                        </p>
+                        \[
+                          \frac{d}{dt}\int_{V_t}\rho\Bigl(\tfrac{1}{2}v^2 + u\Bigr)\,dV
+                          = \int_{V_t}\rho\,\mathbf{b}\cdot\mathbf{v}\,dV
+                          + \oint_{S_t}\mathbf{t}\cdot\mathbf{v}\,dS
+                          - \oint_{S_t}\mathbf{q}\cdot\mathbf{n}\,dS
+                          + \int_{V_t}\rho\, r\,dV
+                        \]
+                      </div>
+
+                      <div>
+                        <h4 class="text-base font-semibold text-primary-300 mb-2">4. Formulación local o diferencial de la energía</h4>
+                        <p class="mb-3">
+                          Para deducir las ecuaciones de campo locales válidas en cada punto del medio continuo, se transforman las integrales de superficie en integrales de volumen
+                          mediante el teorema de la divergencia de Gauss.
+                        </p>
+
+                        <h5 class="font-semibold text-white mb-2">El teorema de las fuerzas vivas (balance de energía cinética)</h5>
+                        <p class="mb-2">
+                          Al sustituir el vector de esfuerzos empleando la relación fundamental de Cauchy (\(t_i=T_{ji}n_j\))
+                          y aplicar el teorema de la divergencia al término de potencia de superficie:
+                        </p>
+                        \[
+                          \oint_{S_t}(\mathbf{T}\mathbf{n})\cdot\mathbf{v}\,dS
+                          = \int_{V_t}\mathrm{div}(\mathbf{T}\mathbf{v})\,dV
+                          = \int_{V_t}\bigl[\mathrm{div}(\mathbf{T})\cdot\mathbf{v} + \mathbf{T}:\mathbf{L}\bigr]\,dV
+                        \]
+                        <p class="mb-2">Donde \(\mathbf{L}=\nabla\mathbf{v}\) representa el gradiente espacial de velocidades.</p>
+                        <p class="mb-2">
+                          Dado que el tensor de esfuerzos de Cauchy \(\mathbf{T}\) es estrictamente simétrico (debido al balance del momento angular),
+                          su producto doblemente contraído con el gradiente de velocidades \(\mathbf{L}\) se reduce al producto contraído con su parte simétrica,
+                          la cual corresponde al tensor velocidad de deformación (\(\mathbf{D}\)):
+                        </p>
+                        \[
+                          \mathbf{T}:\mathbf{L} = \mathbf{T}:\mathbf{D}
+                        \]
+                        <p class="mb-2">Donde \(\mathbf{T}:\mathbf{D}\) representa físicamente la potencia tensional o potencia de deformación por unidad de volumen.</p>
+                        <p class="mb-2">
+                          Utilizando la primera ley de movimiento de Cauchy (\(\rho\,\dot{\mathbf{v}}=\rho\mathbf{b}+\mathrm{div}\,\mathbf{T}\))
+                          y multiplicando escalarmente por la velocidad, se obtiene el teorema de las fuerzas vivas:
+                        </p>
+                        \[
+                          P_e = \frac{d}{dt}\int_{V_t}\tfrac{1}{2}\rho v^2\,dV + \int_{V_t}\mathbf{T}:\mathbf{D}\,dV
+                          = \dot{K} + \int_{V_t}\mathbf{T}:\mathbf{D}\,dV
+                        \]
+                        <p class="mb-4">
+                          Este teorema establece mecánicamente que la potencia suministrada por las fuerzas exteriores se destina a variar la energía cinética global
+                          y a realizar trabajo de deformación interna (potencia tensional).
+                        </p>
+
+                        <h5 class="font-semibold text-white mb-2">La ecuación local de balance de la energía interna</h5>
+                        <p class="mb-2">
+                          Sustituyendo el teorema de las fuerzas vivas y aplicando la divergencia al vector de flujo calorífico
+                          (\(\oint_{S_t}\mathbf{q}\cdot\mathbf{n}\,dS=\int_{V_t}\mathrm{div}\,\mathbf{q}\,dV\))
+                          en la ecuación global de conservación, se obtiene la expresión integrada sobre un volumen material arbitrario:
+                        </p>
+                        \[
+                          \int_{V_t}\Biggl[\rho\frac{du}{dt} - \mathbf{T}:\mathbf{D} + \mathrm{div}\,\mathbf{q} - \rho r\Biggr] dV = 0
+                        \]
+                        <p class="mb-2">
+                          Por la arbitrariedad de \(V_t\), el integrando debe anularse puntualmente, lo que define la ecuación diferencial local de conservación de la energía:
+                        </p>
+                        \[
+                          \rho\frac{du}{dt} = \mathbf{T}:\mathbf{D} - \mathrm{div}\,\mathbf{q} + \rho r
+                          \quad\Longleftrightarrow\quad
+                          \rho\,\dot{u} = T_{ij}D_{ij} - q_{i,i} + \rho r
+                        \]
+                        <p>
+                          Esta ecuación de campo rige que la rapidez de cambio de la energía interna de una partícula material está determinada por la potencia de deformación mecánica
+                          (\(T_{ij}D_{ij}\)) y por el flujo neto de calor recibido por conducción y radiación.
+                        </p>
+                      </div>
+                    </div>
                   </div>
                   
                 </div>
@@ -261,5 +846,20 @@
         localStorage.setItem('theme', isDark ? 'dark' : 'light');
       });
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+    <script>
+      if (typeof renderMathInElement === 'function') {
+        renderMathInElement(document.body, {
+          delimiters: [
+            { left: '\\[', right: '\\]', display: true },
+            { left: '\\(', right: '\\)', display: false }
+          ],
+          throwOnError: false
+        });
+      }
+    </script>
+    <script src="https://cdn.botpress.cloud/webchat/v3.7/inject.js"></script>
+    <script src="https://files.bpcontent.cloud/2026/08/07/20/20260807200306-50CKT62T.js" defer></script>
   </body>
 </html>

@@ -1,0 +1,11 @@
+node_modules
+.astro
+src
+.github
+.vscode
+public
+dist
+.git
+package-lock.json
+docs/videos/laboratorio-resistencia-materiales-original.mp4.bak
+**/*.bak

@@ -1,0 +1,268 @@
+.pinned-logos {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100svh;
+  background: #1a1a1a;
+  color: var(--ct-black, #111);
+  /* no overflow:hidden aquí — rompe pin de ScrollTrigger */
+  z-index: 2;
+}
+
+.dark .pinned-logos {
+  background: #0b0b0b;
+  color: #ececec;
+}
+
+.pinned-logos__stage {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  overflow: hidden;
+}
+
+.pinned-logos__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.pinned-logos__text {
+  position: relative;
+  z-index: 2;
+  max-width: min(18ch, 92vw);
+  text-align: center;
+  font-family: var(--ct-serif, "Playfair Display", Georgia, serif);
+  font-size: clamp(1.75rem, 4.5vw, 3.25rem);
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: #111;
+}
+
+.pinned-logos__text .word {
+  display: inline-block;
+  margin-right: 0.28em;
+  opacity: 0;
+  filter: blur(12px);
+  will-change: opacity, filter, transform;
+  -webkit-text-stroke: 0.5px rgba(255, 255, 255, 0.95);
+  text-shadow:
+    0 0 2px rgba(255, 255, 255, 1),
+    0 0 8px rgba(255, 255, 255, 0.95),
+    0 0 16px rgba(255, 255, 255, 0.85),
+    0 0 28px rgba(255, 255, 255, 0.65),
+    0 0 44px rgba(255, 255, 255, 0.45);
+}
+
+.pinned-logos__text .word:last-child {
+  margin-right: 0;
+}
+
+.pinned-logo {
+  position: absolute;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  width: clamp(4.5rem, 9vw, 6.5rem);
+  height: clamp(4.5rem, 9vw, 6.5rem);
+  padding: 0.65rem;
+  border-radius: 18px;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.35);
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.25),
+    0 0 6px 1px rgba(0, 0, 0, 0.35),
+    0 10px 22px rgba(0, 0, 0, 0.45),
+    0 18px 40px rgba(0, 0, 0, 0.35);
+  opacity: 0;
+  will-change: transform, opacity;
+  pointer-events: none;
+  user-select: none;
+}
+
+a.pinned-logo.pinned-logo--link {
+  pointer-events: auto;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+}
+
+a.pinned-logo.pinned-logo--link:focus-visible {
+  outline: 2px solid rgba(0, 0, 0, 0.65);
+  outline-offset: 3px;
+}
+
+.dark .pinned-logo {
+  background-color: #1c1c1c;
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.5),
+    0 0 7px 1px rgba(0, 0, 0, 0.55),
+    0 12px 26px rgba(0, 0, 0, 0.7),
+    0 22px 48px rgba(0, 0, 0, 0.55);
+}
+
+.pinned-logo__icon {
+  width: 1.75rem;
+  height: 1.75rem;
+  color: #8e6bff;
+}
+
+.pinned-logo__img {
+  display: none;
+}
+
+.pinned-logo__photo {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: inherit;
+  pointer-events: none;
+  display: block;
+}
+
+/* Fichas con foto a todo el área (background-image — compatible con GSAP) */
+.pinned-logo.logo1,
+.pinned-logo.logo2,
+.pinned-logo.logo3,
+.pinned-logo.logo4,
+.pinned-logo.logo5,
+.pinned-logo.logo6,
+.pinned-logo.logo7,
+.pinned-logo.logo8 {
+  width: clamp(6.75rem, 13vw, 9rem);
+  height: clamp(6.75rem, 13vw, 9rem);
+  padding: 0;
+  overflow: visible;
+  gap: 0;
+  background-color: #f3f3f3;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-clip: padding-box;
+}
+
+.pinned-logo.logo1 { background-image: url('../images/Tensor.jpg') !important; }
+.pinned-logo.logo2 { background-image: url('../images/Continuidad.jpg') !important; }
+.pinned-logo.logo3 { background-image: url('../images/Deformacion.jpg') !important; }
+.pinned-logo.logo4 { background-image: url('../images/Elasticidad.jpg') !important; }
+.pinned-logo.logo5 { background-image: url('../images/Cauchy.png') !important; }
+.pinned-logo.logo6 { background-image: url('../images/Conservacion.jpg') !important; }
+.pinned-logo.logo7 {
+  background-image: url('../images/Fundamento.jpg') !important;
+  background-size: 165%;
+  background-position: center 40%;
+}
+.pinned-logo.logo8 {
+  background-image: url('../images/esfuerzos-card.png') !important;
+  background-color: #fff;
+}
+
+.pinned-logo.logo1 .pinned-logo__label,
+.pinned-logo.logo2 .pinned-logo__label,
+.pinned-logo.logo3 .pinned-logo__label,
+.pinned-logo.logo4 .pinned-logo__label,
+.pinned-logo.logo5 .pinned-logo__label,
+.pinned-logo.logo6 .pinned-logo__label,
+.pinned-logo.logo7 .pinned-logo__label,
+.pinned-logo.logo8 .pinned-logo__label {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  width: 100%;
+  margin: 0;
+  padding: 1.1rem 0.35rem 0.45rem;
+  background: linear-gradient(transparent, rgba(255, 255, 255, 0.92));
+  color: #111;
+  border-radius: 0 0 18px 18px;
+}
+
+.pinned-logo__label {
+  font-family: var(--ct-sans, "DM Sans", system-ui, sans-serif);
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 1.2;
+  color: var(--ct-gray, #6f6f6f);
+}
+
+.dark .pinned-logo__label {
+  color: #a3a3a3;
+}
+
+.dark .pinned-logo.logo1 .pinned-logo__label,
+.dark .pinned-logo.logo2 .pinned-logo__label,
+.dark .pinned-logo.logo3 .pinned-logo__label,
+.dark .pinned-logo.logo4 .pinned-logo__label,
+.dark .pinned-logo.logo5 .pinned-logo__label,
+.dark .pinned-logo.logo6 .pinned-logo__label,
+.dark .pinned-logo.logo7 .pinned-logo__label,
+.dark .pinned-logo.logo8 .pinned-logo__label {
+  color: #111;
+}
+
+/* Posiciones desktop */
+.pinned-logo.logo1 { top: 12%; left: 10%; }
+.pinned-logo.logo2 { top: 10%; right: 14%; }
+.pinned-logo.logo3 { top: 38%; left: 4%; }
+.pinned-logo.logo4 { top: 36%; right: 6%; }
+.pinned-logo.logo5 { bottom: 28%; left: 12%; }
+.pinned-logo.logo6 { bottom: 26%; right: 12%; }
+.pinned-logo.logo7 { bottom: 10%; left: 28%; }
+.pinned-logo.logo8 { bottom: 10%; right: 28%; }
+
+@media (max-width: 767px) {
+  .pinned-logos__text {
+    max-width: 16ch;
+    font-size: clamp(1.45rem, 7vw, 2rem);
+  }
+
+  .pinned-logo {
+    width: 4.25rem;
+    height: 4.25rem;
+    border-radius: 14px;
+  }
+
+  .pinned-logo.logo3,
+  .pinned-logo.logo4,
+  .pinned-logo.logo5,
+  .pinned-logo.logo6 {
+    display: none;
+  }
+
+  .pinned-logo.logo1 { top: 14%; left: 8%; }
+  .pinned-logo.logo2 { top: 14%; right: 8%; }
+  .pinned-logo.logo7 { bottom: 16%; left: 14%; }
+  .pinned-logo.logo8 { bottom: 16%; right: 14%; }
+}
+
+/* Sin prefers-reduced-motion que deje todo visible y cancele el efecto:
+   el JS anima siempre; si GSAP no carga, el contenido permanece oculto
+   hasta .is-pinned-fallback */
+.pinned-logos.is-pinned-fallback .pinned-logos__text .word,
+.pinned-logos.is-pinned-fallback .pinned-logo {
+  opacity: 1;
+  filter: none;
+  transform: none;
+}

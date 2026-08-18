@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Referencia — efecto logos pinned (GSAP)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/pinned-logos.css" />
+  <style>
+    :root {
+      --ct-black: #111;
+      --ct-gray: #6f6f6f;
+      --ct-bg-soft: #f8f7f5;
+      --ct-line: #e5e5e5;
+      --ct-serif: "Playfair Display", Georgia, serif;
+      --ct-sans: "DM Sans", system-ui, sans-serif;
+    }
+    body { margin: 0; font-family: var(--ct-sans); background: #fff; color: #111; }
+    .demo-spacer {
+      min-height: 60vh;
+      display: grid;
+      place-items: center;
+      padding: 2rem;
+      color: #6f6f6f;
+      text-align: center;
+    }
+    .demo-spacer strong { display: block; color: #111; margin-bottom: 0.5rem; }
+  </style>
+</head>
+<body>
+  <div class="demo-spacer">
+    <div>
+      <strong>Demo — efecto pinned</strong>
+      Desplázate hacia abajo para ver el pin + revelado de palabras y logos.
+    </div>
+  </div>
+
+  <section class="pinned-logos" data-pinned-logos aria-label="Temas del curso">
+    <div class="pinned-logos__stage">
+      <p class="pinned-logos__text">
+        <span class="word">Aplicado</span>
+        <span class="word">por</span>
+        <span class="word">ingenieros</span>
+        <span class="word">que</span>
+        <span class="word">valoran</span>
+        <span class="word">el</span>
+        <span class="word">rigor</span>
+        <span class="word">matemático</span>
+        <span class="word">y</span>
+        <span class="word">físico.</span>
+      </p>
+      <div class="pinned-logo logo1"><span class="pinned-logo__label">Tensores</span></div>
+      <div class="pinned-logo logo2"><span class="pinned-logo__label">Esfuerzos</span></div>
+      <div class="pinned-logo logo3"><span class="pinned-logo__label">Deformación</span></div>
+      <div class="pinned-logo logo4"><span class="pinned-logo__label">Elasticidad</span></div>
+      <div class="pinned-logo logo5"><span class="pinned-logo__label">Continuidad</span></div>
+      <div class="pinned-logo logo6"><span class="pinned-logo__label">Cauchy</span></div>
+      <div class="pinned-logo logo7 logo-final"><span class="pinned-logo__label">Lagrange</span></div>
+      <div class="pinned-logo logo8 logo-final"><span class="pinned-logo__label">Constitutivas</span></div>
+    </div>
+  </section>
+
+  <div class="demo-spacer">
+    <div>
+      <strong>Siguiente sección</strong>
+      Aquí irían “Nuestros módulos” / features.
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="js/pinned-logos.js"></script>
+</body>
+</html>

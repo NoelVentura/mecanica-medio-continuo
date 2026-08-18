@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#000000" />
+  <title>Mecánica del Medio Continuo | Curso de Ingeniería</title>
+  <meta name="description" content="Curso completo de Mecánica del Medio Continuo: tensores, esfuerzos, deformación y modelos constitutivos. Teoría, ejemplos y aplicaciones." />
+
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/geist@1.3.1/dist/fonts/geist-sans/style.min.css" />
+  <link rel="stylesheet" href="css/lia-style.css" />
+</head>
+<body class="lia-body">
+  <a class="lia-sr-only" href="#main">Saltar al contenido</a>
+
+  <!-- ========== HEADER ========== -->
+  <header class="lia-header" id="site-header" data-lia-header>
+    <div class="lia-header__inner">
+      <a class="lia-logo" href="lia-home.html" aria-label="Inicio — Mecánica del Medio Continuo">
+        <span class="lia-logo__mark">MMC</span>
+        <span class="lia-logo__sub">Medio Continuo</span>
+      </a>
+
+      <nav class="lia-nav-desktop" aria-label="Principal">
+        <a href="#hero">Inicio</a>
+        <a href="#unidades">Unidades</a>
+        <a href="#temario">Temario</a>
+        <a href="Libros de Apoyo.html">Libros</a>
+        <a href="Contacto.html">Contacto</a>
+      </nav>
+
+      <div class="lia-header__actions">
+        <button type="button" class="lia-menu-toggle" data-lia-menu-open aria-expanded="false" aria-controls="lia-drawer">
+          Menú <span class="lia-menu-toggle__plus" aria-hidden="true">+</span>
+        </button>
+        <a class="lia-btn lia-btn--ghost" href="Inscribir curso.html">Inscribirme</a>
+        <button type="button" class="lia-btn--icon" data-lia-theme title="Cambiar tema" aria-label="Cambiar tema claro/oscuro">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+            <path d="M21 14.5A8.5 8.5 0 1 1 9.5 3 7 7 0 0 0 21 14.5z" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile drawer -->
+  <div class="lia-drawer" id="lia-drawer" data-lia-drawer aria-hidden="true">
+    <div class="lia-drawer__backdrop" data-lia-menu-close></div>
+    <div class="lia-drawer__panel" role="dialog" aria-label="Menú">
+      <div class="lia-drawer__head">
+        <span class="lia-logo__mark">MMC</span>
+        <button type="button" class="lia-btn--icon" data-lia-menu-close aria-label="Cerrar menú">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+            <path d="M6 6l12 12M18 6L6 18" />
+          </svg>
+        </button>
+      </div>
+      <nav class="lia-drawer__nav">
+        <a href="#hero" data-lia-menu-close>Inicio</a>
+        <a href="#unidades" data-lia-menu-close>Unidades</a>
+        <a href="#temario" data-lia-menu-close>Temario</a>
+        <a href="Libros de Apoyo.html">Libros de apoyo</a>
+        <a href="Contacto.html">Contacto</a>
+        <a href="Inscribir curso.html">Inscribirme al curso</a>
+      </nav>
+    </div>
+  </div>
+
+  <main id="main">
+    <!-- ========== HERO ========== -->
+    <section class="lia-hero" id="hero">
+      <div class="lia-atmosphere" aria-hidden="true"></div>
+
+      <div class="lia-hero__grid">
+        <div class="lia-hero__copy lia-reveal is-visible">
+          <p class="lia-hero__eyebrow">Curso de ingeniería · Instituto Tecnológico de Tepic</p>
+          <h1 class="lia-hero__title">
+            Domina la <span>Mecánica del Medio Continuo</span>
+          </h1>
+          <p class="lia-hero__lead">
+            Tensores, esfuerzos, deformación y modelos constitutivos — de la teoría
+            al cálculo aplicado, con ejemplos, ejercicios y material de apoyo.
+          </p>
+
+          <div class="lia-hero__ctas">
+            <a class="lia-btn lia-btn--fill" href="Inscribir curso.html">Inscribirme al curso</a>
+            <a class="lia-btn lia-btn--ghost" href="pdf/ICE.pdf" target="_blank" rel="noopener">Ver temario</a>
+          </div>
+
+          <div class="lia-prompt" data-lia-prompt>
+            <div class="lia-prompt__chips" role="list">
+              <button type="button" class="lia-chip is-active" data-chip="Esfuerzos" role="listitem">Esfuerzos</button>
+              <button type="button" class="lia-chip" data-chip="Deformación" role="listitem">Deformación</button>
+              <button type="button" class="lia-chip" data-chip="Tensores" role="listitem">Tensores</button>
+              <button type="button" class="lia-chip" data-chip="Constitutivas" role="listitem">Constitutivas</button>
+            </div>
+            <form class="lia-prompt__row" data-lia-prompt-form>
+              <label class="lia-sr-only" for="lia-ask">Consulta sobre el curso</label>
+              <input
+                id="lia-ask"
+                class="lia-prompt__input"
+                type="text"
+                name="q"
+                placeholder="Pregunta sobre el curso…"
+                autocomplete="off"
+              />
+              <button type="button" class="lia-prompt__mic" data-lia-mic title="Consulta por voz (simulada)" aria-label="Activar micrófono simulado">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+                  <rect x="9" y="2" width="6" height="11" rx="3" />
+                  <path d="M5 11a7 7 0 0 0 14 0M12 18v4M8 22h8" />
+                </svg>
+              </button>
+              <button type="submit" class="lia-prompt__send" aria-label="Enviar consulta">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M5 12h14M13 5l7 7-7 7" />
+                </svg>
+              </button>
+            </form>
+            <p class="lia-prompt__hint">Toca el micrófono o elige un tema · demo local, sin backend</p>
+          </div>
+        </div>
+
+        <aside class="lia-mock lia-reveal is-visible" aria-label="Ejemplo de consulta del curso">
+          <div class="lia-mock__bar">
+            <div class="lia-mock__dots" aria-hidden="true"><span></span><span></span><span></span></div>
+            <span class="lia-mock__label">Tutor · Medio Continuo</span>
+          </div>
+
+          <div class="lia-chat" data-lia-chat>
+            <div class="lia-bubble lia-bubble--user">
+              <span class="lia-bubble__meta">Estudiante</span>
+              ¿Cuál es la diferencia entre esfuerzo y tensión en un sólido deformable?
+            </div>
+            <div class="lia-bubble lia-bubble--bot">
+              <span class="lia-bubble__meta">Respuesta guiada</span>
+              El <strong>esfuerzo</strong> es la fuerza por unidad de área sobre una superficie
+              material. En notación tensorial se escribe σ<sub>ij</sub>. La “tensión” a menudo
+              se usa de forma coloquial; en el curso trabajamos con el <strong>tensor de Cauchy</strong>
+              y sus invariantes.
+            </div>
+            <div class="lia-bubble lia-bubble--user">
+              <span class="lia-bubble__meta">Estudiante</span>
+              ¿En qué unidad lo vemos?
+            </div>
+            <div class="lia-bubble lia-bubble--bot">
+              <span class="lia-bubble__meta">Ruta de estudio</span>
+              Empieza por <strong>Unidad 2 — Estado de esfuerzos</strong>. Antes conviene
+              repasar tensores en la Unidad 1.
+            </div>
+          </div>
+
+          <div class="lia-mock__footer">
+            <span class="lia-tag">σ<sub>ij</sub></span>
+            <span class="lia-tag">Cauchy</span>
+            <span class="lia-tag">Unidad 2</span>
+            <span class="lia-tag">Fundamentos</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Próximas secciones (fase 2+) -->
+    <div class="lia-next-placeholder" id="unidades">
+      <strong>Siguiente bloque</strong>
+      Carrusel de unidades · marquee “NUESTRAS UNIDADES” · features alternadas
+      <br /><br />
+      <span style="opacity:0.7">Fase 1 lista — revisa header + hero y dime si seguimos.</span>
+    </div>
+  </main>
+
+  <script src="js/lia-home.js" defer></script>
+</body>
+</html>

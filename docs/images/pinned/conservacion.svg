@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" role="img" aria-label="Conservación">
+  <circle cx="32" cy="32" r="18" stroke="#8E6BFF" stroke-width="2.2" fill="#8E6BFF" fill-opacity=".08"/>
+  <path d="M32 16v8M32 40v8M16 32h8M40 32h8" stroke="#8E6BFF" stroke-width="1.6" stroke-linecap="round" opacity=".5"/>
+  <path d="M22 24c4-5 9-7 14-6M42 24c4 5 5 11 3 16M42 40c-4 5-9 7-14 6M22 40c-4-5-5-11-3-16" stroke="#8E6BFF" stroke-width="2.1" stroke-linecap="round"/>
+  <path d="M38 20l4 2-1 4M46 38l-2 4-4-1M26 44l-4-2 1-4M18 26l2-4 4 1" fill="#8E6BFF"/>
+  <text x="32" y="36" text-anchor="middle" font-family="Georgia,serif" font-size="11" font-weight="700" fill="#8E6BFF">Á</text>
+</svg>

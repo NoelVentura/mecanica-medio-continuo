@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" role="img" aria-label="Esfuerzos">
+  <rect x="22" y="22" width="20" height="20" rx="2" fill="#8E6BFF" fill-opacity=".1" stroke="#8E6BFF" stroke-width="2"/>
+  <path d="M32 10v12M32 42v12M10 32h12M42 32h12" stroke="#8E6BFF" stroke-width="2.2" stroke-linecap="round"/>
+  <path d="M28 14l4-5 4 5M28 50l4 5 4-5M14 28l-5 4 5 4M50 28l5 4-5 4" fill="#8E6BFF"/>
+  <path d="M26 26l12 12M38 26L26 38" stroke="#8E6BFF" stroke-width="1.4" opacity=".35"/>
+</svg>

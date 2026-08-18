@@ -1,0 +1,2575 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <title>Mecánica del Medio Continuo | Aprende con el Mejor Curso</title>
+  <meta name="description" content="Domina la mecánica del medio continuo desde cero. Curso completo con teoría, ejemplos prácticos y aplicaciones reales en ingeniería." />
+  <meta name="theme-color" content="#0A0A0A" id="themeColorMeta" />
+
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem('theme');
+        var light = stored === 'light' || (!stored && window.matchMedia('(prefers-color-scheme: light)').matches);
+        if (light) {
+          document.documentElement.classList.add('light-mode-pending');
+          document.querySelector('#themeColorMeta')?.setAttribute('content', '#FFFFFF');
+        }
+      } catch (e) {}
+    })();
+  </script>
+
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem('selectedLanguage');
+        var lang = stored === 'en' || stored === 'es' ? stored : null;
+        if (!lang) {
+          var bl = (navigator.language || navigator.userLanguage || 'es').toLowerCase();
+          lang = bl.indexOf('en') === 0 ? 'en' : 'es';
+        }
+        document.documentElement.lang = lang === 'en' ? 'en' : 'es-MX';
+      } catch (e) {}
+    })();
+  </script>
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Mecánica del Medio Continuo | Aprende con el Mejor Curso" />
+  <meta property="og:description" content="Domina la mecánica del medio continuo desde cero. Curso completo con teoría, ejemplos prácticos y aplicaciones reales en ingeniería." />
+  <meta property="og:image" content="/og-image.jpg" />
+  <meta property="og:site_name" content="Mecánica del Medio Continuo" />
+  <meta property="og:locale" content="es_ES" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Mecánica del Medio Continuo | Aprende con el Mejor Curso" />
+  <meta name="twitter:description" content="Domina la mecánica del medio continuo desde cero. Curso completo con teoría, ejemplos prácticos y aplicaciones reales en ingeniería." />
+
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Inter+Tight:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "EducationalOrganization",
+    "name": "Mecánica del Medio Continuo",
+    "description": "Curso profesional de Mecánica del Medio Continuo para estudiantes de ingeniería en el Instituto Tecnológico de Tepic.",
+    "url": "https://cosmoq.framer.website/",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Av. Tecnológico #2595, Colonia Lagos del Country",
+      "addressLocality": "Tepic",
+      "addressRegion": "Nayarit",
+      "postalCode": "63175",
+      "addressCountry": "MX"
+    },
+    "parentOrganization": {
+      "@type": "CollegeOrUniversity",
+      "name": "Instituto Tecnológico de Tepic"
+    }
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg-primary: #0A0A0A;
+      --bg-secondary: #111111;
+      --bg-elevated: #0c0f16;
+      --bg-card: rgba(255, 255, 255, 0.05);
+      --accent: #4F46E5;
+      --accent-light: #4F46E5;
+      --accent-violet: #7C3AED;
+      --accent-glow: rgba(79, 70, 229, 0.35);
+      --accent-glow-strong: rgba(79, 70, 229, 0.45);
+      --accent-blue: #0175FF;
+      --text-primary: #FFFFFF;
+      --text-secondary: #9BA9C4;
+      --text-muted: #71717A;
+      --border: rgba(255, 255, 255, 0.1);
+      --nav-bg: rgba(10, 10, 10, 0.55);
+      --nav-bg-scrolled: rgba(10, 10, 10, 0.88);
+      --nav-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+      --nav-hover-bg: rgba(255, 255, 255, 0.05);
+      --mobile-menu-bg: rgba(10, 10, 10, 0.97);
+      --card-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+      --card-shadow-hover: 0 16px 48px var(--accent-glow);
+      --card-hover-bg: rgba(255, 255, 255, 0.07);
+      --card-hover-border: rgba(1, 117, 255, 0.28);
+      --hero-overlay: linear-gradient(180deg, rgba(10, 10, 10, 0.35) 0%, rgba(10, 10, 10, 0.5) 55%, rgba(10, 10, 10, 0.62) 100%), radial-gradient(ellipse 55% 45% at 75% 35%, rgba(1, 117, 255, 0.08) 0%, transparent 68%), radial-gradient(ellipse 45% 40% at 15% 75%, rgba(79, 70, 229, 0.06) 0%, transparent 62%);
+      --toggle-track: rgba(255, 255, 255, 0.12);
+      --toggle-thumb: #FFFFFF;
+      --toggle-icon: #0A0A0A;
+      --tabs-nav-bg: rgba(255, 255, 255, 0.04);
+      --stats-gradient: linear-gradient(135deg, #fff 0%, #A5B4FC 100%);
+      --cta-glow: radial-gradient(ellipse 50% 60% at 50% 50%, rgba(79, 70, 229, 0.12) 0%, transparent 70%);
+      --radius: 16px;
+      --radius-sm: 16px;
+      --container: 1280px;
+      --nav-height: 76px;
+      --section-y: clamp(4rem, 8vw, 7.5rem);
+      --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      --color-transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    body.light-mode {
+      --bg-primary: #FFFFFF;
+      --bg-secondary: #F5F5F5;
+      --bg-elevated: #FFFFFF;
+      --bg-card: #FFFFFF;
+      --accent: #4F46E5;
+      --accent-light: #4F46E5;
+      --accent-glow: rgba(79, 70, 229, 0.22);
+      --text-primary: #0A0A0A;
+      --text-secondary: #525252;
+      --text-muted: #737373;
+      --border: rgba(0, 0, 0, 0.08);
+      --nav-bg: rgba(255, 255, 255, 0.88);
+      --nav-bg-scrolled: rgba(255, 255, 255, 0.96);
+      --nav-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+      --nav-hover-bg: rgba(0, 0, 0, 0.04);
+      --mobile-menu-bg: rgba(255, 255, 255, 0.98);
+      --card-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      --card-shadow-hover: 0 12px 32px rgba(79, 70, 229, 0.18);
+      --card-hover-bg: #FFFFFF;
+      --card-hover-border: rgba(79, 70, 229, 0.25);
+      --hero-overlay: linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.1) 55%, rgba(255, 255, 255, 0.12) 100%), radial-gradient(ellipse 55% 45% at 75% 35%, rgba(79, 70, 229, 0.06) 0%, transparent 68%), radial-gradient(ellipse 45% 40% at 15% 75%, rgba(1, 117, 255, 0.05) 0%, transparent 62%);
+      --toggle-track: #E5E5E5;
+      --toggle-thumb: #FFFFFF;
+      --toggle-icon: #4F46E5;
+      --tabs-nav-bg: rgba(0, 0, 0, 0.04);
+      --stats-gradient: linear-gradient(135deg, #0A0A0A 0%, #4F46E5 100%);
+      --cta-glow: radial-gradient(ellipse 50% 60% at 50% 50%, rgba(79, 70, 229, 0.08) 0%, transparent 70%);
+    }
+
+    html.light-mode-pending body {
+      --bg-primary: #FFFFFF;
+      --bg-secondary: #F5F5F5;
+      --text-primary: #0A0A0A;
+      --text-secondary: #525252;
+      --border: rgba(0, 0, 0, 0.08);
+      --nav-bg: rgba(255, 255, 255, 0.88);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      transition: var(--color-transition);
+    }
+    .navbar, .card, .footer, .stats, .services, .steps, .testimonial,
+    .cta-section, .mobile-menu, .btn, .btn-premium, .tabs__btn, .hero__badge,
+    .cta-section__info-item, .footer__social a, .theme-toggle__track {
+      transition: var(--color-transition);
+    }
+    img, video { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+    .container {
+      width: min(100% - 2rem, var(--container));
+      margin-inline: auto;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-family: 'Inter Tight', 'Inter', sans-serif;
+      font-size: clamp(1.875rem, 4.5vw, 3rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.12;
+      margin-bottom: 1rem;
+    }
+
+    .section-desc {
+      color: var(--text-secondary);
+      font-size: 1.05rem;
+      max-width: 600px;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+    .section-header .section-desc { margin-inline: auto; }
+
+    .gradient-text {
+      background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-light) 50%, #A78BFA 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .btn {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 14px 28px;
+      border-radius: 50px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      white-space: nowrap;
+      overflow: hidden;
+      z-index: 1;
+      color: #FFFFFF;
+      background: linear-gradient(180deg, #141414 0%, #0A0A0A 55%, #050505 100%);
+      border: 1px solid #00D9FF;
+      box-shadow:
+        0 0 10px rgba(0, 217, 255, 0.5),
+        0 0 24px rgba(0, 217, 255, 0.28),
+        inset 0 1px 0 rgba(0, 217, 255, 0.45);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+    }
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 10%;
+      right: 10%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(0, 217, 255, 0.9), transparent);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .btn::after {
+      content: '';
+      position: absolute;
+      inset: -3px;
+      border-radius: 50px;
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0, 217, 255, 0.35) 0%, transparent 70%);
+      filter: blur(6px);
+      opacity: 0.7;
+      pointer-events: none;
+      z-index: -1;
+      transition: opacity 0.3s ease, filter 0.3s ease;
+    }
+    .btn i,
+    .btn span {
+      position: relative;
+      z-index: 1;
+    }
+    .btn:hover {
+      transform: translateY(-2px);
+      color: #FFFFFF;
+      border-color: #33E1FF;
+      background: linear-gradient(180deg, #161616 0%, #0A0A0A 55%, #050505 100%);
+      box-shadow:
+        0 0 14px rgba(0, 217, 255, 0.65),
+        0 0 32px rgba(0, 217, 255, 0.4),
+        inset 0 1px 0 rgba(0, 217, 255, 0.6);
+    }
+    .btn:hover::after {
+      opacity: 1;
+      filter: blur(10px);
+    }
+    .btn:active {
+      transform: translateY(0);
+    }
+    .btn-primary,
+    .btn-primary:hover {
+      color: #FFFFFF;
+      background: linear-gradient(180deg, #141414 0%, #0A0A0A 55%, #050505 100%);
+    }
+    .btn-secondary {
+      color: #FFFFFF;
+      border-color: rgba(0, 217, 255, 0.75);
+      box-shadow:
+        0 0 8px rgba(0, 217, 255, 0.35),
+        0 0 18px rgba(0, 217, 255, 0.2),
+        inset 0 1px 0 rgba(0, 217, 255, 0.3);
+    }
+    .btn-secondary:hover {
+      color: #FFFFFF;
+      border-color: #00D9FF;
+      background: linear-gradient(180deg, #161616 0%, #0A0A0A 55%, #050505 100%);
+      box-shadow:
+        0 0 12px rgba(0, 217, 255, 0.5),
+        0 0 28px rgba(0, 217, 255, 0.32),
+        inset 0 1px 0 rgba(0, 217, 255, 0.5);
+    }
+    body.light-mode .btn,
+    body.light-mode .btn:hover,
+    body.light-mode .btn-secondary,
+    body.light-mode .btn-secondary:hover {
+      color: #FFFFFF;
+      background: linear-gradient(180deg, #141414 0%, #0A0A0A 55%, #050505 100%);
+    }
+
+    @keyframes glow-pulse {
+      0%, 100% {
+        box-shadow:
+          0 0 10px rgba(0, 217, 255, 0.45),
+          0 0 22px rgba(0, 217, 255, 0.25),
+          inset 0 1px 0 rgba(0, 217, 255, 0.4);
+      }
+      50% {
+        box-shadow:
+          0 0 14px rgba(0, 217, 255, 0.65),
+          0 0 32px rgba(0, 217, 255, 0.42),
+          inset 0 1px 0 rgba(0, 217, 255, 0.55);
+      }
+    }
+    .btn.animated,
+    .btn-premium.animated,
+    .btn-glow.animated {
+      animation: glow-pulse 2s ease-in-out infinite;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .btn.animated,
+      .btn-premium.animated,
+      .btn-glow.animated {
+        animation: none;
+      }
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition), background var(--transition), color var(--transition);
+      box-shadow: var(--card-shadow);
+    }
+    @media (hover: hover) {
+      .card:hover:not(.tilt-card) {
+        transform: translateY(-4px);
+        background: var(--card-hover-bg);
+        box-shadow: var(--card-shadow-hover);
+        border-color: var(--card-hover-border);
+      }
+      .card.specialty-card:hover:not(.tilt-card) {
+        transform: translateY(-4px);
+        background: var(--card-hover-bg);
+        box-shadow: var(--card-shadow-hover);
+        border-color: var(--card-hover-border);
+      }
+    }
+    .card.reveal.visible:hover:not(.tilt-card) {
+      transform: translateY(-4px);
+    }
+
+    .icon-circle {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--nav-hover-bg);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-light);
+      font-size: 1.1rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .reveal {
+      opacity: 0;
+      transition: opacity 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px; height: 1px;
+      padding: 0; margin: -1px;
+      overflow: hidden;
+      clip: rect(0,0,0,0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      position: sticky;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      height: var(--nav-height);
+      background: var(--nav-bg);
+      backdrop-filter: blur(20px) saturate(160%);
+      -webkit-backdrop-filter: blur(20px) saturate(160%);
+      border-bottom: 1px solid transparent;
+      transition: var(--color-transition);
+    }
+    .navbar.scrolled {
+      background: var(--nav-bg-scrolled);
+      border-bottom-color: var(--border);
+      box-shadow: var(--nav-shadow);
+    }
+    .navbar__inner {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      height: 100%;
+      gap: 1rem;
+    }
+    .navbar__logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .navbar__logo img { height: 40px; width: auto; }
+    .navbar__brand-title { font-weight: 700; font-size: 1rem; line-height: 1.2; }
+    .navbar__brand-sub { font-size: 0.7rem; color: var(--text-secondary); }
+    .navbar__nav {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    .navbar__nav a {
+      padding: 0.5rem 1rem;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      border-radius: var(--radius-sm);
+      transition: var(--transition);
+    }
+    .navbar__nav a:hover { color: var(--text-primary); background: var(--nav-hover-bg); }
+    .navbar__nav a.active {
+      color: var(--text-primary);
+      background: var(--nav-hover-bg);
+    }
+    .navbar__actions {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 0.75rem;
+    }
+    .navbar__cta {
+      white-space: nowrap;
+    }
+    .navbar__toggle {
+      display: none;
+      color: var(--text-primary);
+      font-size: 1.25rem;
+      padding: 0.5rem;
+    }
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: var(--nav-height);
+      left: 0;
+      right: 0;
+      background: var(--mobile-menu-bg);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem;
+      z-index: 999;
+      transition: var(--color-transition);
+    }
+    .mobile-menu.open { display: block; }
+    .mobile-menu a {
+      display: block;
+      padding: 0.875rem 1rem;
+      color: var(--text-secondary);
+      border-radius: var(--radius-sm);
+      font-size: 1rem;
+      transition: var(--color-transition);
+    }
+    .mobile-menu a:hover,
+    .mobile-menu a.active {
+      background: var(--nav-hover-bg);
+      color: var(--text-primary);
+    }
+
+    /* THEME TOGGLE */
+    .theme-toggle {
+      width: 44px;
+      height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      flex-shrink: 0;
+      border-radius: 50%;
+      color: var(--text-primary);
+      transition: var(--color-transition);
+    }
+    .theme-toggle:hover { background: var(--nav-hover-bg); }
+    .theme-toggle:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+    .theme-toggle__track {
+      position: relative;
+      width: 44px;
+      height: 24px;
+      border-radius: 999px;
+      background: var(--toggle-track);
+      border: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .theme-toggle__thumb {
+      position: absolute;
+      top: 1px;
+      left: 1px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--toggle-thumb);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transform: translateX(0);
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background 0.3s ease;
+    }
+    body.light-mode .theme-toggle__thumb {
+      transform: translateX(20px);
+    }
+    .theme-toggle__icon {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      color: var(--toggle-icon);
+      transition: opacity 0.3s ease, transform 0.5s ease;
+    }
+    .theme-toggle__icon--moon {
+      opacity: 1;
+      transform: rotate(0deg);
+    }
+    .theme-toggle__icon--sun {
+      opacity: 0;
+      transform: rotate(-180deg);
+    }
+    body.light-mode .theme-toggle__icon--moon {
+      opacity: 0;
+      transform: rotate(180deg);
+    }
+    body.light-mode .theme-toggle__icon--sun {
+      opacity: 1;
+      transform: rotate(0deg);
+    }
+
+    /* LANGUAGE SWITCHER */
+    .lang-switcher {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      animation: langFadeIn 0.5s ease;
+    }
+    @keyframes langFadeIn {
+      from { opacity: 0; transform: translateY(-4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .lang-btn {
+      width: 32px;
+      height: 32px;
+      padding: 0;
+      border-radius: 50%;
+      border: 2px solid transparent;
+      cursor: pointer;
+      background: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+    }
+    .lang-btn svg {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: block;
+      pointer-events: none;
+    }
+    .lang-btn.is-active {
+      border-color: #4F46E5;
+      transform: scale(1.1);
+      box-shadow: 0 0 8px rgba(79, 70, 229, 0.4);
+    }
+    .lang-btn:hover {
+      transform: scale(1.15);
+      opacity: 0.9;
+    }
+    .lang-btn.is-active:hover {
+      transform: scale(1.15);
+    }
+    .lang-btn--bounce {
+      animation: langBounce 0.3s ease;
+    }
+    @keyframes langBounce {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1.1); }
+    }
+    #i18n-root {
+      transition: opacity 0.3s ease;
+    }
+    #i18n-root.is-switching,
+    body.is-lang-switching .navbar [data-i18n],
+    body.is-lang-switching .mobile-menu [data-i18n] {
+      opacity: 0;
+    }
+    .navbar [data-i18n],
+    .mobile-menu [data-i18n] {
+      transition: opacity 0.3s ease;
+    }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      min-height: calc(100dvh - var(--nav-height));
+      min-height: calc(100vh - var(--nav-height));
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+    .hero__bg-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .hero__bg {
+      position: absolute;
+      inset: 0;
+      background: var(--hero-overlay);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      z-index: 1;
+      pointer-events: none;
+      transition: var(--color-transition);
+    }
+    body.light-mode .hero__title,
+    body.light-mode .hero__subtitle {
+      text-shadow:
+        0 2px 20px rgba(255, 255, 255, 0.95),
+        0 1px 4px rgba(0, 0, 0, 0.12);
+    }
+    .hero__glow {
+      position: absolute;
+      width: 500px; height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(79,70,229,0.12) 0%, transparent 70%);
+      top: 10%; right: 5%;
+      pointer-events: none;
+      z-index: 2;
+      animation: pulse 6s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.6; }
+      50% { transform: scale(1.1); opacity: 1; }
+    }
+    .hero__grid {
+      position: relative;
+      z-index: 3;
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: clamp(2rem, 5vw, 4.5rem);
+      align-items: center;
+      padding-block: clamp(3rem, 6vw, 5.5rem);
+    }
+    .hero__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.4rem 1rem;
+      background: rgba(79, 70, 229, 0.15);
+      border: 1px solid rgba(79, 70, 229, 0.3);
+      border-radius: 999px;
+      font-size: 0.8rem;
+      color: var(--accent-light);
+      margin-bottom: 1.5rem;
+      transition: var(--color-transition);
+    }
+    body.light-mode .hero__badge {
+      background: rgba(79, 70, 229, 0.1);
+      color: #4338CA;
+    }
+    .hero__badge::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #818CF8;
+      animation: ping 1.5s infinite;
+    }
+    @keyframes ping {
+      0% { box-shadow: 0 0 0 0 rgba(129,140,248,0.6); }
+      70% { box-shadow: 0 0 0 8px rgba(129,140,248,0); }
+      100% { box-shadow: 0 0 0 0 rgba(129,140,248,0); }
+    }
+    .hero__title {
+      font-family: 'Inter Tight', 'Inter', sans-serif;
+      font-size: clamp(2.35rem, 5.5vw, 4.25rem);
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+      margin-bottom: 1.5rem;
+    }
+    .hero__subtitle {
+      color: var(--text-secondary);
+      font-size: clamp(1rem, 2vw, 1.125rem);
+      line-height: 1.7;
+      margin-bottom: 2.25rem;
+      max-width: 540px;
+    }
+    .hero__ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .hero__media {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow:
+        0 32px 80px rgba(0, 0, 0, 0.55),
+        0 0 0 1px rgba(255, 255, 255, 0.05) inset,
+        0 0 80px rgba(1, 117, 255, 0.15);
+    }
+    .hero__media video,
+    .hero__media img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+    }
+
+    /* STATS */
+    .stats {
+      background: var(--bg-secondary);
+      border-block: 1px solid var(--border);
+      padding: 3rem 0;
+    }
+    .stats__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      text-align: center;
+    }
+    .stats__num {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      background: var(--stats-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .stats__label { color: var(--text-secondary); font-size: 0.95rem; margin-top: 0.25rem; }
+
+    /* WHY US */
+    .why { padding: var(--section-y) 0; }
+    .why__grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+    }
+    .why__card h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: 0.5rem; }
+    .why__card p { color: var(--text-secondary); font-size: 0.9rem; }
+
+    /* TABS / SERVICIOS */
+    .services { padding: var(--section-y) 0; background: var(--bg-secondary); }
+    .tabs__nav {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-bottom: 3rem;
+      background: rgba(10, 10, 10, 0.55);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 999px;
+      padding: 0.4rem;
+      width: fit-content;
+      max-width: calc(100% - 2rem);
+      margin-inline: auto;
+      box-shadow:
+        0 4px 24px rgba(0, 0, 0, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      overflow: hidden;
+    }
+    .tabs__nav::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 8%;
+      right: 8%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.22), transparent);
+      pointer-events: none;
+    }
+    body.light-mode .tabs__nav {
+      background: rgba(255, 255, 255, 0.72);
+      border-color: rgba(0, 0, 0, 0.08);
+      box-shadow:
+        0 4px 20px rgba(0, 0, 0, 0.06),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    }
+    body.light-mode .tabs__nav::before {
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.95), transparent);
+    }
+    .tabs__btn {
+      position: relative;
+      z-index: 1;
+      padding: 0.65rem 1.35rem;
+      border-radius: 999px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.88);
+      background: transparent;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+    }
+    .tabs__btn:hover:not(.active) {
+      color: #FFFFFF;
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(255, 255, 255, 0.08);
+    }
+    .tabs__btn.active {
+      color: #FFFFFF;
+      background: linear-gradient(135deg, #4F46E5 0%, #6366F1 45%, #4F46E5 100%);
+      border-color: rgba(129, 140, 248, 0.5);
+      box-shadow:
+        0 0 18px rgba(79, 70, 229, 0.55),
+        0 4px 20px rgba(79, 70, 229, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.22);
+      transform: translateY(-1px);
+    }
+    .tabs__btn.active::after {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border-radius: 999px;
+      background: radial-gradient(ellipse 70% 80% at 50% 50%, rgba(99, 102, 241, 0.45) 0%, transparent 70%);
+      filter: blur(8px);
+      z-index: -1;
+      pointer-events: none;
+    }
+    body.light-mode .tabs__btn {
+      color: rgba(10, 10, 10, 0.65);
+    }
+    body.light-mode .tabs__btn:hover:not(.active) {
+      color: #0A0A0A;
+      background: rgba(0, 0, 0, 0.05);
+      border-color: rgba(0, 0, 0, 0.06);
+    }
+    body.light-mode .tabs__btn.active {
+      color: #FFFFFF;
+    }
+    .tabs__panel {
+      display: none;
+    }
+    .tabs__panel.active {
+      display: grid;
+      animation: tabFade 0.45s ease forwards;
+      transform-style: preserve-3d;
+    }
+    @keyframes tabFade {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .tabs__content {
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: stretch;
+      perspective: 1000px;
+    }
+    .tilt-card-container {
+      perspective: 1000px;
+      display: block;
+      height: 100%;
+      transform-style: preserve-3d;
+    }
+    .tilt-card {
+      position: relative;
+      transform-style: preserve-3d;
+      will-change: transform;
+      height: 100%;
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: none;
+    }
+    .card.tilt-card {
+      transition:
+        box-shadow var(--transition),
+        border-color var(--transition),
+        background var(--transition),
+        color var(--transition);
+    }
+    .tilt-card::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.3) 0%,
+        transparent 50%
+      );
+      opacity: 0;
+      transition: opacity 0.3s;
+      pointer-events: none;
+      border-radius: inherit;
+      z-index: 2;
+    }
+    .tilt-card-container:hover .tilt-card::after,
+    .tilt-card.is-tilting::after {
+      opacity: 0.45;
+    }
+    .tilt-card-content {
+      transform: translateZ(30px);
+      backface-visibility: hidden;
+      position: relative;
+      z-index: 3;
+    }
+    .tilt-card img {
+      display: block;
+      width: 100%;
+      transition: transform 0.5s ease;
+      border-radius: inherit;
+    }
+    .tilt-card:hover img {
+      transform: scale(1.05);
+    }
+    .tab-info-card {
+      padding: 0;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      box-shadow: var(--card-shadow);
+    }
+    .tab-info-card .tilt-card-content {
+      padding: 2rem;
+    }
+    .tilt-card-container .tabs__img.tilt-card {
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+    }
+    .tabs__list { margin-top: 1.5rem; }
+    .tabs__list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 0.6rem 0;
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+    }
+    .tabs__list i { color: var(--accent-light); margin-top: 3px; }
+    .tabs__img {
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .tabs__img img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+    }
+
+    /* UNIDAD 1 — fondo con imagen 1a */
+    .unidad-1-card {
+      position: relative;
+      padding: 0;
+      border-radius: var(--radius);
+      overflow: hidden;
+      background-image: url('images/1a.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+    .unidad-1-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.52);
+      z-index: 1;
+      pointer-events: none;
+    }
+    .unidad-1-card .tilt-card-content {
+      position: relative;
+      z-index: 2;
+      padding: 2rem;
+    }
+    .unidad-1-card h3,
+    .unidad-1-card p,
+    .unidad-1-card li {
+      color: #FFFFFF;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    }
+    .unidad-1-card .section-desc {
+      color: rgba(255, 255, 255, 0.9);
+    }
+    .unidad-1-card .tabs__list i {
+      color: #A5B4FC;
+    }
+
+    /* ESPECIALIDADES */
+    .specialties { padding: var(--section-y) 0; }
+    .specialties__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+      perspective: 1200px;
+    }
+    .module-card-wrap {
+      display: block;
+      height: 100%;
+      transform-style: preserve-3d;
+    }
+    .module-card-wrap--featured {
+      grid-column: span 2;
+    }
+    .specialty-card {
+      position: relative;
+      overflow: hidden;
+      display: block;
+    }
+    .specialty-card:not(.featured) {
+      padding: 0 0 1.75rem;
+    }
+    .specialty-card:not(.featured) > .tilt-card-content {
+      padding: 0 1.75rem 1.75rem;
+    }
+    .specialty-card:not(.featured) .tilt-card-content .icon-circle {
+      margin-top: 1.25rem;
+      margin-bottom: 0;
+    }
+    .specialty-card.featured {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      padding: 0;
+    }
+    .specialty-card.featured .tilt-card-content.specialty-card__body,
+    .specialty-card.featured .specialty-card__body { padding: 1.75rem; }
+    .specialty-card__img {
+      overflow: hidden;
+      border-radius: var(--radius) var(--radius) 0 0;
+    }
+    .specialty-card.featured .specialty-card__img {
+      border-radius: var(--radius) 0 0 var(--radius);
+      height: 100%;
+    }
+    .specialty-card__img img,
+    .specialty-card__img video {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+    .specialty-card.featured .specialty-card__img img,
+    .specialty-card.featured .specialty-card__img video { height: 100%; min-height: 220px; }
+    .specialty-card h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; }
+    .specialty-card p { color: var(--text-secondary); font-size: 0.875rem; }
+    .specialty-card__link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-top: 1rem;
+      font-size: 0.85rem;
+      color: var(--accent-light);
+      font-weight: 500;
+    }
+    .specialty-card__link:hover { gap: 0.65rem; }
+
+    .tabs__content .tilt-card.unidad-1-card,
+    .tabs__content .tilt-card.tab-info-card,
+    .tabs__content .tilt-card.tabs__img {
+      box-shadow: var(--card-shadow);
+    }
+    .card.specialty-card.tilt-card {
+      height: 100%;
+      transition:
+        box-shadow var(--transition),
+        border-color var(--transition),
+        background var(--transition),
+        color var(--transition);
+    }
+    .tilt-card .js-tilt-glare {
+      display: none !important;
+    }
+
+    /* STEPS */
+    .steps { padding: var(--section-y) 0; background: var(--bg-secondary); }
+    .steps__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+    .step__num {
+      font-size: 3rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+    .step h3 { font-size: 1.15rem; font-weight: 600; margin-bottom: 1rem; }
+    .step ul li {
+      display: flex;
+      gap: 0.6rem;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      padding: 0.35rem 0;
+    }
+    .step ul li::before {
+      content: '✓';
+      color: var(--accent-light);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    /* TESTIMONIALS */
+    .testimonials { padding: var(--section-y) 0; overflow: hidden; }
+    .testimonials__wrapper {
+      overflow: hidden;
+      padding-block: 1.25rem;
+      mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+    }
+    .testimonials__track {
+      display: flex;
+      gap: 1.5rem;
+      width: max-content;
+      animation: marquee var(--marquee-duration, 40s) linear infinite;
+    }
+    .testimonials__wrapper:hover .testimonials__track { animation-play-state: paused; }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(calc(-1 * var(--marquee-width, 50%))); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .testimonials__track { animation: none; flex-wrap: wrap; width: 100%; justify-content: center; }
+    }
+    .testimonial {
+      width: 360px;
+      flex-shrink: 0;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+    }
+    .testimonial__stars { color: #FBBF24; font-size: 0.85rem; margin-bottom: 1rem; }
+    .testimonial__text { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1.5rem; line-height: 1.7; }
+    .testimonial__author { display: flex; align-items: center; gap: 0.875rem; }
+    .testimonial__avatar {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--border);
+    }
+    .testimonial__name { font-weight: 600; font-size: 0.9rem; }
+    .testimonial__role { color: var(--text-muted); font-size: 0.8rem; }
+
+    /* CTA */
+    .cta-section {
+      padding: var(--section-y) 0;
+      background: var(--bg-secondary);
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--cta-glow);
+    }
+    .cta-section__inner {
+      position: relative;
+      text-align: center;
+      max-width: 700px;
+      margin-inline: auto;
+    }
+    .cta-section__buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+    .cta-section__info {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+      text-align: left;
+    }
+    .cta-section__info-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+    }
+    .cta-section__info-item i { color: var(--accent-light); margin-bottom: 0.75rem; font-size: 1.1rem; }
+    .cta-section__info-item h4 { font-size: 0.9rem; font-weight: 600; margin-bottom: 0.35rem; }
+    .cta-section__info-item p { color: var(--text-secondary); font-size: 0.85rem; }
+
+    /* FOOTER */
+    .footer {
+      border-top: 1px solid var(--border);
+      padding: 4rem 0 2rem;
+    }
+    .footer__grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 2.5rem;
+      margin-bottom: 3rem;
+    }
+    .footer__desc { color: var(--text-secondary); font-size: 0.9rem; margin: 1rem 0 1.5rem; max-width: 320px; }
+    .footer__social { display: flex; gap: 0.75rem; }
+    .footer__social a {
+      width: 40px; height: 40px;
+      border-radius: var(--radius-sm);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-secondary);
+      transition: var(--transition);
+    }
+    .footer__social a:hover { color: var(--text-primary); border-color: var(--accent); background: rgba(79,70,229,0.1); }
+    .footer__col h4 {
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 1.25rem;
+      color: var(--text-primary);
+    }
+    .footer__col a {
+      display: block;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      padding: 0.35rem 0;
+      transition: var(--transition);
+    }
+    .footer__col a:hover { color: var(--text-primary); }
+    .footer__bottom {
+      border-top: 1px solid var(--border);
+      padding-top: 2rem;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    body.light-mode .specialty-card__img img,
+    body.light-mode .tabs__img img,
+    body.light-mode .hero__media video {
+      filter: brightness(0.95);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .why__grid { grid-template-columns: repeat(2, 1fr); }
+      .specialties__grid { grid-template-columns: repeat(2, 1fr); }
+      .module-card-wrap--featured { grid-column: span 2; }
+      .footer__grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      .navbar__inner { grid-template-columns: 1fr auto; }
+      .navbar__nav, .navbar__actions .navbar__cta { display: none; }
+      .navbar__toggle { display: block; }
+      .theme-toggle, .lang-switcher { display: inline-flex; }
+      .hero { min-height: auto; }
+      .hero__grid {
+        grid-template-columns: 1fr;
+        padding-block: 2.5rem 3.5rem;
+        text-align: center;
+      }
+      .hero__subtitle { margin-inline: auto; }
+      .hero__ctas { justify-content: center; }
+      .hero__media { order: -1; max-width: 520px; margin-inline: auto; }
+      .stats__grid { grid-template-columns: 1fr; gap: 1.5rem; }
+      .why__grid { grid-template-columns: 1fr; }
+      .tabs__content { grid-template-columns: 1fr; }
+      .specialties__grid { grid-template-columns: 1fr; }
+      .module-card-wrap--featured { grid-column: span 1; }
+      .specialty-card.featured { grid-template-columns: 1fr; }
+      .specialty-card.featured .specialty-card__img { border-radius: var(--radius) var(--radius) 0 0; }
+      .steps__grid { grid-template-columns: 1fr; }
+      .cta-section__info { grid-template-columns: 1fr; }
+      .footer__grid { grid-template-columns: 1fr; }
+      .footer__bottom { flex-direction: column; text-align: center; }
+      .tilt-card {
+        transform: none !important;
+      }
+      .tilt-card:hover {
+        transform: scale(1.02) !important;
+      }
+      .tilt-card .js-tilt-glare {
+        display: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <script>
+    if (document.documentElement.classList.contains('light-mode-pending')) {
+      document.body.classList.add('light-mode');
+      document.documentElement.classList.remove('light-mode-pending');
+    }
+  </script>
+
+  <a href="#main" class="sr-only" data-i18n="skip">Saltar al contenido principal</a>
+
+  <!-- NAVBAR -->
+  <header class="navbar" id="navbar">
+    <div class="container navbar__inner">
+      <a href="#inicio" class="navbar__logo" data-i18n-aria="aria.home">
+        <img src="images/tecnologico.png" alt="Tecnológico" width="40" height="40" />
+        <div>
+          <div class="navbar__brand-title" data-i18n="brand.title">Mecánica</div>
+          <div class="navbar__brand-sub" data-i18n="brand.subtitle">Medio Continuo</div>
+        </div>
+      </a>
+      <nav class="navbar__nav" data-i18n-aria="aria.nav">
+        <a href="#inicio" class="active" data-i18n="nav.home">Inicio</a>
+        <a href="#el-curso" data-i18n="nav.course">El Curso</a>
+        <a href="#nosotros" data-i18n="nav.about">Nosotros</a>
+        <a href="Contacto.html" data-i18n="nav.contact">Contacto</a>
+      </nav>
+      <div class="navbar__actions">
+        <button
+          type="button"
+          id="themeToggle"
+          class="theme-toggle"
+          role="switch"
+          aria-checked="false"
+          aria-label="Cambiar a modo claro"
+        >
+          <span class="theme-toggle__track" aria-hidden="true">
+            <span class="theme-toggle__thumb">
+              <svg class="theme-toggle__icon theme-toggle__icon--moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+              </svg>
+              <svg class="theme-toggle__icon theme-toggle__icon--sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="4"/>
+                <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+              </svg>
+            </span>
+          </span>
+        </button>
+        <div class="lang-switcher" role="group" data-i18n-aria="aria.lang">
+          <button type="button" class="lang-btn is-active" data-lang="es" role="button" tabindex="0" aria-label="Cambiar a español" aria-pressed="true">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <defs><clipPath id="flag-mx"><circle cx="12" cy="12" r="12"/></clipPath></defs>
+              <g clip-path="url(#flag-mx)">
+                <rect width="8" height="24" fill="#006847"/>
+                <rect x="8" width="8" height="24" fill="#FFFFFF"/>
+                <rect x="16" width="8" height="24" fill="#CE1126"/>
+                <circle cx="12" cy="12" r="4" fill="#006847"/>
+                <circle cx="12" cy="12" r="3" fill="#FFFFFF"/>
+              </g>
+            </svg>
+          </button>
+          <button type="button" class="lang-btn" data-lang="en" role="button" tabindex="0" aria-label="Switch to English" aria-pressed="false">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <defs><clipPath id="flag-uk"><circle cx="12" cy="12" r="12"/></clipPath></defs>
+              <g clip-path="url(#flag-uk)">
+                <rect width="24" height="24" fill="#012169"/>
+                <path d="M0,0 L24,24 M24,0 L0,24" stroke="#FFFFFF" stroke-width="3"/>
+                <path d="M0,0 L24,24 M24,0 L0,24" stroke="#C8102E" stroke-width="1.5"/>
+                <path d="M12,0 V24 M0,12 H24" stroke="#FFFFFF" stroke-width="5"/>
+                <path d="M12,0 V24 M0,12 H24" stroke="#C8102E" stroke-width="3"/>
+              </g>
+            </svg>
+          </button>
+        </div>
+        <a href="Inscribir curso.html" class="btn btn-primary animated navbar__cta" data-i18n="hero.enroll">Inscribirme al curso</a>
+        <button type="button" class="navbar__toggle" id="menuToggle" data-i18n-aria="aria.menu" aria-label="Abrir menú de navegación" aria-expanded="false">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="mobile-menu" id="mobileMenu" data-i18n-aria="aria.mobileMenu" aria-label="Menú móvil">
+    <a href="#inicio" data-i18n="nav.home">Inicio</a>
+    <a href="#el-curso" data-i18n="nav.course">El Curso</a>
+    <a href="#nosotros" data-i18n="nav.about">Nosotros</a>
+    <a href="Contacto.html" data-i18n="nav.contact">Contacto</a>
+    <a href="Inscribir curso.html" data-i18n="hero.enroll">Inscribirme al curso</a>
+    <a href="Libros de Apoyo.html" data-i18n="nav.books">Libros de Apoyo</a>
+    <a href="pdf/FUND%20MEDIO%20CONTINUO%20CALIFICACION%20FINAL%20%20ENERO%20-%20JUNIO%202026.pdf" target="_blank" rel="noopener" data-i18n="btn.results">Resultados del Curso</a>
+  </nav>
+
+  <div id="i18n-root">
+  <main id="main">
+
+    <!-- HERO -->
+    <section class="hero" id="inicio">
+      <video class="hero__bg-video" autoplay muted playsinline loop preload="metadata" aria-hidden="true">
+        <source src="videos/fondomecanica.mp4" type="video/mp4" />
+      </video>
+      <div class="hero__bg" aria-hidden="true"></div>
+      <div class="hero__glow" aria-hidden="true"></div>
+      <div class="container hero__grid">
+        <div class="reveal">
+          <div class="hero__badge" data-i18n="hero.badge">Curso 2025 — Nueva edición disponible</div>
+          <h1 class="hero__title">
+            <span data-i18n="hero.title1">Domina la </span><span class="gradient-text" data-i18n="hero.title2">Mecánica del Medio Continuo</span>
+          </h1>
+          <p class="hero__subtitle" data-i18n="hero.desc">
+            El curso más completo en español para entender los fundamentos de la mecánica de sólidos deformables. Desde tensores hasta aplicaciones prácticas en ingeniería.
+          </p>
+          <div class="hero__ctas">
+            <a href="Inscribir curso.html" class="btn btn-primary animated">
+              <i class="fa-solid fa-graduation-cap"></i> <span data-i18n="hero.enroll">Inscribirme al curso</span>
+            </a>
+            <a href="#el-curso" class="btn btn-secondary animated">
+              <i class="fa-solid fa-book-open"></i> <span data-i18n="hero.viewModules">Ver módulos</span>
+            </a>
+          </div>
+          <a href="pdf/ICE.pdf" target="_blank" rel="noopener" style="color: var(--accent-light); font-size: 0.9rem; font-weight: 500;">
+            <span data-i18n="hero.syllabus">Ver temario completo</span> <i class="fa-solid fa-arrow-right" style="font-size: 0.75rem;"></i>
+          </a>
+        </div>
+        <div class="hero__media reveal">
+          <video controls autoplay muted playsinline loop poster="images/hero-portrait.png" preload="metadata">
+            <source src="videos/video1.mp4" type="video/mp4" />
+          </video>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS -->
+    <div class="stats reveal">
+      <div class="container stats__grid">
+        <div>
+          <div class="stats__num">50+</div>
+          <div class="stats__label" data-i18n="hero.stat1">Horas de contenido</div>
+        </div>
+        <div>
+          <div class="stats__num">15</div>
+          <div class="stats__label" data-i18n="hero.stat2">Módulos temáticos</div>
+        </div>
+        <div>
+          <div class="stats__num">∞</div>
+          <div class="stats__label" data-i18n="hero.stat3">Acceso de por vida</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ¿POR QUÉ ELEGIRNOS? -->
+    <section class="why" id="nosotros">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="eyebrow" data-i18n="why.eyebrow">Excelencia</span>
+          <h2 class="section-title" data-i18n="why.title">Lo que nos diferencia</h2>
+          <p class="section-desc" data-i18n="why.desc">Más allá de tus expectativas: un enfoque integral que combina rigor teórico, práctica y aplicaciones reales en ingeniería.</p>
+        </div>
+        <div class="why__grid">
+          <div class="card why__card reveal">
+            <div class="icon-circle"><i class="fa-solid fa-clock"></i></div>
+            <h3 data-i18n="why.c1.title">Contenido Profundo</h3>
+            <p data-i18n="why.c1.desc">Más de 50 horas de contenido y 15 módulos temáticos que cubren desde notación indicial hasta ecuaciones constitutivas.</p>
+          </div>
+          <div class="card why__card reveal">
+            <div class="icon-circle"><i class="fa-solid fa-microscope"></i></div>
+            <h3 data-i18n="why.c2.title">Fundamentos Rigurosos</h3>
+            <p data-i18n="why.c2.desc">Construye una base sólida y duradera en tensores, esfuerzos, deformación y principios básicos de la mecánica.</p>
+          </div>
+          <div class="card why__card reveal">
+            <div class="icon-circle"><i class="fa-solid fa-infinity"></i></div>
+            <h3 data-i18n="why.c3.title">Acceso de Por Vida</h3>
+            <p data-i18n="why.c3.desc">Aprende a tu ritmo con acceso permanente a todos los módulos, videos y materiales del curso.</p>
+          </div>
+          <div class="card why__card reveal">
+            <div class="icon-circle"><i class="fa-solid fa-rocket"></i></div>
+            <h3 data-i18n="why.c4.title">Aplicaciones Reales</h3>
+            <p data-i18n="u6.desc">Conecta la teoría con biomecánica, aeroespacial, materiales compuestos y simulación computacional.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICIOS / MÓDULOS CON TABS -->
+    <section class="services" id="modulos">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="eyebrow" data-i18n="course.label">Contenido del curso</span>
+          <h2 class="section-title" data-i18n="tabs.heading">Nuestro enfoque de aprendizaje</h2>
+          <p class="section-desc" data-i18n="course.desc">Un recorrido completo por los temas fundamentales de la mecánica del medio continuo, organizado en áreas temáticas.</p>
+        </div>
+
+        <div class="tabs__nav reveal" role="tablist">
+          <button class="tabs__btn active" role="tab" aria-selected="true" data-tab="tab-fundamentos" data-i18n="tabs.fundamentos">Fundamentos</button>
+          <button class="tabs__btn" role="tab" aria-selected="false" data-tab="tab-esfuerzos" data-i18n="tabs.esfuerzos">Esfuerzos</button>
+          <button class="tabs__btn" role="tab" aria-selected="false" data-tab="tab-deformacion" data-i18n="tabs.deformacion">Deformación</button>
+          <button class="tabs__btn" role="tab" aria-selected="false" data-tab="tab-constitutivas" data-i18n="tabs.constitutivas">Constitutivas</button>
+        </div>
+
+        <div class="tabs__panel active tabs__content" id="tab-fundamentos" role="tabpanel">
+          <div class="tilt-card-container">
+            <div class="tilt-card unidad-1-card">
+              <div class="tilt-card-content">
+                <h3 class="section-title" style="font-size: 1.5rem;" data-i18n="tab1.title">Unidad 1 — Fundamentos Matemáticos</h3>
+                <p class="section-desc" style="margin-bottom: 0;" data-i18n="tab1.desc">La base matemática indispensable para dominar la mecánica del medio continuo.</p>
+                <ul class="tabs__list">
+                  <li><i class="fa-solid fa-check"></i> <span data-i18n="u1.l1">1.1. Notación indicial.</span></li>
+                  <li><i class="fa-solid fa-check"></i> <span data-i18n="u1.l2">1.2. Operaciones de tensores.</span></li>
+                  <li><i class="fa-solid fa-check"></i> <span data-i18n="u1.l3">1.3. Métodos para el cálculo de valores y vectores propios.</span></li>
+                </ul>
+                <a href="Unidad 1.html" class="btn btn-primary animated" style="margin-top: 1.5rem;" data-i18n="tab1.btn">Explorar Unidad 1</a>
+              </div>
+            </div>
+          </div>
+          <div class="tilt-card-container">
+            <div class="tilt-card tabs__img">
+              <img src="images/u1.jpg" alt="Fundamentos Matemáticos" loading="lazy" width="600" height="450" />
+            </div>
+          </div>
+        </div>
+
+        <div class="tabs__panel tabs__content" id="tab-esfuerzos" role="tabpanel">
+          <div class="tilt-card-container">
+            <div class="tilt-card tab-info-card">
+              <div class="tilt-card-content">
+                <h3 class="section-title" style="font-size: 1.5rem;" data-i18n="tab2.title">Unidad 2 — Estado de Esfuerzos</h3>
+                <p class="section-desc" style="margin-bottom: 0;" data-i18n="tab2.desc">Comprende las fuerzas internas y el tensor de esfuerzos en medios continuos.</p>
+                <ul class="tabs__list">
+                  <li><i class="fa-solid fa-check"></i> <span data-i18n="u2.l1">2.1. Fuerzas de superficie y de cuerpo.</span></li>
+                  <li><i class="fa-solid fa-check"></i> <span data-i18n="u2.l2">2.2. Teorema de Cauchy.</span></li>
+                  <li><i class="fa-solid fa-check"></i> <span data-i18n="u2.l3">2.3. Tensor de esfuerzos.</span></li>
+                  <li><i class="fa-solid fa-check"></i> <span data-i18n="u2.l4">2.4. Esfuerzos y direcciones principales.</span></li>
+                </ul>
+                <a href="Unidad 2.html" class="btn btn-primary animated" style="margin-top: 1.5rem;" data-i18n="tab2.btn">Explorar Unidad 2</a>
+              </div>
+            </div>
+          </div>
+          <div class="tilt-card-container">
+            <div class="tilt-card tabs__img">
+              <img src="images/u2.jpg" alt="Estado de Esfuerzos" loading="lazy" width="600" height="450" />
+            </div>
+          </div>
+        </div>
+
+        <div class="tabs__panel tabs__content" id="tab-deformacion" role="tabpanel">
+          <div class="tilt-card-container">
+            <div class="tilt-card tab-info-card">
+              <div class="tilt-card-content">
+                <h3 class="section-title" style="font-size: 1.5rem;" data-i18n="tab3.title">Unidad 3 — Estado de Deformación</h3>
+                <p class="section-desc" style="margin-bottom: 0;" data-i18n="tab3.desc">Descripción del movimiento y la deformación en medios continuos deformables.</p>
+                <ul class="tabs__list">
+                  <li><i class="fa-solid fa-check"></i> <span data-i18n="u3.l1">3.1. Descripción del movimiento.</span></li>
+                  <li><i class="fa-solid fa-check"></i> <span data-i18n="u3.l2">3.2. Descripción matemática de la deformación.</span></li>
+                </ul>
+                <a href="Unidad-3.html" class="btn btn-primary animated" style="margin-top: 1.5rem;" data-i18n="tab3.btn">Explorar Unidad 3</a>
+              </div>
+            </div>
+          </div>
+          <div class="tilt-card-container">
+            <div class="tilt-card tabs__img">
+              <img src="images/u3.jpg" alt="Estado de Deformación" loading="lazy" width="600" height="450" />
+            </div>
+          </div>
+        </div>
+
+        <div class="tabs__panel tabs__content" id="tab-constitutivas" role="tabpanel">
+          <div class="tilt-card-container">
+            <div class="tilt-card tab-info-card">
+              <div class="tilt-card-content">
+                <h3 class="section-title" style="font-size: 1.5rem;" data-i18n="tab4.title">Unidades 4 y 5 — Principios y Constitutivas</h3>
+                <p class="section-desc" style="margin-bottom: 0;" data-i18n="tab4.desc">Principios de conservación y ecuaciones que relacionan esfuerzo con deformación.</p>
+                <ul class="tabs__list">
+                  <li><i class="fa-solid fa-check"></i> <span data-i18n="u4.l1">4.1. Principio de la Conservación de la cantidad de Movimiento lineal y angular.</span></li>
+                  <li><i class="fa-solid fa-check"></i> <span data-i18n="u5.l1">5.1. Ecuación generalizada de esfuerzo de Hooke.</span></li>
+                  <li><i class="fa-solid fa-check"></i> <span data-i18n="u5.l3">5.3. Ecuación de Navier-Cauchy.</span></li>
+                </ul>
+                <a href="Unidad-4.html" class="btn btn-secondary animated" style="margin-top: 1.5rem; margin-right: 0.5rem;" data-i18n="tab4.btn1">Unidad 4</a>
+                <a href="Unidad-5.html" class="btn btn-primary animated" style="margin-top: 1.5rem;" data-i18n="tab4.btn2">Unidad 5</a>
+              </div>
+            </div>
+          </div>
+          <div class="tilt-card-container">
+            <div class="tilt-card tabs__img">
+              <img src="images/u4.jpg" alt="Principios y Constitutivas" loading="lazy" width="600" height="450" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ESPECIALIDADES / MÓDULOS -->
+    <section class="specialties" id="el-curso">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="eyebrow" data-i18n="section.specialty">Nuestra especialidad</span>
+          <h2 class="section-title" data-i18n="section.modules">Nuestros módulos</h2>
+          <p class="section-desc" data-i18n="specialties.desc">Explora cada unidad del curso con videos, material de apoyo y ejemplos prácticos.</p>
+        </div>
+        <div class="specialties__grid">
+          <div class="module-card-wrap module-card-wrap--featured reveal">
+          <div class="tilt-card-container">
+          <a href="Unidad 1.html" class="tilt-card card specialty-card featured">
+            <div class="specialty-card__img">
+              <video controls playsinline loop preload="none" poster="images/u1.jpg">
+                <source src="videos/u1.mp4" type="video/mp4" />
+              </video>
+            </div>
+            <div class="tilt-card-content specialty-card__body">
+              <div class="icon-circle"><i class="fa-solid fa-square-root-variable"></i></div>
+              <h3 data-i18n="spec.u1.title">Unidad 1 — Fundamentos Matemáticos</h3>
+              <p data-i18n="spec.u1.desc">1.1. Notación indicial. 1.2. Operaciones de tensores. 1.3. Valores y vectores propios.</p>
+              <span class="specialty-card__link"><span data-i18n="unit.explore">Explorar tema</span> <i class="fa-solid fa-arrow-right"></i></span>
+            </div>
+          </a>
+          </div>
+          </div>
+          <div class="module-card-wrap reveal">
+          <div class="tilt-card-container">
+          <a href="Unidad 2.html" class="tilt-card card specialty-card">
+            <div class="specialty-card__img">
+              <img src="images/u2.jpg" alt="Unidad 2" loading="lazy" />
+            </div>
+            <div class="tilt-card-content">
+              <div class="icon-circle"><i class="fa-solid fa-arrows-up-down-left-right"></i></div>
+              <h3 data-i18n="spec.u2.title">Unidad 2 — Estado de Esfuerzos</h3>
+              <p data-i18n="spec.u2.desc">2.1. Fuerzas de superficie y de cuerpo. 2.2. Teorema de Cauchy.</p>
+              <span class="specialty-card__link"><span data-i18n="unit.explore">Explorar tema</span> <i class="fa-solid fa-arrow-right"></i></span>
+            </div>
+          </a>
+          </div>
+          </div>
+          <div class="module-card-wrap reveal">
+          <div class="tilt-card-container">
+          <a href="Unidad-3.html" class="tilt-card card specialty-card">
+            <div class="specialty-card__img">
+              <img src="images/u3.jpg" alt="Unidad 3" loading="lazy" />
+            </div>
+            <div class="tilt-card-content">
+              <div class="icon-circle"><i class="fa-solid fa-compress"></i></div>
+              <h3 data-i18n="spec.u3.title">Unidad 3 — Estado de Deformación</h3>
+              <p data-i18n="spec.u3.desc">3.1. Descripción del movimiento. 3.2. Descripción matemática de la deformación.</p>
+              <span class="specialty-card__link"><span data-i18n="unit.explore">Explorar tema</span> <i class="fa-solid fa-arrow-right"></i></span>
+            </div>
+          </a>
+          </div>
+          </div>
+          <div class="module-card-wrap reveal">
+          <div class="tilt-card-container">
+          <a href="Unidad-4.html" class="tilt-card card specialty-card">
+            <div class="specialty-card__img">
+              <img src="images/u4.jpg" alt="Unidad 4" loading="lazy" />
+            </div>
+            <div class="tilt-card-content">
+              <div class="icon-circle"><i class="fa-solid fa-scale-balanced"></i></div>
+              <h3 data-i18n="spec.u4.title">Unidad 4 — Principios Básicos</h3>
+              <p data-i18n="spec.u4.desc">4.1. Principio de la Conservación de la cantidad de Movimiento lineal y angular.</p>
+              <span class="specialty-card__link"><span data-i18n="unit.explore">Explorar tema</span> <i class="fa-solid fa-arrow-right"></i></span>
+            </div>
+          </a>
+          </div>
+          </div>
+          <div class="module-card-wrap reveal">
+          <div class="tilt-card-container">
+          <a href="Unidad-5.html" class="tilt-card card specialty-card">
+            <div class="specialty-card__img">
+              <img src="images/u5.jpg" alt="Unidad 5" loading="lazy" />
+            </div>
+            <div class="tilt-card-content">
+              <div class="icon-circle"><i class="fa-solid fa-flask"></i></div>
+              <h3 data-i18n="spec.u5.title">Unidad 5 — Ecuaciones Constitutivas</h3>
+              <p data-i18n="spec.u5.desc">5.1. Ecuación generalizada de Hooke. 5.3. Ecuación de Navier-Cauchy.</p>
+              <span class="specialty-card__link"><span data-i18n="unit.explore">Explorar tema</span> <i class="fa-solid fa-arrow-right"></i></span>
+            </div>
+          </a>
+          </div>
+          </div>
+          <div class="module-card-wrap reveal">
+          <div class="tilt-card-container">
+          <div class="tilt-card card specialty-card">
+            <div class="specialty-card__img">
+              <img src="images/mecanica.png" alt="Aplicaciones Modernas" loading="lazy" />
+            </div>
+            <div class="tilt-card-content">
+              <div class="icon-circle"><i class="fa-solid fa-satellite"></i></div>
+              <h3 data-i18n="u6.title">Aplicaciones Modernas</h3>
+              <p data-i18n="spec.u6.desc">Biomecánica, aeroespacial, materiales compuestos y simulación computacional.</p>
+            </div>
+          </div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3 PASOS -->
+    <section class="steps">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="eyebrow" data-i18n="steps.eyebrow">Cómo funciona</span>
+          <h2 class="section-title" data-i18n="steps.title">3 pasos para comenzar</h2>
+          <p class="section-desc" data-i18n="steps.desc">De la inscripción al dominio de la mecánica del medio continuo, en tres pasos sencillos.</p>
+        </div>
+        <div class="steps__grid">
+          <div class="card step reveal">
+            <div class="step__num">01.</div>
+            <h3 data-i18n="step1.title">Inscríbete al curso</h3>
+            <ul>
+              <li data-i18n="step1.l1">Completa tu registro en la plataforma</li>
+              <li data-i18n="step1.l2">Accede al temario completo (ICE)</li>
+              <li data-i18n="step1.l3">Consulta los resultados del curso vigente</li>
+            </ul>
+          </div>
+          <div class="card step reveal">
+            <div class="step__num">02.</div>
+            <h3 data-i18n="step2.title">Explora los módulos</h3>
+            <ul>
+              <li data-i18n="step2.l1">Navega por las 5 unidades temáticas</li>
+              <li data-i18n="step2.l2">Visualiza videos y material de apoyo</li>
+              <li data-i18n="step2.l3">Consulta los libros de apoyo recomendados</li>
+            </ul>
+          </div>
+          <div class="card step reveal">
+            <div class="step__num">03.</div>
+            <h3 data-i18n="step3.title">Domina la mecánica</h3>
+            <ul>
+              <li data-i18n="step3.l1">Aplica teoría de elasticidad y tensores</li>
+              <li data-i18n="step3.l2">Resuelve problemas de ingeniería real</li>
+              <li data-i18n="step3.l3">Construye una base sólida y duradera</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIOS -->
+    <section class="testimonials">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="eyebrow" data-i18n="test.eyebrow">Testimonios</span>
+          <h2 class="section-title" data-i18n="test.title">Lo que dicen nuestros estudiantes</h2>
+          <p class="section-desc" data-i18n="test.desc">Experiencias de estudiantes e ingenieros que ya están transformando su comprensión de la mecánica de sólidos.</p>
+        </div>
+      </div>
+      <div class="testimonials__wrapper">
+        <div class="testimonials__track" id="testimonialTrack">
+          <div class="testimonial">
+            <div class="testimonial__stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+            <p class="testimonial__text" data-i18n="test1.text">"Finalmente entendí los tensores. Los videos y la notación indicial explicada paso a paso hicieron la diferencia en mi semestre de maestría."</p>
+            <div class="testimonial__author">
+              <img class="testimonial__avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face" alt="Carlos Mendoza" loading="lazy" width="44" height="44" />
+              <div>
+                <div class="testimonial__name" data-i18n="test1.name">Carlos Mendoza</div>
+                <div class="testimonial__role" data-i18n="test1.role">Estudiante de Ingeniería Mecánica — ITT</div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial">
+            <div class="testimonial__stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+            <p class="testimonial__text" data-i18n="test2.text">"El módulo de ecuaciones constitutivas y Navier-Cauchy me ayudó directamente en mi proyecto de simulación con elementos finitos."</p>
+            <div class="testimonial__author">
+              <img class="testimonial__avatar" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face" alt="Ana Torres" loading="lazy" width="44" height="44" />
+              <div>
+                <div class="testimonial__name" data-i18n="test2.name">Ana Torres</div>
+                <div class="testimonial__role" data-i18n="test2.role">Ingeniera Civil — Egresada ITT</div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial">
+            <div class="testimonial__stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i></div>
+            <p class="testimonial__text" data-i18n="test3.text">"Lo mejor es el acceso de por vida. Puedo repasar el teorema de Cauchy y los esfuerzos principales cuando lo necesito para mis clases."</p>
+            <div class="testimonial__author">
+              <img class="testimonial__avatar" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face" alt="Miguel Herrera" loading="lazy" width="44" height="44" />
+              <div>
+                <div class="testimonial__name" data-i18n="test3.name">Miguel Herrera</div>
+                <div class="testimonial__role" data-i18n="test3.role">Doctorando en Materiales — UNAM</div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial">
+            <div class="testimonial__stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+            <p class="testimonial__text" data-i18n="test4.text">"Los libros de apoyo complementan perfectamente las unidades. Es el curso más completo en español que he encontrado sobre medio continuo."</p>
+            <div class="testimonial__author">
+              <img class="testimonial__avatar" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face" alt="Laura Jiménez" loading="lazy" width="44" height="44" />
+              <div>
+                <div class="testimonial__name" data-i18n="test4.name">Laura Jiménez</div>
+                <div class="testimonial__role" data-i18n="test4.role">Estudiante de Ingeniería — ITT</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA FINAL / CONTACTO -->
+    <section class="cta-section" id="contacto">
+      <div class="container cta-section__inner reveal">
+        <span class="eyebrow" data-i18n="section.interest">¿Te interesa saber más?</span>
+        <h2 class="section-title" data-i18n="cta.title">¿Listo para dominar la mecánica del medio continuo?</h2>
+        <p class="section-desc" style="margin-inline: auto;" data-i18n="cta.desc">
+          Únete a cientos de estudiantes e ingenieros que ya están transformando su comprensión de la mecánica de sólidos.
+        </p>
+        <div class="cta-section__buttons">
+          <a href="Inscribir curso.html" class="btn btn-primary animated">
+            <i class="fa-solid fa-graduation-cap"></i> <span data-i18n="cta.btn">Inscribirme al curso</span>
+          </a>
+          <a href="Contacto.html" class="btn btn-secondary animated">
+            <i class="fa-solid fa-envelope"></i> <span data-i18n="nav.contact">Contacto</span>
+          </a>
+        </div>
+        <div class="cta-section__info">
+          <div class="cta-section__info-item">
+            <i class="fa-solid fa-location-dot"></i>
+            <h4 data-i18n="cta.location">Ubicación</h4>
+            <p data-i18n="cta.locationDesc">Av. Tecnológico #2595, Col. Lagos del Country, C.P. 63175, Tepic, Nayarit, México</p>
+          </div>
+          <div class="cta-section__info-item">
+            <i class="fa-solid fa-building-columns"></i>
+            <h4 data-i18n="cta.institution">Institución</h4>
+            <p data-i18n="cta.institutionDesc">Instituto Tecnológico de Tepic — Tecnológico Nacional de México</p>
+          </div>
+          <div class="cta-section__info-item">
+            <i class="fa-solid fa-book"></i>
+            <h4 data-i18n="cta.resources">Recursos</h4>
+            <p>
+              <a href="Libros de Apoyo.html" style="color: var(--accent-light);" data-i18n="nav.books">Libros de Apoyo</a>
+              ·
+              <a href="pdf/ICE.pdf" target="_blank" rel="noopener" style="color: var(--accent-light);" data-i18n="footer.syllabus">Temario ICE</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <a href="#inicio" class="navbar__logo">
+            <img src="images/tecnologico.png" alt="Tecnológico" width="48" height="48" loading="lazy" />
+            <div>
+              <div class="navbar__brand-title" data-i18n="brand.title">Mecánica</div>
+              <div class="navbar__brand-sub" data-i18n="brand.subtitle">Medio Continuo</div>
+            </div>
+          </a>
+          <p class="footer__desc" data-i18n="footer.desc">
+            Domina los fundamentos de la mecánica del medio continuo con un enfoque práctico y visual. Aprende teoría de elasticidad, tensores y más.
+          </p>
+          <div class="footer__social">
+            <a href="#" data-i18n-aria="aria.youtube" aria-label="Síguenos en YouTube" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-youtube"></i></a>
+            <a href="#" data-i18n-aria="aria.linkedin" aria-label="Síguenos en LinkedIn" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="#" data-i18n-aria="aria.twitter" aria-label="Síguenos en Twitter" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="#" data-i18n-aria="aria.github" aria-label="Síguenos en GitHub" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i></a>
+          </div>
+        </div>
+        <div class="footer__col">
+          <h4 data-i18n="footer.course">Curso</h4>
+          <a href="#el-curso" data-i18n="footer.modules">Módulos</a>
+          <a href="Libros de Apoyo.html" data-i18n="nav.books">Libros de Apoyo</a>
+          <a href="Inscribir curso.html" data-i18n="footer.enroll">Inscribir Curso</a>
+          <a href="pdf/ICE.pdf" target="_blank" rel="noopener" data-i18n="footer.syllabus">Temario ICE</a>
+        </div>
+        <div class="footer__col">
+          <h4 data-i18n="footer.support">Soporte</h4>
+          <a href="Contacto.html" data-i18n="nav.contact">Contacto</a>
+          <a href="pdf/FUND%20MEDIO%20CONTINUO%20CALIFICACION%20FINAL%20%20ENERO%20-%20JUNIO%202026.pdf" target="_blank" rel="noopener" data-i18n="btn.results">Resultados del Curso</a>
+        </div>
+        <div class="footer__col">
+          <h4 data-i18n="footer.legal">Legal</h4>
+          <a href="/terminos" data-i18n="footer.terms">Términos de uso</a>
+          <a href="/privacidad" data-i18n="footer.privacy">Privacidad</a>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>© <span id="year"></span> <span data-i18n="footer.copyright">Mecánica del Medio Continuo. Todos los derechos reservados.</span></p>
+        <p data-i18n="footer.made">Hecho con ❤ para estudiantes de ingeniería</p>
+      </div>
+    </div>
+  </footer>
+  </div><!-- /#i18n-root -->
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // ─── Sistema de traducción ES / EN ───────────────────────────────────────
+    // Agrega nuevas claves aquí y el atributo data-i18n="clave" en el HTML.
+    const LANG_STORAGE_KEY = 'selectedLanguage';
+    const I18N_FADE_MS = 300;
+    let currentLanguage = 'es';
+
+    const translations = {
+      es: {
+        'meta.title': 'Mecánica del Medio Continuo | Aprende con el Mejor Curso',
+        'meta.description': 'Domina la mecánica del medio continuo desde cero. Curso completo con teoría, ejemplos prácticos y aplicaciones reales en ingeniería.',
+        'skip': 'Saltar al contenido principal',
+        'brand.title': 'Mecánica',
+        'brand.full': 'Mecánica del Medio',
+        'brand.subtitle': 'Medio Continuo',
+        'nav.home': 'Inicio',
+        'nav.course': 'El Curso',
+        'nav.about': 'Nosotros',
+        'nav.books': 'Libros de Apoyo',
+        'nav.contact': 'Contacto',
+        'btn.results': 'Resultados del Curso',
+        'hero.badge': 'Curso 2025 — Nueva edición disponible',
+        'hero.title1': 'Domina la ',
+        'hero.title2': 'Mecánica del Medio Continuo',
+        'hero.desc': 'El curso más completo en español para entender los fundamentos de la mecánica de sólidos deformables. Desde tensores hasta aplicaciones prácticas en ingeniería.',
+        'hero.enroll': 'Inscribirme al curso',
+        'hero.viewModules': 'Ver módulos',
+        'hero.syllabus': 'Ver temario completo',
+        'hero.stat1': 'Horas de contenido',
+        'hero.stat2': 'Módulos temáticos',
+        'hero.stat3': 'Acceso de por vida',
+        'why.eyebrow': 'Excelencia',
+        'why.title': 'Lo que nos diferencia',
+        'why.desc': 'Más allá de tus expectativas: un enfoque integral que combina rigor teórico, práctica y aplicaciones reales en ingeniería.',
+        'why.c1.title': 'Contenido Profundo',
+        'why.c1.desc': 'Más de 50 horas de contenido y 15 módulos temáticos que cubren desde notación indicial hasta ecuaciones constitutivas.',
+        'why.c2.title': 'Fundamentos Rigurosos',
+        'why.c2.desc': 'Construye una base sólida y duradera en tensores, esfuerzos, deformación y principios básicos de la mecánica.',
+        'why.c3.title': 'Acceso de Por Vida',
+        'why.c3.desc': 'Aprende a tu ritmo con acceso permanente a todos los módulos, videos y materiales del curso.',
+        'why.c4.title': 'Aplicaciones Reales',
+        'course.label': 'Contenido del curso',
+        'tabs.heading': 'Nuestro enfoque de aprendizaje',
+        'course.desc': 'Un recorrido completo por los temas fundamentales de la mecánica del medio continuo, organizado en áreas temáticas.',
+        'tabs.fundamentos': 'Fundamentos',
+        'tabs.esfuerzos': 'Esfuerzos',
+        'tabs.deformacion': 'Deformación',
+        'tabs.constitutivas': 'Constitutivas',
+        'tab1.title': 'Unidad 1 — Fundamentos Matemáticos',
+        'tab1.desc': 'La base matemática indispensable para dominar la mecánica del medio continuo.',
+        'tab1.btn': 'Explorar Unidad 1',
+        'tab2.title': 'Unidad 2 — Estado de Esfuerzos',
+        'tab2.desc': 'Comprende las fuerzas internas y el tensor de esfuerzos en medios continuos.',
+        'tab2.btn': 'Explorar Unidad 2',
+        'tab3.title': 'Unidad 3 — Estado de Deformación',
+        'tab3.desc': 'Descripción del movimiento y la deformación en medios continuos deformables.',
+        'tab3.btn': 'Explorar Unidad 3',
+        'tab4.title': 'Unidades 4 y 5 — Principios y Constitutivas',
+        'tab4.desc': 'Principios de conservación y ecuaciones que relacionan esfuerzo con deformación.',
+        'tab4.btn1': 'Unidad 4',
+        'tab4.btn2': 'Unidad 5',
+        'u1.l1': '1.1. Notación indicial.',
+        'u1.l2': '1.2. Operaciones de tensores.',
+        'u1.l3': '1.3. Métodos para el cálculo de valores y vectores propios.',
+        'u2.l1': '2.1. Fuerzas de superficie y de cuerpo.',
+        'u2.l2': '2.2. Teorema de Cauchy.',
+        'u2.l3': '2.3. Tensor de esfuerzos.',
+        'u2.l4': '2.4. Esfuerzos y direcciones principales.',
+        'u3.l1': '3.1. Descripción del movimiento.',
+        'u3.l2': '3.2. Descripción matemática de la deformación.',
+        'u4.l1': '4.1. Principio de la Conservación de la cantidad de Movimiento lineal y angular.',
+        'u5.l1': '5.1. Ecuación generalizada de esfuerzo de Hooke.',
+        'u5.l3': '5.3. Ecuación de Navier-Cauchy.',
+        'u6.title': 'Aplicaciones Modernas',
+        'u6.desc': 'Conecta la teoría con biomecánica, aeroespacial, materiales compuestos y simulación computacional.',
+        'section.specialty': 'Nuestra especialidad',
+        'section.modules': 'Nuestros módulos',
+        'specialties.desc': 'Explora cada unidad del curso con videos, material de apoyo y ejemplos prácticos.',
+        'spec.u1.title': 'Unidad 1 — Fundamentos Matemáticos',
+        'spec.u1.desc': '1.1. Notación indicial. 1.2. Operaciones de tensores. 1.3. Valores y vectores propios.',
+        'spec.u2.title': 'Unidad 2 — Estado de Esfuerzos',
+        'spec.u2.desc': '2.1. Fuerzas de superficie y de cuerpo. 2.2. Teorema de Cauchy.',
+        'spec.u3.title': 'Unidad 3 — Estado de Deformación',
+        'spec.u3.desc': '3.1. Descripción del movimiento. 3.2. Descripción matemática de la deformación.',
+        'spec.u4.title': 'Unidad 4 — Principios Básicos',
+        'spec.u4.desc': '4.1. Principio de la Conservación de la cantidad de Movimiento lineal y angular.',
+        'spec.u5.title': 'Unidad 5 — Ecuaciones Constitutivas',
+        'spec.u5.desc': '5.1. Ecuación generalizada de Hooke. 5.3. Ecuación de Navier-Cauchy.',
+        'spec.u6.desc': 'Biomecánica, aeroespacial, materiales compuestos y simulación computacional.',
+        'unit.explore': 'Explorar tema',
+        'steps.eyebrow': 'Cómo funciona',
+        'steps.title': '3 pasos para comenzar',
+        'steps.desc': 'De la inscripción al dominio de la mecánica del medio continuo, en tres pasos sencillos.',
+        'step1.title': 'Inscríbete al curso',
+        'step1.l1': 'Completa tu registro en la plataforma',
+        'step1.l2': 'Accede al temario completo (ICE)',
+        'step1.l3': 'Consulta los resultados del curso vigente',
+        'step2.title': 'Explora los módulos',
+        'step2.l1': 'Navega por las 5 unidades temáticas',
+        'step2.l2': 'Visualiza videos y material de apoyo',
+        'step2.l3': 'Consulta los libros de apoyo recomendados',
+        'step3.title': 'Domina la mecánica',
+        'step3.l1': 'Aplica teoría de elasticidad y tensores',
+        'step3.l2': 'Resuelve problemas de ingeniería real',
+        'step3.l3': 'Construye una base sólida y duradera',
+        'test.eyebrow': 'Testimonios',
+        'test.title': 'Lo que dicen nuestros estudiantes',
+        'test.desc': 'Experiencias de estudiantes e ingenieros que ya están transformando su comprensión de la mecánica de sólidos.',
+        'test1.text': '"Finalmente entendí los tensores. Los videos y la notación indicial explicada paso a paso hicieron la diferencia en mi semestre de maestría."',
+        'test1.name': 'Carlos Mendoza',
+        'test1.role': 'Estudiante de Ingeniería Mecánica — ITT',
+        'test2.text': '"El módulo de ecuaciones constitutivas y Navier-Cauchy me ayudó directamente en mi proyecto de simulación con elementos finitos."',
+        'test2.name': 'Ana Torres',
+        'test2.role': 'Ingeniera Civil — Egresada ITT',
+        'test3.text': '"Lo mejor es el acceso de por vida. Puedo repasar el teorema de Cauchy y los esfuerzos principales cuando lo necesito para mis clases."',
+        'test3.name': 'Miguel Herrera',
+        'test3.role': 'Doctorando en Materiales — UNAM',
+        'test4.text': '"Los libros de apoyo complementan perfectamente las unidades. Es el curso más completo en español que he encontrado sobre medio continuo."',
+        'test4.name': 'Laura Jiménez',
+        'test4.role': 'Estudiante de Ingeniería — ITT',
+        'section.interest': '¿Te interesa saber más?',
+        'cta.title': '¿Listo para dominar la mecánica del medio continuo?',
+        'cta.desc': 'Únete a cientos de estudiantes e ingenieros que ya están transformando su comprensión de la mecánica de sólidos.',
+        'cta.btn': 'Inscribirme al curso',
+        'cta.location': 'Ubicación',
+        'cta.locationDesc': 'Av. Tecnológico #2595, Col. Lagos del Country, C.P. 63175, Tepic, Nayarit, México',
+        'cta.institution': 'Institución',
+        'cta.institutionDesc': 'Instituto Tecnológico de Tepic — Tecnológico Nacional de México',
+        'cta.resources': 'Recursos',
+        'footer.desc': 'Domina los fundamentos de la mecánica del medio continuo con un enfoque práctico y visual. Aprende teoría de elasticidad, tensores y más.',
+        'footer.course': 'Curso',
+        'footer.modules': 'Módulos',
+        'footer.enroll': 'Inscribir Curso',
+        'footer.syllabus': 'Temario ICE',
+        'footer.support': 'Soporte',
+        'footer.legal': 'Legal',
+        'footer.terms': 'Términos de uso',
+        'footer.privacy': 'Privacidad',
+        'footer.copyright': 'Mecánica del Medio Continuo. Todos los derechos reservados.',
+        'footer.made': 'Hecho con ❤ para estudiantes de ingeniería',
+        'aria.home': 'Ir al inicio',
+        'aria.nav': 'Navegación principal',
+        'aria.lang': 'Selección de idioma',
+        'aria.langEs': 'Cambiar a español',
+        'aria.langEn': 'Switch to English',
+        'aria.menu': 'Abrir menú de navegación',
+        'aria.mobileMenu': 'Menú móvil',
+        'aria.youtube': 'Síguenos en YouTube',
+        'aria.linkedin': 'Síguenos en LinkedIn',
+        'aria.twitter': 'Síguenos en Twitter',
+        'aria.github': 'Síguenos en GitHub',
+        'theme.ariaLight': 'Cambiar a modo claro',
+        'theme.ariaDark': 'Cambiar a modo oscuro',
+      },
+      en: {
+        'meta.title': 'Continuum Mechanics | Learn with the Best Course',
+        'meta.description': 'Master continuum mechanics from scratch. A complete course with theory, practical examples, and real engineering applications.',
+        'skip': 'Skip to main content',
+        'brand.title': 'Mechanics',
+        'brand.full': 'Continuum Mechanics',
+        'brand.subtitle': 'Continuum Media',
+        'nav.home': 'Home',
+        'nav.course': 'The Course',
+        'nav.about': 'About Us',
+        'nav.books': 'Support Books',
+        'nav.contact': 'Contact',
+        'btn.results': 'Course Results',
+        'hero.badge': '2025 Course — New edition available',
+        'hero.title1': 'Master ',
+        'hero.title2': 'Continuum Mechanics',
+        'hero.desc': 'The most comprehensive course to understand the fundamentals of deformable solid mechanics. From tensors to practical engineering applications.',
+        'hero.enroll': 'Enroll in the course',
+        'hero.viewModules': 'View modules',
+        'hero.syllabus': 'View full syllabus',
+        'hero.stat1': 'Hours of content',
+        'hero.stat2': 'Thematic modules',
+        'hero.stat3': 'Lifetime access',
+        'why.eyebrow': 'Excellence',
+        'why.title': 'What sets us apart',
+        'why.desc': 'Beyond your expectations: a comprehensive approach combining theoretical rigor, practice, and real engineering applications.',
+        'why.c1.title': 'In-Depth Content',
+        'why.c1.desc': 'Over 50 hours of content and 15 thematic modules covering everything from index notation to constitutive equations.',
+        'why.c2.title': 'Rigorous Foundations',
+        'why.c2.desc': 'Build a solid, lasting foundation in tensors, stresses, deformation, and basic principles of mechanics.',
+        'why.c3.title': 'Lifetime Access',
+        'why.c3.desc': 'Learn at your own pace with permanent access to all modules, videos, and course materials.',
+        'why.c4.title': 'Real Applications',
+        'course.label': 'Course content',
+        'tabs.heading': 'Our learning approach',
+        'course.desc': 'A complete journey through the fundamental topics of continuum mechanics, organized by thematic areas.',
+        'tabs.fundamentos': 'Foundations',
+        'tabs.esfuerzos': 'Stresses',
+        'tabs.deformacion': 'Deformation',
+        'tabs.constitutivas': 'Constitutive',
+        'tab1.title': 'Unit 1 — Mathematical Foundations',
+        'tab1.desc': 'The essential mathematical base to master continuum mechanics.',
+        'tab1.btn': 'Explore Unit 1',
+        'tab2.title': 'Unit 2 — Stress State',
+        'tab2.desc': 'Understand internal forces and the stress tensor in continuous media.',
+        'tab2.btn': 'Explore Unit 2',
+        'tab3.title': 'Unit 3 — Strain State',
+        'tab3.desc': 'Description of motion and deformation in deformable continuous media.',
+        'tab3.btn': 'Explore Unit 3',
+        'tab4.title': 'Units 4 & 5 — Principles & Constitutive',
+        'tab4.desc': 'Conservation principles and equations relating stress to deformation.',
+        'tab4.btn1': 'Unit 4',
+        'tab4.btn2': 'Unit 5',
+        'u1.l1': '1.1. Index notation.',
+        'u1.l2': '1.2. Tensor operations.',
+        'u1.l3': '1.3. Methods for calculating eigenvalues and eigenvectors.',
+        'u2.l1': '2.1. Surface and body forces.',
+        'u2.l2': '2.2. Cauchy theorem.',
+        'u2.l3': '2.3. Stress tensor.',
+        'u2.l4': '2.4. Principal stresses and directions.',
+        'u3.l1': '3.1. Description of motion.',
+        'u3.l2': '3.2. Mathematical description of deformation.',
+        'u4.l1': '4.1. Conservation of linear and angular momentum.',
+        'u5.l1': '5.1. Generalized Hooke stress equation.',
+        'u5.l3': '5.3. Navier-Cauchy equation.',
+        'u6.title': 'Modern Applications',
+        'u6.desc': 'Connect theory with biomechanics, aerospace, composite materials, and computational simulation.',
+        'section.specialty': 'Our specialty',
+        'section.modules': 'Our modules',
+        'specialties.desc': 'Explore each course unit with videos, support materials, and practical examples.',
+        'spec.u1.title': 'Unit 1 — Mathematical Foundations',
+        'spec.u1.desc': '1.1. Index notation. 1.2. Tensor operations. 1.3. Eigenvalues and eigenvectors.',
+        'spec.u2.title': 'Unit 2 — Stress State',
+        'spec.u2.desc': '2.1. Surface and body forces. 2.2. Cauchy theorem.',
+        'spec.u3.title': 'Unit 3 — Strain State',
+        'spec.u3.desc': '3.1. Description of motion. 3.2. Mathematical description of deformation.',
+        'spec.u4.title': 'Unit 4 — Basic Principles',
+        'spec.u4.desc': '4.1. Conservation of linear and angular momentum.',
+        'spec.u5.title': 'Unit 5 — Constitutive Equations',
+        'spec.u5.desc': '5.1. Generalized Hooke equation. 5.3. Navier-Cauchy equation.',
+        'spec.u6.desc': 'Biomechanics, aerospace, composite materials, and computational simulation.',
+        'unit.explore': 'Explore topic',
+        'steps.eyebrow': 'How it works',
+        'steps.title': '3 steps to get started',
+        'steps.desc': 'From enrollment to mastering continuum mechanics in three simple steps.',
+        'step1.title': 'Enroll in the course',
+        'step1.l1': 'Complete your registration on the platform',
+        'step1.l2': 'Access the full syllabus (ICE)',
+        'step1.l3': 'Check current course results',
+        'step2.title': 'Explore the modules',
+        'step2.l1': 'Browse the 5 thematic units',
+        'step2.l2': 'Watch videos and support materials',
+        'step2.l3': 'Consult recommended support books',
+        'step3.title': 'Master mechanics',
+        'step3.l1': 'Apply elasticity theory and tensors',
+        'step3.l2': 'Solve real engineering problems',
+        'step3.l3': 'Build a solid, lasting foundation',
+        'test.eyebrow': 'Testimonials',
+        'test.title': 'What our students say',
+        'test.desc': 'Experiences from students and engineers transforming their understanding of solid mechanics.',
+        'test1.text': '"I finally understood tensors. The videos and step-by-step index notation made the difference in my master\'s semester."',
+        'test1.name': 'Carlos Mendoza',
+        'test1.role': 'Mechanical Engineering Student — ITT',
+        'test2.text': '"The constitutive equations and Navier-Cauchy module helped directly in my finite element simulation project."',
+        'test2.name': 'Ana Torres',
+        'test2.role': 'Civil Engineer — ITT Graduate',
+        'test3.text': '"The best part is lifetime access. I can review Cauchy\'s theorem and principal stresses whenever I need for my classes."',
+        'test3.name': 'Miguel Herrera',
+        'test3.role': 'Materials PhD Candidate — UNAM',
+        'test4.text': '"The support books perfectly complement the units. It\'s the most complete continuum mechanics course I\'ve found."',
+        'test4.name': 'Laura Jiménez',
+        'test4.role': 'Engineering Student — ITT',
+        'section.interest': 'Want to learn more?',
+        'cta.title': 'Ready to master continuum mechanics?',
+        'cta.desc': 'Join hundreds of students and engineers already transforming their understanding of solid mechanics.',
+        'cta.btn': 'Enroll in the course',
+        'cta.location': 'Location',
+        'cta.locationDesc': 'Av. Tecnológico #2595, Col. Lagos del Country, C.P. 63175, Tepic, Nayarit, Mexico',
+        'cta.institution': 'Institution',
+        'cta.institutionDesc': 'Instituto Tecnológico de Tepic — Tecnológico Nacional de México',
+        'cta.resources': 'Resources',
+        'footer.desc': 'Master the fundamentals of continuum mechanics with a practical, visual approach. Learn elasticity theory, tensors, and more.',
+        'footer.course': 'Course',
+        'footer.modules': 'Modules',
+        'footer.enroll': 'Enroll',
+        'footer.syllabus': 'ICE Syllabus',
+        'footer.support': 'Support',
+        'footer.legal': 'Legal',
+        'footer.terms': 'Terms of use',
+        'footer.privacy': 'Privacy',
+        'footer.copyright': 'Continuum Mechanics. All rights reserved.',
+        'footer.made': 'Made with ❤ for engineering students',
+        'aria.home': 'Go to home',
+        'aria.nav': 'Main navigation',
+        'aria.lang': 'Language selection',
+        'aria.langEs': 'Cambiar a español',
+        'aria.langEn': 'Switch to English',
+        'aria.menu': 'Open navigation menu',
+        'aria.mobileMenu': 'Mobile menu',
+        'aria.youtube': 'Follow us on YouTube',
+        'aria.linkedin': 'Follow us on LinkedIn',
+        'aria.twitter': 'Follow us on Twitter',
+        'aria.github': 'Follow us on GitHub',
+        'theme.ariaLight': 'Switch to light mode',
+        'theme.ariaDark': 'Switch to dark mode',
+      },
+    };
+
+    function getInitialLanguage() {
+      try {
+        const stored = localStorage.getItem(LANG_STORAGE_KEY);
+        if (stored === 'en' || stored === 'es') return stored;
+      } catch (e) {}
+      const browserLang = (navigator.language || navigator.userLanguage || 'es').toLowerCase();
+      if (browserLang.startsWith('en')) return 'en';
+      if (browserLang.startsWith('es')) return 'es';
+      return 'es';
+    }
+
+    function applyTranslations(lang, dict) {
+      document.documentElement.lang = lang === 'en' ? 'en' : 'es-MX';
+
+      document.querySelectorAll('[data-i18n]').forEach((el) => {
+        const key = el.getAttribute('data-i18n');
+        if (dict[key] === undefined) return;
+        if (el.dataset.i18nTarget === 'html') {
+          el.innerHTML = dict[key];
+        } else {
+          el.textContent = dict[key];
+        }
+      });
+
+      document.querySelectorAll('[data-i18n-aria]').forEach((el) => {
+        const key = el.getAttribute('data-i18n-aria');
+        if (dict[key] !== undefined) el.setAttribute('aria-label', dict[key]);
+      });
+
+      if (dict['meta.title']) document.title = dict['meta.title'];
+      const metaDesc = document.querySelector('meta[name="description"]');
+      if (metaDesc && dict['meta.description']) metaDesc.setAttribute('content', dict['meta.description']);
+
+      document.querySelectorAll('.lang-btn').forEach((btn) => {
+        const active = btn.dataset.lang === lang;
+        btn.classList.toggle('is-active', active);
+        btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+        const ariaKey = btn.dataset.lang === 'es' ? 'aria.langEs' : 'aria.langEn';
+        if (dict[ariaKey]) btn.setAttribute('aria-label', dict[ariaKey]);
+      });
+
+      const themeToggleEl = document.getElementById('themeToggle');
+      if (themeToggleEl) {
+        const isLight = document.body.classList.contains('light-mode');
+        const themeKey = isLight ? 'theme.ariaDark' : 'theme.ariaLight';
+        if (dict[themeKey]) themeToggleEl.setAttribute('aria-label', dict[themeKey]);
+      }
+    }
+
+    function translatePage(language, animate) {
+      const lang = language === 'en' ? 'en' : 'es';
+      if (lang === currentLanguage && animate !== false) return;
+
+      const dict = translations[lang];
+      const i18nRoot = document.getElementById('i18n-root');
+
+      const finish = () => {
+        applyTranslations(lang, dict);
+        currentLanguage = lang;
+        try { localStorage.setItem(LANG_STORAGE_KEY, lang); } catch (e) {}
+        if (i18nRoot) i18nRoot.classList.remove('is-switching');
+        document.body.classList.remove('is-lang-switching');
+      };
+
+      if (animate === false || !i18nRoot) {
+        finish();
+        return;
+      }
+
+      document.body.classList.add('is-lang-switching');
+      i18nRoot.classList.add('is-switching');
+      setTimeout(finish, I18N_FADE_MS);
+    }
+
+    // Expuesto globalmente para depuración o extensiones futuras
+    window.translatePage = translatePage;
+
+    function initLanguageSwitcher() {
+      document.querySelectorAll('.lang-btn').forEach((btn) => {
+        const activate = () => {
+          const lang = btn.dataset.lang;
+          if (lang !== 'es' && lang !== 'en') return;
+          if (lang === currentLanguage) return;
+          btn.classList.remove('lang-btn--bounce');
+          void btn.offsetWidth;
+          btn.classList.add('lang-btn--bounce');
+          translatePage(lang, true);
+        };
+        btn.addEventListener('click', activate);
+        btn.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            activate();
+          }
+        });
+      });
+      translatePage(getInitialLanguage(), false);
+    }
+
+    initLanguageSwitcher();
+
+    // Theme toggle
+    const themeToggle = document.getElementById('themeToggle');
+    const themeColorMeta = document.getElementById('themeColorMeta');
+
+    function getStoredTheme() {
+      try { return localStorage.getItem('theme'); } catch (e) { return null; }
+    }
+
+    function getSystemTheme() {
+      return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+    }
+
+    function applyTheme(mode) {
+      const isLight = mode === 'light';
+      document.body.classList.toggle('light-mode', isLight);
+      themeToggle.setAttribute('aria-checked', isLight ? 'true' : 'false');
+      const dict = translations[currentLanguage] || translations.es;
+      const themeKey = isLight ? 'theme.ariaDark' : 'theme.ariaLight';
+      themeToggle.setAttribute('aria-label', dict[themeKey] || (isLight ? 'Cambiar a modo oscuro' : 'Cambiar a modo claro'));
+      themeColorMeta?.setAttribute('content', isLight ? '#FFFFFF' : '#0A0A0A');
+    }
+
+    function initTheme() {
+      const stored = getStoredTheme();
+      applyTheme(stored || getSystemTheme());
+    }
+
+    function toggleTheme() {
+      const next = document.body.classList.contains('light-mode') ? 'dark' : 'light';
+      try { localStorage.setItem('theme', next); } catch (e) {}
+      applyTheme(next);
+    }
+
+    initTheme();
+    themeToggle.addEventListener('click', toggleTheme);
+    themeToggle.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggleTheme();
+      }
+    });
+
+    window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', (e) => {
+      if (!getStoredTheme()) applyTheme(e.matches ? 'light' : 'dark');
+    });
+
+    // Navbar scroll + menú móvil
+    const navbar = document.getElementById('navbar');
+    const navSectionLinks = document.querySelectorAll('.navbar__nav a[href^="#"], .mobile-menu a[href^="#"]');
+    const scrollSections = ['inicio', 'el-curso', 'nosotros', 'modulos', 'contacto'];
+
+    const setActiveNav = (id) => {
+      navSectionLinks.forEach((link) => {
+        const targetId = (link.getAttribute('href') || '').replace('#', '');
+        link.classList.toggle('active', targetId === id);
+      });
+    };
+
+    const updateActiveNav = () => {
+      const offset = window.scrollY + navbar.offsetHeight + 24;
+      let current = 'inicio';
+      scrollSections.forEach((id) => {
+        const section = document.getElementById(id);
+        if (section && section.offsetTop <= offset) current = id;
+      });
+      setActiveNav(current);
+    };
+
+    const onScroll = () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 12);
+      updateActiveNav();
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const setMenuOpen = (open) => {
+      mobileMenu.classList.toggle('open', open);
+      menuToggle.setAttribute('aria-expanded', open);
+      menuToggle.innerHTML = open
+        ? '<i class="fa-solid fa-xmark"></i>'
+        : '<i class="fa-solid fa-bars"></i>';
+      document.body.style.overflow = open ? 'hidden' : '';
+    };
+    menuToggle.addEventListener('click', () => setMenuOpen(!mobileMenu.classList.contains('open')));
+    mobileMenu.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => setMenuOpen(false));
+    });
+
+    // Tilt 3D en tarjetas (sin librería externa)
+    const tiltOptions = {
+      max: 18,
+      speed: 400,
+      scale: 1.05,
+      perspective: 1000
+    };
+
+    const tiltHandlers = new WeakMap();
+
+    function bindTiltEffect(card) {
+      if (tiltHandlers.has(card)) return;
+
+      const onEnter = () => {
+        card.style.transition = 'none';
+      };
+
+      const onMove = (e) => {
+        const rect = card.getBoundingClientRect();
+        if (!rect.width || !rect.height) return;
+        const x = (e.clientX - rect.left) / rect.width - 0.5;
+        const y = (e.clientY - rect.top) / rect.height - 0.5;
+        const rotateY = x * tiltOptions.max * 2;
+        const rotateX = -y * tiltOptions.max * 2;
+        const shadowX = x * 40;
+        const shadowY = y * 40;
+
+        card.style.transform = `perspective(${tiltOptions.perspective}px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(${tiltOptions.scale}, ${tiltOptions.scale}, ${tiltOptions.scale})`;
+        card.style.boxShadow = `${shadowX}px ${shadowY}px 60px rgba(0, 0, 0, 0.45)`;
+        card.classList.add('is-tilting');
+      };
+
+      const onLeave = () => {
+        card.classList.remove('is-tilting');
+        card.style.transition = `transform ${tiltOptions.speed}ms cubic-bezier(0.03, 0.98, 0.52, 0.99), box-shadow ${tiltOptions.speed}ms ease`;
+        card.style.transform = '';
+        card.style.boxShadow = '';
+        window.setTimeout(() => {
+          card.style.transition = '';
+        }, tiltOptions.speed);
+      };
+
+      card.addEventListener('mouseenter', onEnter);
+      card.addEventListener('mousemove', onMove);
+      card.addEventListener('mouseleave', onLeave);
+      tiltHandlers.set(card, { onEnter, onMove, onLeave });
+    }
+
+    function destroyAllTiltCards() {
+      document.querySelectorAll('.tilt-card').forEach((card) => {
+        const handlers = tiltHandlers.get(card);
+        if (!handlers) return;
+        card.removeEventListener('mouseenter', handlers.onEnter);
+        card.removeEventListener('mousemove', handlers.onMove);
+        card.removeEventListener('mouseleave', handlers.onLeave);
+        card.style.removeProperty('transform');
+        card.style.removeProperty('box-shadow');
+        card.style.removeProperty('transition');
+        card.classList.remove('is-tilting');
+        tiltHandlers.delete(card);
+      });
+    }
+
+    function initTiltCards() {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+      destroyAllTiltCards();
+
+      if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+
+      document.querySelectorAll('.tilt-card').forEach(bindTiltEffect);
+    }
+
+    // Tabs
+    const tabBtns = document.querySelectorAll('.tabs__btn');
+    const tabPanels = document.querySelectorAll('.tabs__panel');
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const target = btn.dataset.tab;
+        tabBtns.forEach(b => {
+          b.classList.remove('active');
+          b.setAttribute('aria-selected', 'false');
+        });
+        tabPanels.forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        btn.setAttribute('aria-selected', 'true');
+        const panel = document.getElementById(target);
+        panel.classList.add('active');
+        requestAnimationFrame(() => {
+          requestAnimationFrame(initTiltCards);
+        });
+      });
+    });
+
+    // Carrusel de testimonios — clonación exacta para loop sin saltos
+    const testimonialTrack = document.getElementById('testimonialTrack');
+    if (testimonialTrack && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const originals = [...testimonialTrack.children];
+      originals.forEach(item => {
+        const clone = item.cloneNode(true);
+        clone.setAttribute('aria-hidden', 'true');
+        testimonialTrack.appendChild(clone);
+      });
+      const setMarquee = () => {
+        const half = testimonialTrack.scrollWidth / 2;
+        testimonialTrack.style.setProperty('--marquee-width', `${half}px`);
+        const speed = 55;
+        const duration = Math.max(24, half / speed);
+        testimonialTrack.style.setProperty('--marquee-duration', `${duration}s`);
+      };
+      setMarquee();
+      window.addEventListener('resize', setMarquee);
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(setMarquee);
+      }
+    }
+
+    // Scroll reveal
+    const revealEls = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -32px 0px' });
+    revealEls.forEach(el => revealObserver.observe(el));
+
+    initTiltCards();
+    requestAnimationFrame(() => requestAnimationFrame(initTiltCards));
+    window.addEventListener('load', initTiltCards);
+
+    let tiltResizeTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(tiltResizeTimer);
+      tiltResizeTimer = setTimeout(initTiltCards, 150);
+    });
+
+    // Stagger en grids
+    document.querySelectorAll('.why__grid, .steps__grid, .specialties__grid').forEach(grid => {
+      [...grid.children].forEach((child, i) => {
+        child.style.transitionDelay = `${i * 0.08}s`;
+      });
+    });
+
+    // Smooth scroll offset for sticky navbar
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', (e) => {
+        const id = anchor.getAttribute('href');
+        if (!id || id === '#') return;
+        const target = document.querySelector(id);
+        if (!target) return;
+        e.preventDefault();
+        const offset = navbar.offsetHeight + 8;
+        const top = target.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top, behavior: 'smooth' });
+      });
+    });
+  </script>
+</body>
+</html>

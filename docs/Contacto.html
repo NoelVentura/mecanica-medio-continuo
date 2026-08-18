@@ -1,10 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <base href="https://noelventura.github.io/mecanica-medio-continuo/" />
     
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -79,10 +78,29 @@
         font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         -webkit-font-smoothing: antialiased;
       }
+      .page-bg-video {
+        position: fixed;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: -2;
+        pointer-events: none;
+      }
+      body > header,
+      body > main,
+      body > footer {
+        position: relative;
+        z-index: 1;
+      }
+      body > header { z-index: 50; }
     </style>
   </head>
   
-  <body class="min-h-screen flex flex-col antialiased text-gray-900 dark:text-gray-100 transition-colors duration-300" style="background-image: url('images/mecanica.png'); background-size: cover; background-position: center; background-attachment: fixed; background-repeat: no-repeat;">
+  <body class="min-h-screen flex flex-col antialiased text-gray-900 dark:text-gray-100 transition-colors duration-300 bg-transparent">
+    <video class="page-bg-video" autoplay muted playsinline loop preload="metadata" aria-hidden="true">
+      <source src="videos/fondocontacto.mp4" type="video/mp4">
+    </video>
     
     <!-- ==================== HEADER ==================== -->
     <header class="sticky top-0 z-50 w-full border-b border-gray-200/50 dark:border-gray-800/50 bg-white/40 dark:bg-gray-950/40 backdrop-blur-md transition-colors duration-300">
@@ -91,7 +109,7 @@
           
           <!-- Logo -->
           <a href="Pagina de inicio.html" class="flex items-center gap-3 group" aria-label="Ir al inicio">
-            <img src="https://noelventura.github.io/mecanica-medio-continuo/images/tecnologico.png" alt="Tecnológico" class="h-12 w-auto object-contain">
+            <img src="images/tecnologico.png" alt="Tecnológico" class="h-12 w-auto object-contain">
             <div class="flex flex-col">
               <span class="text-lg font-bold text-gray-900 dark:text-white leading-tight">Mecánica</span>
               <span class="text-xs text-gray-500 dark:text-gray-400 leading-tight">Medio Continuo</span>
@@ -126,10 +144,10 @@
           
           <!-- Título de la página -->
           <div class="text-center mb-12">
-            <h1 class="text-4xl font-bold mb-4" style="color: #001f3f;">
+            <h1 class="text-4xl font-bold mb-4" style="color: #ffffff; text-shadow: 0 1px 8px rgba(0, 0, 0, 0.45);">
               Contacto
             </h1>
-            <p class="text-lg max-w-2xl mx-auto" style="color: #003366;">
+            <p class="text-lg max-w-2xl mx-auto" style="color: #ffffff; text-shadow: 0 1px 8px rgba(0, 0, 0, 0.45);">
               Encuéntranos en el Instituto Tecnológico de Tepic
             </p>
           </div>
@@ -224,7 +242,7 @@
           <!-- Logo y descripción -->
           <div class="space-y-4">
             <a href="Pagina de inicio.html" class="flex items-center gap-3">
-              <img src="https://noelventura.github.io/mecanica-medio-continuo/images/tecnologico.png" alt="Tecnológico" class="h-12 w-auto object-contain">
+              <img src="images/tecnologico.png" alt="Tecnológico" class="h-12 w-auto object-contain">
               <div class="flex flex-col">
                 <span class="text-lg font-bold text-gray-900 dark:text-white leading-tight">Mecánica</span>
                 <span class="text-xs text-gray-500 dark:text-gray-400 leading-tight">Medio Continuo</span>

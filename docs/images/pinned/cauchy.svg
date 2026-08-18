@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" role="img" aria-label="Cauchy">
+  <path d="M20 26h24v24H20z" fill="#8E6BFF" fill-opacity=".1" stroke="#8E6BFF" stroke-width="2"/>
+  <path d="M20 26l10-8h24l-10 8M44 26l10-8v24l-10 8" stroke="#8E6BFF" stroke-width="1.7" opacity=".75"/>
+  <path d="M32 22v-8M46 38h8M32 50v6" stroke="#8E6BFF" stroke-width="2" stroke-linecap="round"/>
+  <path d="M29 16l3-4 3 4M52 35l4 3-4 3M29 54l3 4 3-4" fill="#8E6BFF"/>
+  <circle cx="32" cy="38" r="2.2" fill="#8E6BFF"/>
+</svg>

@@ -1,10 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <base href="https://noelventura.github.io/mecanica-medio-continuo/" />
     
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -79,10 +78,39 @@
         font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         -webkit-font-smoothing: antialiased;
       }
+      .teoria-block .katex { font-size: 1.05em; }
+      .teoria-block .katex-display { margin: 0.75rem 0; overflow-x: auto; overflow-y: hidden; }
+      .teoria-block p,
+      .teoria-block li {
+        text-align: justify;
+        hyphens: auto;
+      }
+      .page-bg-video {
+        position: fixed;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: -2;
+        pointer-events: none;
+      }
+      body > header,
+      body > main,
+      body > footer,
+      body > #img-viewer {
+        position: relative;
+        z-index: 1;
+      }
+      body > header { z-index: 50; }
+      body > #img-viewer { z-index: 100; }
     </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous" />
   </head>
   
-  <body class="min-h-screen flex flex-col antialiased text-gray-900 dark:text-gray-100 transition-colors duration-300" style="background-image: url('images/mecanica.png'); background-size: cover; background-position: center; background-attachment: fixed; background-repeat: no-repeat;">
+  <body class="min-h-screen flex flex-col antialiased text-gray-900 dark:text-gray-100 transition-colors duration-300 bg-transparent">
+    <video class="page-bg-video" autoplay muted playsinline loop preload="metadata" aria-hidden="true">
+      <source src="videos/fondomecanica.mp4" type="video/mp4">
+    </video>
     
     <!-- ==================== HEADER ==================== -->
     <header class="sticky top-0 z-50 w-full border-b border-gray-200/50 dark:border-gray-800/50 bg-white/40 dark:bg-gray-950/40 backdrop-blur-md transition-colors duration-300">
@@ -91,7 +119,7 @@
           
           <!-- Logo -->
           <a href="Pagina de inicio.html" class="flex items-center gap-3 group" aria-label="Ir al inicio">
-            <img src="https://noelventura.github.io/mecanica-medio-continuo/images/tecnologico.png" alt="Tecnológico" class="h-12 w-auto object-contain">
+            <img src="images/tecnologico.png" alt="Tecnológico" class="h-12 w-auto object-contain">
             <div class="flex flex-col">
               <span class="text-lg font-bold text-gray-900 dark:text-white leading-tight">Mecánica</span>
               <span class="text-xs text-gray-500 dark:text-gray-400 leading-tight">Medio Continuo</span>
@@ -127,15 +155,10 @@
           
           <!-- Título de la página -->
           <div class="text-center mb-12">
-            <div class="w-16 h-16 rounded-xl bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center mb-6 mx-auto shadow-lg">
-              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15"/>
-              </svg>
-            </div>
-            <h1 class="text-4xl font-bold mb-4" style="color: #001f3f;">
+            <h1 class="text-4xl font-bold mb-4 text-white">
               Unidad 1: Fundamentos Matemáticos
             </h1>
-            <p class="text-lg max-w-2xl mx-auto" style="color: #000000;">
+            <p class="text-lg max-w-2xl mx-auto text-white">
               Base matemática esencial para el estudio de la mecánica del medio continuo
             </p>
           </div>
@@ -180,22 +203,508 @@
                         Diapositiva 1
                       </a>
                     </div>
+
+                    <!-- Teoría: Notación indicial -->
+                    <div class="teoria-block mt-6 pt-6 border-t border-gray-700 space-y-5 text-sm leading-relaxed text-gray-300">
+                      <p>
+                        En el estudio de los medios continuos tridimensionales, el uso del álgebra elemental clásica puede complicar la representación matemática de los fenómenos.
+                        Para evitar expresiones extensas y redundantes, se utiliza la <strong class="text-white">notación indicial</strong>, la cual simplifica y unifica la descripción de magnitudes físicas (escalares, vectores y tensores) mediante el uso de subíndices (habitualmente representados por letras minúsculas como \(i, j, k, l, m, n\)).
+                      </p>
+
+                      <div>
+                        <h4 class="text-base font-semibold text-primary-300 mb-2">Clasificación de los índices</h4>
+                        <p class="mb-3">
+                          En una expresión tensorial, los índices que aparecen en las variables se clasifican en dos tipos fundamentales:
+                        </p>
+
+                        <h5 class="font-semibold text-white mb-2">Índices libres</h5>
+                        <p class="mb-2">
+                          Son aquellos subíndices que <em>no se repiten</em> dentro de un término o monomio.
+                          Estos índices determinan el <strong class="text-white">rango</strong> (u orden) del tensor y, por ende, el número de ecuaciones o componentes que representa la expresión.
+                        </p>
+                        <ul class="list-disc pl-5 space-y-2 mb-4">
+                          <li>
+                            <strong class="text-white">Rango 0 (escalar):</strong> no tiene índices libres
+                            (ej. la densidad \(\rho\) o la temperatura \(\theta\)).
+                          </li>
+                          <li>
+                            <strong class="text-white">Rango 1 (vector):</strong> tiene un único índice libre, como \(a_i\) o \(u_i\),
+                            representando 3 componentes en el espacio tridimensional (\(n = 3^1\)).
+                          </li>
+                          <li>
+                            <strong class="text-white">Rango 2 (díada o tensor de segundo orden):</strong> tiene dos índices libres,
+                            como el tensor de esfuerzos \(T_{ij}\) o el tensor de deformaciones \(E_{ij}\),
+                            representando 9 componentes (\(n = 3^2\)).
+                          </li>
+                        </ul>
+
+                        <h5 class="font-semibold text-white mb-2">Índices falsos, mudos o repetidos</h5>
+                        <p>
+                          Son aquellos subíndices que aparecen <em>exactamente dos veces</em> en un mismo monomio.
+                          Un índice repetido no aporta al rango del tensor (se contrae) e indica de forma implícita una operación de suma.
+                        </p>
+                      </div>
+
+                      <div>
+                        <h4 class="text-base font-semibold text-primary-300 mb-2">2. El convenio de suma de Einstein</h4>
+                        <p class="mb-2">
+                          Propuesto por Albert Einstein, este convenio es una simplificación del concepto tradicional de sumatoria \(\sum\).
+                          La regla fundamental establece que:
+                        </p>
+                        <blockquote class="border-l-4 border-primary-500 pl-4 py-2 my-3 bg-gray-900/40 rounded-r-lg text-gray-200 italic">
+                          «Todo índice que aparezca repetido en un mismo monomio de una expresión algebraica supone una sumatoria implícita con respecto a ese índice.»
+                        </blockquote>
+                        <p>
+                          Dado que la mecánica del continuo modela el espacio físico tridimensional, la sumatoria se realiza de manera general desde 1 hasta 3.
+                        </p>
+                      </div>
+
+                      <div>
+                        <h4 class="text-base font-semibold text-primary-300 mb-3">Ejemplos de desarrollo matemático</h4>
+
+                        <p class="mb-1 font-medium text-white">Representación de un vector en sus componentes cartesianas</p>
+                        <p class="mb-2">
+                          Si multiplicamos las componentes de un vector por los vectores unitarios de la base (\(e_1\), \(e_2\), \(e_3\)),
+                          la sumatoria implícita del índice repetido \(i\) genera el vector completo:
+                        </p>
+                        \[
+                          a_i e_i = a_1 e_1 + a_2 e_2 + a_3 e_3
+                        \]
+
+                        <p class="mb-1 mt-4 font-medium text-white">Producto escalar de dos vectores</p>
+                        <p class="mb-2">
+                          El producto punto entre dos vectores \(\mathbf{a}\) y \(\mathbf{b}\) se simplifica al repetir el índice en ambos términos:
+                        </p>
+                        \[
+                          a_i b_i = a_1 b_1 + a_2 b_2 + a_3 b_3
+                        \]
+
+                        <p class="mb-1 mt-4 font-medium text-white">Combinación lineal simple</p>
+                        <p class="mb-2">
+                          La ecuación algebraica \(a_1 x_1 + a_2 x_2 + a_3 x_3 = \alpha\) se reduce elegantemente a:
+                        </p>
+                        \[
+                          a_i x_i = \alpha
+                        \]
+                        <p class="mb-2">
+                          Debido a que el índice repetido es «mudo», el nombre de la letra utilizada es arbitrario y se puede sustituir sin alterar el resultado matemático:
+                        </p>
+                        \[
+                          a_i x_i = a_k x_k = a_m x_m = \alpha
+                        \]
+
+                        <p class="mb-1 mt-4 font-medium text-white">Doble sumatoria (tensores de rango superior)</p>
+                        <p class="mb-2">
+                          La presencia de dos parejas distintas de índices repetidos en un monomio indica una doble sumatoria
+                          (que se extiende de 1 a 3 para cada variable), facilitando la escritura de transformaciones cuadráticas o productos internos de tensores:
+                        </p>
+                        \[
+                          a_{ij}\, x_i\, x_j = \sum_{i=1}^{3}\sum_{j=1}^{3} a_{ij}\, x_i\, x_j
+                        \]
+                        <p class="mb-2">
+                          Al desarrollar esta expresión, se genera una suma de 9 términos (\(3 \times 3\)):
+                        </p>
+                        \[
+                          a_{ij}\, x_i\, x_j =
+                          a_{11}x_1x_1 + a_{12}x_1x_2 + a_{13}x_1x_3
+                          + a_{21}x_2x_1 + a_{22}x_2x_2 + \cdots + a_{33}x_3x_3
+                        \]
+                      </div>
+
+                      <div>
+                        <h4 class="text-base font-semibold text-primary-300 mb-2">3. Utilidad y ventajas en la ingeniería</h4>
+                        <p class="mb-3">
+                          La combinación de la notación indicial y el convenio de Einstein ofrece tres grandes ventajas en el análisis de medios continuos:
+                        </p>
+                        <ul class="list-disc pl-5 space-y-2">
+                          <li>
+                            <strong class="text-white">Compacidad:</strong> ecuaciones gobernantes extremadamente complejas —como las ecuaciones de equilibrio de Cauchy,
+                            las ecuaciones constitutivas elásticas o las ecuaciones de Navier–Stokes— se condensan en una sola línea de texto de fácil lectura.
+                          </li>
+                          <li>
+                            <strong class="text-white">Generalidad:</strong> permite trabajar de manera directa con tensores de cualquier orden
+                            (por ejemplo, el tensor de constantes elásticas de cuarto orden \(C_{ijkl}\)).
+                          </li>
+                          <li>
+                            <strong class="text-white">Equivalencia de notaciones:</strong> acostumbra al lector y al desarrollador a transitar sin dificultad entre la notación matricial y la vectorial,
+                            lo que resulta fundamental para la programación estructurada de algoritmos numéricos en ingeniería.
+                          </li>
+                        </ul>
+                      </div>
+
+                      <div class="pt-2">
+                        <a href="pdf/1.2.1.pdf" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white text-sm font-medium rounded-lg transition-all duration-200">
+                          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+                          </svg>
+                          Diapositiva 1.2.1
+                        </a>
+                      </div>
+                    </div>
                   </div>
                   
                   <!-- Tema 1.2 -->
                   <div class="bg-gray-800/50 rounded-xl p-5 border border-gray-700">
                     <h3 class="text-lg font-semibold text-primary-400 mb-2">1.2 Operaciones de tensores</h3>
-                    <p class="text-gray-400 text-sm">
+                    <p class="text-gray-400 text-sm mb-4">
                       Suma, producto, contracción y otras operaciones fundamentales con tensores de diferentes órdenes.
                     </p>
+
+                    <div class="teoria-block mt-2 pt-5 border-t border-gray-700 space-y-5 text-sm leading-relaxed text-gray-300">
+
+                      <div>
+                        <h4 class="text-base font-semibold text-primary-300 mb-2">1. Adición y sustracción (suma y resta)</h4>
+                        <p class="mb-2">
+                          La suma y la resta son operaciones lineales que se realizan exclusivamente entre tensores del <strong class="text-white">mismo rango</strong>.
+                        </p>
+                        <ul class="list-disc pl-5 space-y-2 mb-3">
+                          <li><strong class="text-white">Procedimiento:</strong> se efectúa término a término (o componente a componente). El tensor resultante conserva el mismo rango que sus predecesores.</li>
+                          <li><strong class="text-white">Propiedades:</strong> cumplen con la propiedad conmutativa (\(a+b=b+a\)) y la asociativa.</li>
+                        </ul>
+                        <p class="mb-2">
+                          Representación en notación indicial: para dos tensores de segundo orden (díadas) \(\mathbf{T}\) y \(\mathbf{S}\) que dan origen a \(\mathbf{W}\):
+                        </p>
+                        \[
+                          T_{ij} + S_{ij} = W_{ij}
+                        \]
+                        <p>
+                          Donde cada componente \(W_{ij}\) es la suma directa de \(T_{ij}\) y \(S_{ij}\).
+                        </p>
+                      </div>
+
+                      <div>
+                        <h4 class="text-base font-semibold text-primary-300 mb-2">2. Producto tensorial (o producto exterior)</h4>
+                        <p class="mb-2">
+                          El producto tensorial (representado por el símbolo \(\otimes\)) permite multiplicar tensores manteniendo todos sus componentes como índices independientes o libres.
+                        </p>
+                        <p class="mb-3">
+                          <strong class="text-white">Efecto en el rango:</strong> al acumularse los índices libres, el rango del tensor resultante es igual a la suma de los rangos de los factores.
+                        </p>
+                        <p class="mb-2 font-medium text-white">Ejemplos de incremento de rango</p>
+                        <ul class="list-disc pl-5 space-y-3">
+                          <li>
+                            <strong class="text-white">Vector con vector</strong> (rango \(1 \otimes 1\)): produce una díada o tensor de rango dos (9 componentes):
+                            \[
+                              a_i b_j = T_{ij} \quad\Longrightarrow\quad \mathbf{a}\otimes\mathbf{b}=\mathbf{T}
+                            \]
+                          </li>
+                          <li>
+                            <strong class="text-white">Díada con vector</strong> (rango \(2 \otimes 1\)): genera un tensor de rango tres (27 componentes):
+                            \[
+                              T_{ij}\, r_k = R_{ijk} \quad\Longrightarrow\quad \mathbf{T}\otimes\mathbf{r}=\mathbf{R}
+                            \]
+                          </li>
+                          <li>
+                            <strong class="text-white">Díada con díada</strong> (rango \(2 \otimes 2\)): genera un tensor de cuarto orden (81 componentes), como el tensor de constantes elásticas \(C_{ijkl}\):
+                            \[
+                              M_{ij}\, N_{kl} = R_{ijkl} \quad\Longrightarrow\quad \mathbf{M}\otimes\mathbf{N}=\mathbf{R}
+                            \]
+                          </li>
+                        </ul>
+                      </div>
+
+                      <div>
+                        <h4 class="text-base font-semibold text-primary-300 mb-2">3. Contracción de índices</h4>
+                        <p class="mb-2">
+                          La contracción es la operación que consiste en igualar dos subíndices en un monomio, transformándolos en índices repetidos o mudos.
+                        </p>
+                        <p class="mb-3">
+                          <strong class="text-white">Efecto en el rango:</strong> al generar un índice repetido, se activa una sumatoria implícita (convenio de Einstein) de 1 a 3 en el espacio tridimensional.
+                          Esto reduce el rango del tensor resultante en <em>dos unidades</em> por cada pareja de índices contraídos.
+                        </p>
+                        <p class="mb-2 font-medium text-white">Ejemplos fundamentales</p>
+                        <ul class="list-disc pl-5 space-y-3">
+                          <li>
+                            <strong class="text-white">Contracción de una díada (traza):</strong> contrae una díada (rango 2) a un escalar (rango 0):
+                            \[
+                              T_{ii} = T_{11} + T_{22} + T_{33} = \lambda
+                            \]
+                          </li>
+                          <li>
+                            <strong class="text-white">Contracción de un producto tensorial:</strong> el producto de la díada \(E_{ij}\) con el vector \(a_k\) (rango 3) se contrae al igualar \(j=k\), dando origen a un nuevo vector \(b_i\) (rango 1):
+                            \[
+                              E_{ij}\, a_j = b_i
+                            \]
+                          </li>
+                        </ul>
+                      </div>
+
+                      <div>
+                        <h4 class="text-base font-semibold text-primary-300 mb-2">4. Productos internos</h4>
+                        <p class="mb-3">
+                          Los productos internos representan proyecciones y contracciones simultáneas de componentes.
+                        </p>
+
+                        <h5 class="font-semibold text-white mb-2">A. Producto punto (vectores)</h5>
+                        <p class="mb-2">
+                          Para tensores de rango uno, el producto punto o escalar representa la proyección de un vector sobre otro, generando un escalar (rango 0).
+                        </p>
+                        <p class="mb-1">Formulación:</p>
+                        \[
+                          \mathbf{a}\cdot\mathbf{b} = a_i b_i = a_1 b_1 + a_2 b_2 + a_3 b_3
+                        \]
+                        <p class="mb-4">Es conmutativo: \(\mathbf{a}\cdot\mathbf{b} = \mathbf{b}\cdot\mathbf{a}\).</p>
+
+                        <h5 class="font-semibold text-white mb-2">B. Producto punto vector–díada y díada–vector</h5>
+                        <p class="mb-2">
+                          Operación de un vector con un tensor de segundo orden para obtener un nuevo vector (rango 1):
+                        </p>
+                        <ul class="list-disc pl-5 space-y-3 mb-4">
+                          <li>
+                            <strong class="text-white">Vector–díada:</strong>
+                            \(\mathbf{a}\cdot\mathbf{E}=\mathbf{b}\) \(\Longrightarrow\) \(a_i E_{ij} = b_j\)
+                          </li>
+                          <li>
+                            <strong class="text-white">Díada–vector:</strong>
+                            \(\mathbf{E}\cdot\mathbf{a}=\mathbf{c}\) \(\Longrightarrow\) \(E_{ij} a_j = c_i\)
+                          </li>
+                        </ul>
+
+                        <h5 class="font-semibold text-white mb-2">C. Doble producto interno (entre díadas)</h5>
+                        <p class="mb-2">
+                          Multiplicación que contrae dos parejas de índices de manera simultánea, resultando en un escalar.
+                          Se expresa como la traza del producto de las matrices asociadas:
+                        </p>
+                        \[
+                          \mathbf{T}:\mathbf{M} = T_{ij} M_{ij}
+                          = T_{11}M_{11} + T_{22}M_{22} + T_{33}M_{33} + T_{12}M_{12} + \cdots
+                        \]
+                        <p class="mb-2">
+                          Esta operación es la base para relacionar tensores de cuarto rango con deformaciones (como en la ley de Hooke generalizada):
+                        </p>
+                        \[
+                          T_{ij} = C_{ijkl}\, E_{kl}
+                        \]
+                      </div>
+
+                      <div>
+                        <h4 class="text-base font-semibold text-primary-300 mb-2">5. Producto vectorial (producto cruz)</h4>
+                        <p class="mb-2">
+                          Esta operación se asocia comúnmente a tensores de rango uno (vectores) y genera un nuevo vector perpendicular al plano definido por los factores.
+                        </p>
+                        <p class="mb-1">Formulación:</p>
+                        \[
+                          \mathbf{a}\times\mathbf{b} = \mathbf{c}
+                        \]
+                        <p class="mb-2">
+                          <strong class="text-white">Propiedades:</strong> es anticonmutativo (\(\mathbf{a}\times\mathbf{b} = -\mathbf{b}\times\mathbf{a}\))
+                          y su magnitud se define mediante la función seno del ángulo menor \(\theta\) entre los vectores:
+                        </p>
+                        \[
+                          |\mathbf{a}\times\mathbf{b}| = |\mathbf{a}|\,|\mathbf{b}|\,\sin\theta
+                        \]
+                        <p class="mb-2">
+                          En notación tensorial, esta operación se simplifica significativamente empleando el permutador o alternador de Levi-Civita (\(\epsilon_{ijk}\)):
+                        </p>
+                        \[
+                          (\mathbf{a}\times\mathbf{b})_i = \epsilon_{ijk}\, a_j\, b_k
+                        \]
+                      </div>
+
+                      <div>
+                        <h4 class="text-base font-semibold text-primary-300 mb-2">6. Operaciones combinadas (triple producto)</h4>
+                        <p class="mb-2">
+                          <strong class="text-white">Triple producto escalar:</strong> representa geométricamente el volumen \(V\) del prisma definido por tres vectores \(\mathbf{a}\), \(\mathbf{b}\), \(\mathbf{c}\):
+                        </p>
+                        \[
+                          V = \mathbf{a}\cdot(\mathbf{b}\times\mathbf{c}) = (\mathbf{a}\times\mathbf{b})\cdot\mathbf{c}
+                        \]
+                        <p class="mb-2">
+                          <strong class="text-white">Triple producto vectorial:</strong> proporciona identidades de descomposición sobre vectores coplanares:
+                        </p>
+                        \[
+                          \mathbf{a}\times(\mathbf{b}\times\mathbf{c}) = (\mathbf{a}\cdot\mathbf{c})\mathbf{b} - (\mathbf{a}\cdot\mathbf{b})\mathbf{c}
+                        \]
+                      </div>
+
+                      <div class="pt-2 space-y-4">
+                        <div class="rounded-lg overflow-hidden border border-gray-600 cursor-pointer max-w-2xl mx-auto" title="Doble clic para ver en pantalla completa">
+                          <img src="images/1.2.png" alt="Operaciones de tensores — 1.2" class="img-zoom w-full h-auto object-contain bg-white" loading="lazy" />
+                        </div>
+                        <div class="flex justify-center">
+                          <a href="pdf/1.2.pdf" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white text-sm font-medium rounded-lg transition-all duration-200">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+                            </svg>
+                            Presentación 1.2
+                          </a>
+                        </div>
+                      </div>
+
+                    </div>
                   </div>
                   
                   <!-- Tema 1.3 -->
                   <div class="bg-gray-800/50 rounded-xl p-5 border border-gray-700">
                     <h3 class="text-lg font-semibold text-primary-400 mb-2">1.3 Métodos para el cálculo de valores y vectores propios</h3>
-                    <p class="text-gray-400 text-sm">
+                    <p class="text-gray-400 text-sm mb-4">
                       Técnicas para determinar eigenvalores y eigenvectores, fundamentales para el análisis de esfuerzos y deformaciones principales.
                     </p>
+
+                    <div class="teoria-block mt-2 pt-5 border-t border-gray-700 space-y-5 text-sm leading-relaxed text-gray-300">
+
+                      <div>
+                        <h4 class="text-base font-semibold text-primary-300 mb-2">1. Significado físico</h4>
+                        <ul class="list-disc pl-5 space-y-2 mb-3">
+                          <li>
+                            <strong class="text-white">Esfuerzos principales:</strong> son aquellos esfuerzos normales puros que actúan sobre planos donde las componentes de esfuerzo cortante son nulas (denominados planos principales).
+                          </li>
+                          <li>
+                            <strong class="text-white">Deformaciones principales:</strong> representan las deformaciones lineales (alargamientos o acortamientos) puras en direcciones donde las distorsiones angulares se anulan (direcciones principales).
+                          </li>
+                        </ul>
+                        <p class="mb-2">
+                          Desde la perspectiva del álgebra lineal, un vector unitario \(\mathbf{n}\) define una dirección principal si, al aplicarle la transformación lineal de un tensor simétrico de rango dos (como el tensor de esfuerzos \(\mathbf{T}\) o el tensor de deformación \(\mathbf{E}\)), el vector resultante mantiene la misma dirección, volviéndose colineal a sí mismo:
+                        </p>
+                        \[
+                          \mathbf{T}\,\mathbf{n} = \lambda\,\mathbf{n}
+                        \]
+                        <p>
+                          Donde el escalar \(\lambda\) representa el <strong class="text-white">valor propio</strong> (la magnitud del esfuerzo o deformación principal) y \(\mathbf{n}\) es el <strong class="text-white">vector propio</strong> correspondiente.
+                        </p>
+                      </div>
+
+                      <div>
+                        <h4 class="text-base font-semibold text-primary-300 mb-2">2. Formulación matemática</h4>
+                        <p class="mb-2">
+                          Empleando la notación de índices y la Delta de Kronecker (\(\delta_{ij}\)), la ecuación de colinealidad se expresa como:
+                        </p>
+                        \[
+                          T_{ij}\, n_j = \lambda\,\delta_{ij}\, n_j
+                        \]
+                        <p class="mb-2">
+                          Al agrupar los términos en un solo miembro de la ecuación, se establece un sistema homogéneo de ecuaciones lineales:
+                        </p>
+                        \[
+                          \bigl(T_{ij} - \lambda\,\delta_{ij}\bigr)\, n_j = 0
+                        \]
+                        <p class="mb-2">
+                          Para evitar la solución trivial (donde el vector propio es nulo, \(\mathbf{n}=\mathbf{0}\)), el sistema debe ser compatible indeterminado, lo que exige que el determinante de la matriz de coeficientes sea idénticamente cero:
+                        </p>
+                        \[
+                          \det\bigl(T_{ij} - \lambda\,\delta_{ij}\bigr) = 0
+                        \]
+                        <p class="mb-2">
+                          El desarrollo de este determinante en el espacio tridimensional (\(i,j=1,2,3\)) conduce a una ecuación cúbica denominada <strong class="text-white">polinomio característico</strong>:
+                        </p>
+                        \[
+                          \lambda^3 - I_1\lambda^2 + I_2\lambda - I_3 = 0
+                        \]
+                        <p class="mb-3">
+                          (Alternativamente expresada con signos opuestos en la literatura de deformaciones como \(-\lambda^3 + I_1\lambda^2 - I_2\lambda + I_3 = 0\)).
+                        </p>
+                        <p class="mb-3">
+                          Donde los coeficientes \(I_1\), \(I_2\) e \(I_3\) representan los <strong class="text-white">invariantes del tensor</strong>, magnitudes escalares que describen propiedades intrínsecas del estado físico y que no varían al modificar el sistema de coordenadas de referencia:
+                        </p>
+                        <ul class="list-disc pl-5 space-y-3">
+                          <li>
+                            <strong class="text-white">Primer invariante (\(I_1\) — invariante lineal):</strong> equivale a la traza del tensor.
+                            \[
+                              I_1 = T_{ii} = T_{11} + T_{22} + T_{33}
+                            \]
+                          </li>
+                          <li>
+                            <strong class="text-white">Segundo invariante (\(I_2\) — invariante cuadrático):</strong>
+                            \[
+                              I_2 = \tfrac{1}{2}\bigl(T_{ii}T_{jj} - T_{ij}T_{ji}\bigr)
+                            \]
+                          </li>
+                          <li>
+                            <strong class="text-white">Tercer invariante (\(I_3\) — invariante cúbico):</strong> equivale al determinante de la matriz que representa al tensor.
+                            \[
+                              I_3 = \det(T_{ij})
+                            \]
+                          </li>
+                        </ul>
+                      </div>
+
+                      <div>
+                        <h4 class="text-base font-semibold text-primary-300 mb-2">3. Metodología de resolución</h4>
+
+                        <h5 class="font-semibold text-white mb-2">Paso 1: obtención de los valores propios (eigenvalores)</h5>
+                        <p class="mb-2">
+                          Al resolver algebraicamente la ecuación cúbica característica, se obtienen tres raíces reales (propiedad garantizada por la simetría del tensor).
+                          Estas raíces se ordenan de manera convencional en escala algebraica decreciente:
+                        </p>
+                        <ul class="list-disc pl-5 space-y-1 mb-4">
+                          <li>\(\lambda_1\): esfuerzo o deformación principal mayor.</li>
+                          <li>\(\lambda_2\): esfuerzo o deformación principal intermedia.</li>
+                          <li>\(\lambda_3\): esfuerzo o deformación principal menor.</li>
+                        </ul>
+
+                        <h5 class="font-semibold text-white mb-2">Paso 2: obtención de los vectores propios (eigenvectores)</h5>
+                        <p class="mb-2">
+                          Para encontrar el vector propio \(\mathbf{n}^{(p)}\) correspondiente a cada valor propio obtenido \(\lambda_p\) (para \(p=1,2,3\)), se sustituye dicho valor en el sistema de ecuaciones homogéneo original:
+                        </p>
+                        \[
+                          \bigl(T_{ij} - \lambda_p\,\delta_{ij}\bigr)\, n_j = 0
+                        \]
+                        <p class="mb-2">
+                          Dado que este sistema tiene un determinante nulo, las ecuaciones son linealmente dependientes.
+                          Para restringir el número infinito de soluciones y obtener un vector unitario, se introduce la ecuación de normalización (la suma del cuadrado de los cosenos directores es igual a la unidad):
+                        </p>
+                        \[
+                          n_i n_i = 1 \quad\Longrightarrow\quad \cos^2\alpha_p + \cos^2\beta_p + \cos^2\gamma_p = 1
+                        \]
+                        <p>
+                          La solución simultánea del sistema junto con la condición de normalización proporciona las componentes del vector unitario principal \(\mathbf{n}^{(p)}\)
+                          (los cosenos directores \(\cos\alpha_p\), \(\cos\beta_p\), \(\cos\gamma_p\)) para cada valor propio.
+                        </p>
+                      </div>
+
+                      <div>
+                        <h4 class="text-base font-semibold text-primary-300 mb-2">4. Propiedades fundamentales en el medio continuo</h4>
+                        <p class="mb-3">
+                          Puesto que tanto el tensor de esfuerzos de Cauchy como el tensor de deformaciones infinitesimales son simétricos y reales por leyes de equilibrio y cinemática,
+                          se cumplen de forma rigurosa las siguientes propiedades:
+                        </p>
+                        <ul class="list-disc pl-5 space-y-3">
+                          <li>
+                            <strong class="text-white">Eigenvalores reales:</strong> las magnitudes de los esfuerzos y deformaciones principales siempre corresponden a números reales.
+                          </li>
+                          <li>
+                            <strong class="text-white">Ortogonalidad mutua:</strong> los vectores propios asociados a valores propios distintos (\(\lambda_a \neq \lambda_b\)) son mutuamente perpendiculares entre sí, constituyendo una base ortonormal para el espacio físico.
+                          </li>
+                          <li>
+                            <strong class="text-white">Representación diagonal:</strong> siempre es posible definir un sistema de coordenadas (el sistema principal) bajo el cual el tensor adopta una estructura puramente diagonal:
+                            \[
+                              \begin{bmatrix}
+                                \lambda_1 & 0 & 0 \\
+                                0 & \lambda_2 & 0 \\
+                                0 & 0 & \lambda_3
+                              \end{bmatrix}
+                            \]
+                          </li>
+                        </ul>
+
+                        <h5 class="font-semibold text-white mt-4 mb-2">Casos de multiplicidad de raíces</h5>
+                        <ul class="list-disc pl-5 space-y-2">
+                          <li>
+                            Si dos valores propios son idénticos (\(\lambda_1 = \lambda_2 \neq \lambda_3\)), la dirección principal asociada a \(\lambda_3\) es única,
+                            mientras que los vectores propios para el valor repetido pueden orientarse en cualquier dirección contenida en el plano ortogonal a ella.
+                          </li>
+                          <li>
+                            Si las tres raíces son idénticas (\(\lambda_1 = \lambda_2 = \lambda_3\)), cualquier terna ortogonal en el punto actúa como dirección principal,
+                            lo que caracteriza físicamente a un estado de tensor isotrópico (como la presión hidrostática pura).
+                          </li>
+                        </ul>
+                      </div>
+
+                      <div class="pt-2 space-y-4">
+                        <div class="rounded-lg overflow-hidden border border-gray-600 cursor-pointer max-w-2xl mx-auto" title="Doble clic para ver en pantalla completa">
+                          <img src="images/1.3.png" alt="Valores y vectores propios — 1.3" class="img-zoom w-full h-auto object-contain bg-white" loading="lazy" />
+                        </div>
+                        <div class="flex justify-center">
+                          <a href="pdf/1.3.pdf" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white text-sm font-medium rounded-lg transition-all duration-200">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+                            </svg>
+                            Presentación 1.3
+                          </a>
+                        </div>
+                      </div>
+
+                    </div>
                   </div>
                   
                   <!-- Tema 1.4 -->
@@ -210,14 +719,278 @@
                       </svg>
                       Diapositiva
                     </a>
+
+                    <div class="teoria-block mt-6 pt-5 border-t border-gray-700 space-y-5 text-sm leading-relaxed text-gray-300">
+                      <p>
+                        Los operadores diferenciales vectoriales son transformaciones matemáticas fundamentales en la mecánica de medios continuos.
+                        Permiten analizar la variación espacial de propiedades físicas representadas mediante campos escalares (como la temperatura, la densidad o la presión)
+                        y campos vectoriales (como el desplazamiento, la velocidad o las fuerzas).
+                      </p>
+                      <p class="mb-2">
+                        Operacionalmente, se estructuran a través del operador nabla (\(\nabla\)), el cual simbólicamente se maneja como un vector de derivadas parciales espaciales:
+                      </p>
+                      \[
+                        \nabla = \frac{\partial}{\partial x}\,\mathbf{i}
+                        + \frac{\partial}{\partial y}\,\mathbf{j}
+                        + \frac{\partial}{\partial z}\,\mathbf{k}
+                      \]
+
+                      <div>
+                        <h4 class="text-base font-semibold text-primary-300 mb-2">1. El operador gradiente (\(\mathrm{grad}\) o \(\nabla\))</h4>
+                        <p class="mb-3">
+                          El gradiente describe la tasa de cambio espacial de un campo en una dirección determinada, afectando directamente el rango del campo al que se aplica.
+                        </p>
+
+                        <h5 class="font-semibold text-white mb-2">A. Gradiente de un campo escalar</h5>
+                        <p class="mb-2">
+                          Se aplica a una función escalar \(f(x,y,z)\) (un tensor de rango cero) y genera un campo vectorial (un tensor de rango uno).
+                        </p>
+                        <p class="mb-2">
+                          <strong class="text-white">Significado físico:</strong> representa la derivada direccional máxima del campo escalar en cualquier punto.
+                          El vector resultante apunta en la dirección en la que el campo escalar varía con la mayor proporción.
+                          Un ejemplo físico es la trayectoria del agua al escurrir por una montaña, la cual sigue la línea de pendiente máxima definida por el gradiente de altura.
+                        </p>
+                        <p class="mb-1">Formulación cartesiana:</p>
+                        \[
+                          \mathrm{grad}(f)=\nabla f
+                          = \frac{\partial f}{\partial x}\,\mathbf{i}
+                          + \frac{\partial f}{\partial y}\,\mathbf{j}
+                          + \frac{\partial f}{\partial z}\,\mathbf{k}
+                        \]
+
+                        <h5 class="font-semibold text-white mt-4 mb-2">B. Gradiente de un campo vectorial</h5>
+                        <p class="mb-2">
+                          Se aplica a una función vectorial \(\mathbf{u}\) para indicar la dirección en la cual el cambio de dicho campo es máximo.
+                        </p>
+                        <p class="mb-2">
+                          <strong class="text-white">Significado físico:</strong> incrementa el rango del tensor en una unidad, produciendo un tensor de segundo orden (díada).
+                          Este operador es de vital importancia para calcular incrementos de campos vectoriales mediante la relación:
+                        </p>
+                        \[
+                          \mathbf{v} = \Delta\mathbf{u} = \mathrm{Grad}(\mathbf{u})\cdot\Delta\mathbf{r}
+                        \]
+                      </div>
+
+                      <div>
+                        <h4 class="text-base font-semibold text-primary-300 mb-2">2. El operador divergencia (\(\mathrm{div}\) o \(\nabla\cdot\))</h4>
+                        <p class="mb-2">
+                          La divergencia evalúa el flujo neto de un campo vectorial a través de la frontera de un volumen infinitesimal.
+                        </p>
+                        <p class="mb-2">
+                          <strong class="text-white">Significado físico:</strong> se aplica exclusivamente a un campo vectorial y produce un campo escalar.
+                          Mide la tendencia del campo a la concentración o desconcentración de flujo en cada punto del medio continuo.
+                        </p>
+                        <p class="mb-1">Formulación cartesiana:</p>
+                        \[
+                          \mathrm{div}(\mathbf{u})=\nabla\cdot\mathbf{u}
+                          = \frac{\partial u_x}{\partial x}
+                          + \frac{\partial u_y}{\partial y}
+                          + \frac{\partial u_z}{\partial z}
+                        \]
+                        <p class="mt-3 mb-2 font-medium text-white">Interpretación en medios continuos</p>
+                        <ul class="list-disc pl-5 space-y-3">
+                          <li>
+                            <strong class="text-white">Conservación de masa:</strong> si el campo vectorial representa el flujo de masa (velocidad por densidad),
+                            una divergencia negativa indica convergencia y, por lo tanto, un aumento local de la densidad.
+                            Este comportamiento rige la ecuación de continuidad en su descripción espacial:
+                            \[
+                              \frac{\partial\rho}{\partial t} + \mathrm{div}(\rho\mathbf{v}) = 0
+                            \]
+                          </li>
+                          <li>
+                            <strong class="text-white">Campos tensoriales:</strong> el operador se extiende a tensores de segundo orden (como el tensor de esfuerzos de Cauchy \(\mathbf{T}\)),
+                            donde la divergencia de una díada reduce su rango a un vector, lo que resulta fundamental en las ecuaciones de movimiento y equilibrio de Cauchy:
+                            \[
+                              \rho\mathbf{a} = \rho\mathbf{f} + \mathrm{div}(\mathbf{T})
+                            \]
+                          </li>
+                        </ul>
+                      </div>
+
+                      <div>
+                        <h4 class="text-base font-semibold text-primary-300 mb-2">3. El operador rotacional (\(\mathrm{rot}\) o \(\nabla\times\))</h4>
+                        <p class="mb-2">
+                          El rotacional caracteriza la tendencia de un campo vectorial a inducir movimientos de rotación en el entorno de un punto.
+                        </p>
+                        <p class="mb-2">
+                          <strong class="text-white">Significado físico:</strong> se aplica a un campo vectorial y genera otro campo vectorial (manteniendo el rango del tensor original).
+                          Físicamente, el rotacional detecta y mide la tendencia a girar o rotar como cuerpo rígido dentro del medio.
+                        </p>
+                        <p class="mb-1">Formulación cartesiana:</p>
+                        \[
+                          \mathrm{rot}(\mathbf{u})=\nabla\times\mathbf{u}
+                          = \Bigl(\frac{\partial u_z}{\partial y}-\frac{\partial u_y}{\partial z}\Bigr)\mathbf{i}
+                          + \Bigl(\frac{\partial u_x}{\partial z}-\frac{\partial u_z}{\partial x}\Bigr)\mathbf{j}
+                          + \Bigl(\frac{\partial u_y}{\partial x}-\frac{\partial u_x}{\partial y}\Bigr)\mathbf{k}
+                        \]
+                        <p class="mt-3 mb-2 font-medium text-white">Interpretación en medios continuos</p>
+                        <ul class="list-disc pl-5 space-y-2">
+                          <li>
+                            <strong class="text-white">Vorticidad y campo de velocidades:</strong> en la mecánica de fluidos, la aplicación del rotacional al campo de velocidades
+                            define el vector torbellino o campo de vorticidad (\(\boldsymbol{\gamma}=\mathrm{rot}\,\mathbf{v}\)).
+                          </li>
+                          <li>
+                            <strong class="text-white">Flujo irrotacional:</strong> si en una región del medio continuo el rotacional del campo de velocidades es idénticamente nulo
+                            (\(\mathrm{rot}\,\mathbf{v}=\mathbf{0}\)), se establece que el flujo es irrotacional, lo que permite simplificar la resolución del campo mediante funciones potenciales escalares.
+                          </li>
+                        </ul>
+                      </div>
+
+                      <div>
+                        <h4 class="text-base font-semibold text-primary-300 mb-2">4. Teoremas integrales clave</h4>
+                        <p class="mb-3">
+                          La modelación de los medios continuos utiliza dos teoremas de integración fundamentales que conectan estos operadores con las fronteras físicas de un volumen de control:
+                        </p>
+                        <ul class="list-disc pl-5 space-y-3">
+                          <li>
+                            <strong class="text-white">Teorema de la divergencia (teorema de Gauss):</strong>
+                            permite transformar una integral de volumen en una integral sobre su superficie exterior utilizando el vector normal unitario \(\mathbf{n}\).
+                            Es indispensable para formular los principios de conservación en su forma diferencial local.
+                            \[
+                              \int_V \mathrm{div}(\mathbf{u})\,dV = \int_S \mathbf{u}\cdot\mathbf{n}\,dS
+                            \]
+                          </li>
+                          <li>
+                            <strong class="text-white">Teorema de la integral del rotacional (teorema de Stokes):</strong>
+                            relaciona la integral de la componente normal del rotacional sobre una superficie abierta con la integral de línea del campo vectorial
+                            a lo largo de la curva cerrada \(C\) que la delimita.
+                            \[
+                              \int_S \mathrm{rot}(\mathbf{u})\cdot\mathbf{n}\,dS = \oint_C \mathbf{u}\cdot\mathbf{t}\,ds
+                            \]
+                          </li>
+                        </ul>
+                      </div>
+
+                      <div class="pt-2 flex justify-center">
+                        <a href="pdf/1.4.pdf" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white text-sm font-medium rounded-lg transition-all duration-200">
+                          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+                          </svg>
+                          Presentación 1.4
+                        </a>
+                      </div>
+                    </div>
                   </div>
                   
                   <!-- Tema 1.5 -->
                   <div class="bg-gray-800/50 rounded-xl p-5 border border-gray-700">
                     <h3 class="text-lg font-semibold text-primary-400 mb-2">1.5 Teoremas de Green y Stokes</h3>
-                    <p class="text-gray-400 text-sm">
+                    <p class="text-gray-400 text-sm mb-4">
                       Teoremas integrales fundamentales que relacionan integrales de línea, superficie y volumen.
                     </p>
+
+                    <div class="teoria-block mt-2 pt-5 border-t border-gray-700 space-y-5 text-sm leading-relaxed text-gray-300">
+                      <p>
+                        En la mecánica de medios continuos, los teoremas integrales son herramientas matemáticas esenciales que permiten transitar de manera rigurosa entre las descripciones
+                        <strong class="text-white">globales</strong> (integrales) y <strong class="text-white">locales</strong> (diferenciales) de los principios físicos de conservación.
+                        Estos teoremas facilitan la conversión de integrales de línea, superficie y volumen, lo que resulta indispensable para la formulación de las ecuaciones de campo que rigen el comportamiento de los materiales,
+                        tales como la conservación de la masa, de la cantidad de movimiento y de la energía.
+                      </p>
+
+                      <div>
+                        <h4 class="text-base font-semibold text-primary-300 mb-2">1. Teorema de Stokes (teorema de la integral del rotacional)</h4>
+                        <p class="mb-2">
+                          El teorema de Stokes establece una equivalencia entre la circulación de un campo vectorial a lo largo de una curva cerrada y el flujo de su rotacional a través de cualquier superficie abierta
+                          que tenga a dicha curva como su contorno o límite.
+                        </p>
+                        <p class="mb-2">
+                          <strong class="text-white">Significado físico:</strong> demuestra que la circulación o «trabajo» acumulado de un campo vectorial \(\mathbf{u}\) a lo largo de una trayectoria cerrada \(C\)
+                          es equivalente a la suma de los efectos de rotación local (vorticidad) medidos a través de la superficie \(S\) delimitada por dicha curva.
+                          Si el rotacional de un campo es idénticamente nulo (\(\nabla\times\mathbf{u}=\mathbf{0}\)) en una región simplemente conexa, se dice que el campo es <em>irrotacional</em> o <em>conservativo</em>,
+                          lo que garantiza que la circulación a lo largo de cualquier trayectoria cerrada es igual a cero.
+                        </p>
+                        <p class="mb-1">Formulación vectorial:</p>
+                        \[
+                          \int_S (\nabla\times\mathbf{u})\cdot\mathbf{n}\,dS = \oint_C \mathbf{u}\cdot\mathbf{t}\,ds
+                        \]
+                        <p class="mb-2">Donde:</p>
+                        <ul class="list-disc pl-5 space-y-1 mb-3">
+                          <li>\(\mathbf{u}\) representa el campo vectorial continuo en la región de integración.</li>
+                          <li>\(\mathbf{n}\) es el vector normal unitario asociado a la superficie abierta \(S\).</li>
+                          <li>\(\mathbf{t}\) es el vector tangente unitario a la curva frontera \(C\), orientado positivamente en relación con \(\mathbf{n}\).</li>
+                          <li>\(ds\) (o bien \(d\mathbf{r}\)) representa el diferencial de arco sobre la trayectoria.</li>
+                        </ul>
+                        <p class="mb-1">Formulación en notación indicial:</p>
+                        \[
+                          \int_S \epsilon_{ijk}\, u_{k,j}\, n_i\, dS = \oint_C u_i\, t_i\, ds
+                        \]
+                        <p>
+                          Donde \(\epsilon_{ijk}\) es el símbolo de permutación o alternador de Levi-Civita
+                          y \(u_{k,j}\) indica la derivada parcial de la componente \(u_k\) con respecto a la coordenada espacial \(x_j\).
+                        </p>
+                      </div>
+
+                      <div>
+                        <h4 class="text-base font-semibold text-primary-300 mb-2">2. Teorema de Green en el plano</h4>
+                        <p class="mb-2">
+                          El teorema de Green constituye un caso particular del teorema de Stokes que ocurre cuando la curva cerrada \(C\) y la superficie plana \(S\) que delimita
+                          se encuentran contenidas por completo en un plano bidimensional (por lo general, el plano cartesiano \(x_1\)–\(x_2\)).
+                        </p>
+                        <p class="mb-2">
+                          <strong class="text-white">Significado:</strong> permite simplificar una integral de línea sobre una curva cerrada plana traduciéndola en una integral doble
+                          sobre la región bidimensional encerrada por la curva.
+                        </p>
+                        <p class="mb-1">Formulación matemática:</p>
+                        \[
+                          \oint_C \bigl(u_1\,dx_1 + u_2\,dx_2\bigr)
+                          = \int_S \Bigl(\frac{\partial u_2}{\partial x_1} - \frac{\partial u_1}{\partial x_2}\Bigr)\, dx_1\, dx_2
+                        \]
+                        <p>
+                          Donde \(u_1\) y \(u_2\) representan las componentes del campo vectorial \(\mathbf{u}\) proyectadas sobre los ejes coordenados de referencia \(x_1\) y \(x_2\).
+                        </p>
+                      </div>
+
+                      <div>
+                        <h4 class="text-base font-semibold text-primary-300 mb-2">3. Teorema de la divergencia (teorema de Gauss)</h4>
+                        <p class="mb-2">
+                          Para complementar la transición dimensional en los análisis tridimensionales de los medios continuos, es indispensable vincular las integrales de superficie con las de volumen
+                          utilizando el teorema de la divergencia de Gauss.
+                        </p>
+                        <p class="mb-2">
+                          <strong class="text-white">Significado físico:</strong> establece que el flujo neto saliente de un campo vectorial \(\mathbf{u}\) a través de una superficie cerrada \(S\)
+                          es idéntico a la integral de volumen de la divergencia de dicho campo sobre la región tridimensional \(V\) encerrada por la superficie.
+                          Este principio es fundamental para formular la ecuación de continuidad en su forma diferencial local en un volumen de control:
+                        </p>
+                        \[
+                          \frac{d\rho}{dt} + \rho\,\mathrm{div}(\mathbf{v}) = 0
+                        \]
+                        <p class="mb-1">Formulación vectorial:</p>
+                        \[
+                          \int_V (\nabla\cdot\mathbf{u})\,dV = \int_S \mathbf{u}\cdot\mathbf{n}\,dS
+                        \]
+                        <p class="mb-1">Formulación en notación indicial:</p>
+                        \[
+                          \int_V u_{i,i}\,dV = \int_S u_i\, n_i\, dS
+                        \]
+                      </div>
+
+                      <div>
+                        <h4 class="text-base font-semibold text-primary-300 mb-2">4. Aplicaciones críticas en mecánica de medios continuos</h4>
+                        <p class="mb-3">
+                          La aplicación de estos tres teoremas integrales permite estructurar de forma robusta las ecuaciones gobernantes de la disciplina:
+                        </p>
+                        <ul class="list-disc pl-5 space-y-3">
+                          <li>
+                            <strong class="text-white">Ecuaciones de movimiento de Cauchy (sólidos y fluidos):</strong>
+                            al realizar el balance de fuerzas que actúan sobre un volumen material, el teorema de Gauss se aplica al tensor de esfuerzos de Cauchy \(\mathbf{T}\)
+                            para convertir la integral de las fuerzas de superficie (contacto) en una integral de volumen:
+                            \[
+                              \int_S \mathbf{T}\cdot\mathbf{n}\,dS = \int_V \mathrm{div}(\mathbf{T})\,dV
+                            \]
+                            Esto permite agrupar las fuerzas de cuerpo y aceleraciones en una única integral de volumen, de la cual se desprende la forma diferencial de las ecuaciones de equilibrio y movimiento:
+                            \[
+                              \rho\mathbf{a} = \rho\mathbf{f} + \mathrm{div}(\mathbf{T})
+                            \]
+                          </li>
+                          <li>
+                            <strong class="text-white">Análisis de vorticidad en fluidos viscosos:</strong>
+                            en la cinemática de fluidos, la aplicación del rotacional al campo de velocidades define el tensor de vorticidad (\(\boldsymbol{\omega}=\mathrm{rot}\,\mathbf{v}\)).
+                            Mediante el teorema de Stokes, la circulación del fluido a lo largo de cualquier contorno cerrado se vincula directamente con la intensidad de los vórtices
+                            o líneas de torbellino que atraviesan dicha sección de corriente.
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
                   </div>
                   
                 </div>
@@ -259,7 +1032,7 @@
           <!-- Logo y descripción -->
           <div class="space-y-4">
             <a href="Pagina de inicio.html" class="flex items-center gap-3">
-              <img src="https://noelventura.github.io/mecanica-medio-continuo/images/tecnologico.png" alt="Tecnológico" class="h-12 w-auto object-contain">
+              <img src="images/tecnologico.png" alt="Tecnológico" class="h-12 w-auto object-contain">
               <div class="flex flex-col">
                 <span class="text-lg font-bold text-gray-900 dark:text-white leading-tight">Mecánica</span>
                 <span class="text-xs text-gray-500 dark:text-gray-400 leading-tight">Medio Continuo</span>
@@ -348,5 +1121,22 @@
         if (e.key === 'Escape') closeViewer();
       });
     </script>
+
+    <!-- KaTeX: fórmulas de notación indicial -->
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+    <script>
+      if (typeof renderMathInElement === 'function') {
+        renderMathInElement(document.body, {
+          delimiters: [
+            { left: '\\[', right: '\\]', display: true },
+            { left: '\\(', right: '\\)', display: false }
+          ],
+          throwOnError: false
+        });
+      }
+    </script>
+    <script src="https://cdn.botpress.cloud/webchat/v3.7/inject.js"></script>
+    <script src="https://files.bpcontent.cloud/2026/08/07/20/20260807200306-50CKT62T.js" defer></script>
   </body>
 </html>

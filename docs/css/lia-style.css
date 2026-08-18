@@ -1,0 +1,748 @@
+/* =============================================================================
+   Mecánica del Medio Continuo — LIA-inspired landing styles
+   Paleta y tipografía base. Header + Hero (fase 1).
+   ============================================================================= */
+
+:root {
+  /* Plantilla LIA — paleta oficial del proyecto */
+  --lia-violet: #8e6bff;
+  --lia-violet-deep: #8736f7;
+  --lia-pink: #f13de8;
+  --lia-blue: #327dff;
+  --lia-orange: #ffb066;
+
+  --bg: #0b0b12;
+  --bg-elevated: #101018;
+  --bg-card: rgba(26, 26, 39, 0.72);
+  --bg-card-solid: #1a1a27;
+  --fg: #f2f2f2;
+  --fg-muted: rgba(242, 242, 242, 0.62);
+  --fg-dim: rgba(242, 242, 242, 0.42);
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.16);
+  --accent: var(--lia-violet);
+  --accent-glow: rgba(142, 107, 255, 0.35);
+  --accent-border: rgba(142, 107, 255, 0.45);
+
+  --font-sans: "Geist", "Plus Jakarta Sans", "Segoe UI", system-ui, sans-serif;
+  --font-display: "Geist", "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, monospace;
+
+  --radius: 20px;
+  --radius-sm: 14px;
+  --radius-pill: 999px;
+  --nav-h: 72px;
+  --gutter: clamp(1.25rem, 4vw, 2.75rem);
+  --container: 1200px;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --shadow-soft: 0 24px 64px rgba(0, 0, 0, 0.45);
+  --shadow-glow: 0 0 48px var(--accent-glow);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: dark;
+}
+
+body.lia-body {
+  font-family: var(--font-sans);
+  background: var(--bg);
+  color: var(--fg);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  min-height: 100svh;
+}
+
+img,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+ul {
+  list-style: none;
+}
+
+.lia-container {
+  width: min(100% - (var(--gutter) * 2), var(--container));
+  margin-inline: auto;
+}
+
+.lia-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---------- Atmosphere ---------- */
+.lia-atmosphere {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 50% 42%, rgba(142, 107, 255, 0.22), transparent 34%),
+    radial-gradient(circle at 70% 20%, rgba(50, 125, 255, 0.16), transparent 40%),
+    radial-gradient(ellipse 40% 30% at 20% 80%, rgba(142, 107, 255, 0.1), transparent 60%),
+    linear-gradient(rgba(255, 255, 255, 0.02), transparent 24%),
+    linear-gradient(#0b0b12 0%, #0b0b12 100%);
+  z-index: 0;
+  will-change: transform;
+}
+
+/* ---------- Buttons ---------- */
+.lia-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  height: 44px;
+  padding: 0 1.25rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: background 0.25s var(--ease), border-color 0.25s var(--ease),
+    box-shadow 0.25s var(--ease), transform 0.25s var(--ease);
+  white-space: nowrap;
+}
+
+.lia-btn--ghost {
+  border: 1.6px solid var(--accent-border);
+  background: transparent;
+  color: var(--fg);
+}
+
+.lia-btn--ghost:hover {
+  border-color: var(--lia-violet);
+  box-shadow: 0 0 24px rgba(142, 107, 255, 0.25);
+}
+
+.lia-btn--fill {
+  background: var(--fg);
+  color: #0a0e18;
+  border: 1.6px solid transparent;
+}
+
+.lia-btn--fill:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-soft);
+}
+
+.lia-btn--icon {
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border-strong);
+  color: var(--fg-muted);
+}
+
+.lia-btn--icon:hover {
+  color: var(--fg);
+  border-color: var(--accent-border);
+}
+
+/* ---------- Header (sticky + blur) ---------- */
+.lia-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: var(--nav-h);
+  display: flex;
+  align-items: center;
+  background: rgba(11, 11, 18, 0.55);
+  backdrop-filter: blur(18px) saturate(1.2);
+  -webkit-backdrop-filter: blur(18px) saturate(1.2);
+  border-bottom: 1px solid transparent;
+  transition: background 0.35s var(--ease), border-color 0.35s var(--ease),
+    box-shadow 0.35s var(--ease);
+}
+
+.lia-header.is-scrolled {
+  background: rgba(11, 11, 18, 0.82);
+  border-bottom-color: var(--border);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+}
+
+.lia-header__inner {
+  width: min(100% - (var(--gutter) * 2), 1400px);
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.lia-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.35rem;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.lia-logo__mark {
+  background: linear-gradient(120deg, var(--lia-pink), var(--lia-violet), var(--lia-blue));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.lia-logo__sub {
+  display: none;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--fg-dim);
+  border-left: 1px solid var(--border-strong);
+  padding-left: 0.65rem;
+}
+
+@media (min-width: 720px) {
+  .lia-logo__sub {
+    display: inline;
+  }
+}
+
+.lia-header__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.lia-menu-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--fg);
+  padding: 0.5rem 0.25rem;
+}
+
+.lia-menu-toggle__plus {
+  color: var(--lia-violet);
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.lia-nav-desktop {
+  display: none;
+  align-items: center;
+  gap: 0.15rem;
+}
+
+@media (min-width: 960px) {
+  .lia-menu-toggle {
+    display: none;
+  }
+
+  .lia-nav-desktop {
+    display: flex;
+  }
+}
+
+.lia-nav-desktop a {
+  padding: 0.45rem 0.7rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+  border-radius: var(--radius-pill);
+  transition: color 0.2s, background 0.2s;
+}
+
+.lia-nav-desktop a:hover {
+  color: var(--fg);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.lia-header .lia-btn--ghost {
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .lia-header .lia-btn--ghost {
+    display: inline-flex;
+  }
+}
+
+/* Mobile drawer */
+.lia-drawer {
+  position: fixed;
+  inset: 0;
+  z-index: 110;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.lia-drawer.is-open {
+  pointer-events: auto;
+  visibility: visible;
+}
+
+.lia-drawer__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  opacity: 0;
+  transition: opacity 0.3s var(--ease);
+}
+
+.lia-drawer.is-open .lia-drawer__backdrop {
+  opacity: 1;
+}
+
+.lia-drawer__panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: min(100%, 360px);
+  height: 100%;
+  background: rgba(10, 10, 14, 0.97);
+  border-left: 1px solid var(--border);
+  padding: 1.25rem 1.5rem 2rem;
+  transform: translateX(100%);
+  transition: transform 0.35s var(--ease);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.lia-drawer.is-open .lia-drawer__panel {
+  transform: translateX(0);
+}
+
+.lia-drawer__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.lia-drawer__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.lia-drawer__nav a {
+  padding: 0.85rem 0.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+  border-bottom: 1px solid var(--border);
+  transition: color 0.2s;
+}
+
+.lia-drawer__nav a:hover {
+  color: var(--fg);
+}
+
+/* ---------- Hero ---------- */
+.lia-hero {
+  position: relative;
+  min-height: calc(100svh - var(--nav-h));
+  padding: 1.5rem 0 3rem;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.lia-hero__grid {
+  position: relative;
+  z-index: 1;
+  width: min(100% - (var(--gutter) * 2), 1280px);
+  margin-inline: auto;
+  display: grid;
+  gap: 2.5rem;
+  align-items: center;
+  flex: 1;
+}
+
+@media (min-width: 1024px) {
+  .lia-hero__grid {
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 3rem;
+    padding-top: 1rem;
+  }
+}
+
+.lia-hero__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+}
+
+.lia-hero__eyebrow::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--lia-violet);
+  box-shadow: 0 0 12px var(--accent-glow);
+}
+
+.lia-hero__title {
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 5.5vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+  color: var(--fg);
+  max-width: 14ch;
+  margin-bottom: 1.15rem;
+}
+
+.lia-hero__title span {
+  background: linear-gradient(120deg, var(--fg) 40%, var(--lia-violet) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.lia-hero__lead {
+  max-width: 34rem;
+  font-size: clamp(0.9rem, 1.5vw, 1.05rem);
+  color: var(--fg-muted);
+  margin-bottom: 1.75rem;
+}
+
+.lia-hero__ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+/* Prompt / voice mock */
+.lia-prompt {
+  background: var(--bg-card-solid);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.85rem 0.85rem 0.95rem;
+  box-shadow: var(--shadow-soft);
+  max-width: 36rem;
+}
+
+.lia-prompt__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-bottom: 0.75rem;
+}
+
+.lia-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  height: 30px;
+  padding: 0 0.75rem;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border);
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.88);
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.lia-chip:hover,
+.lia-chip.is-active {
+  border-color: var(--accent-border);
+  background: rgba(142, 107, 255, 0.12);
+}
+
+.lia-prompt__row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(11, 11, 18, 0.65);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-pill);
+  padding: 0.35rem 0.4rem 0.35rem 1rem;
+}
+
+.lia-prompt__input {
+  flex: 1;
+  min-width: 0;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--fg);
+  font-size: 0.875rem;
+  letter-spacing: -0.005em;
+}
+
+.lia-prompt__input::placeholder {
+  color: var(--fg-dim);
+}
+
+.lia-prompt__mic,
+.lia-prompt__send {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  transition: background 0.2s, color 0.2s;
+}
+
+.lia-prompt__mic {
+  color: var(--fg-muted);
+  border: 1px solid transparent;
+}
+
+.lia-prompt__mic:hover,
+.lia-prompt__mic.is-listening {
+  color: var(--lia-violet);
+  border-color: var(--accent-border);
+  background: rgba(142, 107, 255, 0.1);
+}
+
+.lia-prompt__send {
+  background: var(--fg);
+  color: #0b0b12;
+}
+
+.lia-prompt__send:hover {
+  background: var(--lia-violet);
+  color: #fff;
+}
+
+.lia-prompt__hint {
+  margin-top: 0.65rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fg-dim);
+}
+
+/* Chat mockup panel */
+.lia-mock {
+  position: relative;
+  background: linear-gradient(165deg, rgba(26, 26, 39, 0.95), rgba(11, 11, 18, 0.92));
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  box-shadow: var(--shadow-soft), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  min-height: 420px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.lia-mock::before {
+  content: "";
+  position: absolute;
+  inset: -40% -20% auto auto;
+  width: 280px;
+  height: 280px;
+  background: radial-gradient(circle, rgba(142, 107, 255, 0.22), transparent 70%);
+  pointer-events: none;
+}
+
+.lia-mock__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.lia-mock__dots {
+  display: flex;
+  gap: 0.35rem;
+}
+
+.lia-mock__dots span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.lia-mock__dots span:nth-child(1) {
+  background: #ff5f57;
+}
+.lia-mock__dots span:nth-child(2) {
+  background: #febc2e;
+}
+.lia-mock__dots span:nth-child(3) {
+  background: #28c840;
+}
+
+.lia-mock__label {
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--fg-dim);
+}
+
+.lia-chat {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  flex: 1;
+}
+
+.lia-bubble {
+  max-width: 88%;
+  padding: 0.85rem 1rem;
+  border-radius: 16px;
+  font-size: 0.875rem;
+  line-height: 1.45;
+  /* Entrada a cargo de GSAP ([data-lia-bubble]) */
+}
+
+.lia-bubble--user {
+  align-self: flex-end;
+  background: rgba(142, 107, 255, 0.18);
+  border: 1px solid var(--accent-border);
+  border-bottom-right-radius: 6px;
+  color: var(--fg);
+}
+
+.lia-bubble--bot {
+  align-self: flex-start;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  border-bottom-left-radius: 6px;
+  color: var(--fg-muted);
+}
+
+.lia-bubble--bot strong {
+  color: var(--fg);
+  font-weight: 600;
+}
+
+.lia-bubble__meta {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--lia-violet);
+}
+
+.lia-mock__footer {
+  position: relative;
+  z-index: 1;
+  margin-top: 1rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.lia-tag {
+  font-size: 0.6875rem;
+  padding: 0.3rem 0.65rem;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border);
+  color: var(--fg-dim);
+}
+
+@keyframes lia-bubble-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.lia-bubble:nth-child(2) {
+  animation-delay: 0.15s;
+}
+.lia-bubble:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.lia-bubble:nth-child(4) {
+  animation-delay: 0.45s;
+}
+
+/* Scroll reveal helpers (fallback si AOS no carga) */
+.lia-reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+}
+
+.lia-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Placeholder for upcoming sections */
+.lia-next-placeholder {
+  position: relative;
+  z-index: 1;
+  padding: 4rem var(--gutter) 6rem;
+  text-align: center;
+  color: var(--fg-dim);
+  font-size: 0.875rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-top: 1px solid var(--border);
+}
+
+.lia-next-placeholder strong {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--fg-muted);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+}

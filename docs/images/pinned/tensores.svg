@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" role="img" aria-label="Tensores">
+  <rect x="10" y="10" width="44" height="44" rx="6" stroke="#8E6BFF" stroke-width="2.2"/>
+  <path d="M24.5 10v44M39.5 10v44M10 24.5h44M10 39.5h44" stroke="#8E6BFF" stroke-width="1.6" opacity=".85"/>
+  <circle cx="17.25" cy="17.25" r="2.2" fill="#8E6BFF"/>
+  <circle cx="32" cy="32" r="2.2" fill="#8E6BFF"/>
+  <circle cx="46.75" cy="46.75" r="2.2" fill="#8E6BFF"/>
+  <text x="32" y="58" text-anchor="middle" font-family="Georgia,serif" font-size="7" fill="#6B5BB5" opacity=".9">Ãb|</text>
+</svg>
